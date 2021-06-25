@@ -1,0 +1,56 @@
+main {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 10px;
+padding: 15px 50px ;
+font-size: 20px;
+
+}
+h1 {
+    text-align: center;
+    font-size: 40px;
+    padding: 25px 25px;
+}
+
+section{
+    
+    border: 2px solid rgb(158, 130, 130);
+    height: 100%;
+    border-radius: 12px;
+    width: 90%;
+}
+h2 {
+    text-align: center;
+    font-size: 25px;
+    padding: 10px 10px;
+
+    
+}
+
+.spreads , .symptoms , .Preventative {
+    background-color: #f0f4f5;
+}
+main ul {
+    list-style:square inside ;
+    margin-right: 5px;
+    line-height: 1.5;
+    margin-top: 15px;
+    
+}
+main img {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: 125px;
+}
+.spreads:hover , .symptoms:hover , .Preventative:hover {
+    background-color: rgb(0, 255, 255);
+    color: rgb(43, 24, 24);
+}
+main ul li {
+    margin-left: 5px;
+}
+
+
