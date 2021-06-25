@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    width: 100%;
+}
+.hero {
+    background: url(../img/hero.jpg);
+    height: 500px;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.hero .formCenter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.hero form fieldset, .formCenter form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.urgent {
+    width: 483px;
+    height: 70px;
+    background-color: white;
+    font-size: 45px;
+    border-radius: 25px;
+    font-style: italic;
+    border: none;
+}
+input[type="text"] {
+    height: 40px;
+    border-radius: 15px;
+    border: none;
+    padding-left: 8px;
+}
+fieldset {
+    gap: 1rem;
+}
+form {
+   
+    padding: 1.5rem;
+}
+legend {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+}
+.inputCont {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.signUp {
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    
+}
+.second-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.second-section .first-card, .second-card, .last-card {
+    margin: 1.5rem;
+}
+.card-text {
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px;
+}
+.map-tip {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.tip, .map {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.map-tip-head {
+    font-size: 32px;
+    font-weight: bold;
+    width: 50%;
+    text-align: center;
+
+}
+.tip {
+    height: 500px;
+}
+
+.tip-content {
+    border: 2px solid #000;
+    height: 100%;
+    padding: 2rem;
+    line-height: 1.6;
+    background-color: #7acbcb;
+    color: white;
+    border-radius: 20px;
+    border: none;
+}
+.map-picture, #tips {
+    width: 50%;
+    height: 500px;
+    
+    
+    
+}

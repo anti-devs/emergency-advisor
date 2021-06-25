@@ -1,63 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Emergency Advisor </title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
   <header></header>
-  <main>
-    <section>
-      <form action="">
-        <fieldset>
-          <legend>Start Consultation</legend>
-          <div>
-            <input name="phone" type="text" placeholder="Phone">
-            <input name="name" type="text" placeholder="Name">
+  <main class="homeMain">
+    <section class="hero">
+      <div class="container">
+        <div class="formCenter">
+          <form action="">
+            <fieldset>
+              <legend>Start Consultation</legend>
+              <div class="inputCont">
+                <input name="phone" type="text" placeholder="Phone">
+                <input name="name" type="text" placeholder="Name">
+              </div>
+              <input name="Email" type="text" placeholder="Email">
+
+              <button class="signUp">sign up</button>
+            </fieldset>
+          </form>
+
+          <button class="urgent">Urgent Consultation</button>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="container second-section">
+      <div class="first-card">
+        <img src="https://img.icons8.com/ios/250/28B5B5/coronavirus--v1.png"/>
+        <h3 class="card-text">COVID-19</h3>
+      </div>
+
+      <div class="second-card">
+        <img src="https://img.icons8.com/ios/250/28B5B5/medical-heart.png"/>
+        <h3 class="card-text">Chronic Diseases</h3>
+      </div>
+
+      <div class="last-card">
+        <img src="https://img.icons8.com/material-outlined/250/28B5B5/ambulance.png"/>
+        <h3 class="card-text">Emergencies</h3>
+      </div>
+    </section>
+
+    <section class="container map-tip">
+      <div class="map">
+        <div class="mapouter map-picture">
+          <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas"
+              src="https://maps.google.com/maps?q=nearest%20hospitals%20amman&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+              href="https://fmovies2.org">fmovies</a><br>
+            <style>
+              .mapouter {
+                position: relative;
+                text-align: right;
+                height: 500px;
+                width: 600px;
+              }
+            </style><a href="https://www.embedgooglemap.net">how do i add a google map to my website</a>
+            <style>
+              .gmap_canvas {
+                overflow: hidden;
+                background: none !important;
+                height: 500px;
+                width: 600px;
+              }
+            </style>
           </div>
-        
-          <input name="Email" type="text" placeholder="Email">
-
-          <button>sign up</button>
-        </fieldset>
-      </form>
-
-      <a href=""><button>Urgent Consultation</button></a>
-    </section>
-
-    <section>
-      <div>
-        <img src="" alt="">
-        <h3>COVID-19</h3>
+        </div>
+        <p class="map-tip-head">Find The Nearest Hospital</p>
       </div>
 
-      <div>
-        <img src="" alt="">
-        <h3>Chronic Diseases</h3>
-      </div>
-
-      <div>
-        <img src="" alt="">
-        <h3>Emergencies</h3>
-      </div>
-    </section>
-
-    <section>
-      <div>
-        <p>Find The Nearest Hospital</p>
-        <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=nearest%20hospitals%20amman&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://fmovies2.org">fmovies</a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">how do i add a google map to my website</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div>
-      </div>
-
-      <div>
-        <p>Tips for Healthy & Happy Living</p>
+      <div class="tip">
+        <p class="map-tip-head">Tips for Healthy & Happy Living</p>
         <article id="tips">
-          <ul></ul>
+          <p class="tip-content">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed ipsum quas harum sapiente, saepe cupiditate velit ducimus, animi iste doloribus quam, fugiat fuga veniam consectetur nesciunt mollitia aspernatur sint incidunt.
+          </p>
         </article>
       </div>
     </section>
   </main>
   <footer></footer>
 </body>
+
 </html>
