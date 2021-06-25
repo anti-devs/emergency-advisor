@@ -21,6 +21,8 @@ header .covid a{
 
 font-size: 20px;
 margin-left: 10%;
+text-decoration: none;
+color: black;
 
 
 }
@@ -40,7 +42,11 @@ header nav{
 
 header .header nav a{
 display: flex;
-padding: 10px;
+padding: 20px;
+text-decoration: none;
+font-size: 25px;
+color: rgb(138, 105, 105);
+border: 2px dotted;
 
 }
 header img{
@@ -48,7 +54,7 @@ header img{
 }
 
 footer{
-    background-color: rgba(179, 179, 6, 0.705);
+    background-color: rgba(61, 61, 53, 0.705);
  margin-top: 20px;
  padding: 10px;
 
