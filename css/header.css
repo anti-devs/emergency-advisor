@@ -1,0 +1,84 @@
+.header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #e8e3e3;
+    
+
+}
+
+header  img{
+    width: 100px;
+ 
+}
+
+header .covid a{
+margin-left: 30%;
+}
+
+header .covid{
+    background-color: bisque;
+   
+}
+header nav{
+    display: flex;
+   
+}
+
+
+header .header nav a{
+display: flex;
+padding: 10px;
+
+}
+header img{
+    width: 100px;
+}
+
+footer{
+    background-color: rgba(179, 179, 6, 0.705);
+ 
+
+    
+}
+
+.icons{
+    display: flex;
+    gap: 10px;
+    text-align: center;
+}
+
+
+
+
+ .mainFooter{
+     display: flex;
+     gap: 800px;
+     
+ }
+ .ash{
+    display: flex;
+    justify-content: stretch;
+    gap:150px;
+    
+  
+ }
+
+ .Privacy{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+ 
+ }
+ footer button {
+     margin-top:8px;
+     margin-right: 50px;
+     position: relative;
+     right:70px;
+     padding: 5px;
+     border-radius: 10px;
+     background-color:grey ;
+ }
+
+
+ 
