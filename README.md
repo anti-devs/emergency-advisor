@@ -100,3 +100,10 @@
 **acceptance tests**: if every time the user moves to the tips page he should see a tip that is different from the one he or she saw the last time they saw it. 
 
  
+## WireFrame
+
+![home](./wireframe/Home.png)
+![covid19](./wireframe/COVID-page.png)
+![chronic](./wireframe/chronic.png)
+![instructions page](./wireframe/Instruction-page.png)
+![emergency page](./wireframe/emergency-page.png)
