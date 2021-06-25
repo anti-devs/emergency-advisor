@@ -4,24 +4,90 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instruction</title>
+    <link rel="stylesheet" href="../css/reset.css">
+   <link rel="stylesheet" href="../css/instructions-Hamza.css">
+    <title>Instructions</title>
 </head>
 <body>
-    <header></header>
-    <main>
-        <h1>Instruction:</h1>
-        <section>
+    <header>
+        <div class='covid'>
+            <a href="https://www.worldometers.info/coronavirus/">Covid-19 update</a>
+          </div>
+        <div class='header'>
+      <img src="/img/logo.jpg" alt="logo">
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Emergency</a>
+        <a href="#">Contact us</a>
+        
+      </nav>
+      <i class="material-icons">person</i>
+    </div>
+    </header>
 
+    <main>
+        <h1>Instruction</h1>
+
+        <section id="instructions">
+            p
         </section>
-        <section>
-            <h2>Ask For Free Advice</h2>
+
             <form action="">
-                <input type="text" name="name" placeholder="Name">
-                <textarea name="" id="" cols="30" rows="10" placeholder="Describe Your Problems"></textarea>
-                <input type="submit" value="Send">
+                <fieldset id="freeAdvice">
+                    <legend>Ask For Free Advice</legend>
+                <input type="text" id="advice-Name" name="name" placeholder="Name">
+                <textarea name="" id="issue" cols="30" rows="10" placeholder="Describe Your Issue ..."></textarea>
+                <input type="submit" value="Send" id="advice-submit">
+            </fieldset>
             </form>
-        </section>
+  
     </main>
-    <footer></footer>
+
+    <footer>
+
+    <div class='mainFooter'>
+        <div class='ash'>
+            <div class='contact'>
+                <h3> Contact :</h3>
+                <i class="material-icons">person</i>
+                <label for="Address">Address : </label>
+                <span>Amman-Jordan</span><br>
+                <i class="material-icons">mail_outline</i>
+                <label for="Email">Email : </label>
+                <span>example@gmail.com</span><br>
+                <i class="material-icons">phone</i>
+                <label for="phone">phone : </label>
+                <span>+123-456</span><br>
+            </div>
+
+            <div class='linksDiv'>
+                <h3>Important links</h3>
+                <li> <a href="">link 1</a> </li>
+                <li> <a href="">link 2</a></li>
+                <li> <a href="">link 3</a></li>
+            </div>
+        </div>
+
+        <div class='stayInTouch'>
+            <h3>STAY IN TOUCH</h3>
+            <nav class='icons'>
+                <i class="material-icons">mail_outline</i>
+                <i class="fa fa-twitter"></i>
+                <i class='fa fa-facebook-square'></i>
+            </nav>
+            <button>Ask For Free Advice</button>
+        </div>
+    </div>
+
+    <nav class='Privacy'>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Services</a>
+        <a href="#">&copy; By Emergency advisor</a>
+    </nav>
+
+
+</footer>
+
 </body>
 </html>

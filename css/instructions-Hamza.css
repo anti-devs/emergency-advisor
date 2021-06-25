@@ -1,0 +1,169 @@
+.header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #e8e3e3;
+  
+  
+
+}
+.covid{
+  
+  margin: 0 auto;
+}
+
+header  img{
+  width: 100px;
+
+}
+
+header .covid a{
+
+font-size: 20px;
+margin-left: 10%;
+
+
+}
+
+header .covid{
+  background-color: bisque;
+  padding: 5px;
+  
+  
+ 
+}
+header nav{
+  display: flex;
+ 
+}
+
+
+header .header nav a{
+display: flex;
+padding: 10px;
+
+}
+header img{
+  width: 100px;
+}
+
+footer{
+  background-color: rgba(179, 179, 6, 0.705);
+margin-top: 20px;
+padding: 10px;
+
+  
+}
+
+.icons{
+  display: flex;
+  gap: 10px;
+  text-align: center;
+}
+
+.fa-twitter{
+  color: #1DA1F2
+  ;
+
+}
+.fa-facebook-square{
+
+  color: #4267B2;
+  
+}
+
+
+
+
+.mainFooter{
+   display: flex;
+   gap: 800px;
+   
+}
+.ash{
+  display: flex;
+  justify-content: stretch;
+  gap:150px;
+  
+
+}
+
+.Privacy{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+
+}
+footer button {
+   margin-top:8px;
+   margin-right: 50px;
+   position: relative;
+   right:70px;
+   padding: 5px;
+   border-radius: 10px;
+   background-color:grey ;
+}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------ */
+
+main {
+  max-width: 1170px;
+  margin: 2rem auto;
+}
+
+h1 {
+  font-size: 3rem;
+}
+#instructions {
+  margin: 2rem 0;
+  height: 20rem;
+  border-radius: 50px;
+  border: black solid 3px;
+  padding: 1rem;
+}
+
+form {
+  width: 100%;
+  border-radius: 50px;
+  background-color: lightgray;
+
+}
+legend {
+  margin: 2rem auto;
+  font-size: 2rem;
+  padding-top: 2rem;
+  font-weight: bold;
+}
+form fieldset{
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+fieldset #advice-Name {
+  width: 25%;
+  height: 2rem;
+  padding: 0 1rem;
+  font-size: 1rem;
+}
+fieldset #issue {
+  padding: 1rem ;
+  font-size: 1rem;
+}
+/* box-shadow: 10px 10px 8px 10px #888888; */
+
+fieldset #advice-submit {
+  height: 3rem;
+  width: 10rem;
+  margin: auto;
+  border-radius: 1.5rem;
+  box-shadow: 3px 7px 10px black ,  -3px 7px 10px black;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background-color: green;
+}
+fieldset #advice-submit:hover {
+  background-color: darkgreen;
+}
