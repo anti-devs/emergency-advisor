@@ -10,10 +10,14 @@ body {
     margin: 0 auto;
     width: 100%;
 }
+a {
+    color: #555;
+    text-decoration: none;
+}
 /* Header Start*/
 header {
     width: 100%;
-    background-color: #e8e3e3;
+    background-color: #CDF0EA;
 }
 .header {
     display: flex;
@@ -27,8 +31,12 @@ header {
 }
 .covid {
     margin: 0 auto;
-    background-color: burlywood;
+    background-color: whitesmoke;
     padding: 8px 0;
+}
+.covid a {
+    text-decoration: none;
+    color: #555;
 }
 .nav-bar {
     width: 100%;
@@ -89,7 +97,6 @@ fieldset {
     gap: 1rem;
 }
 form {
-   
     padding: 1.5rem;
 }
 legend {
@@ -105,8 +112,7 @@ legend {
     height: 40px;
     border-radius: 20px;
     border: none;
-    font-size: 16px;
-    
+    font-size: 16px;  
 }
 .second-section {
     display: flex;
@@ -125,9 +131,7 @@ legend {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
 }
-
 .tip, .map {
     display: flex;
     justify-content: space-between;
@@ -144,15 +148,21 @@ legend {
 .tip {
     height: 500px;
 }
-.tip-content {
+#tips {
     border: 2px solid #000;
     height: 100%;
-    padding: 2rem;
+    padding: 1.2rem;
     line-height: 1.6;
-    background-color: #7acbcb;
-    color: white;
+    background-color: #CDF0EA;
+    color: #222;
     border-radius: 15px 80px;
-    border: none;
+    border: none;   
+}
+#tips #tip-header {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
 }
 .map-picture, #tips {
     width: 50%;
@@ -332,10 +342,15 @@ legend {
   }
   /* End instruction */
 /* Footer Start*/
-footer{
-    background-color: rgba(61, 61, 53, 0.705);
+footer
+{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: #DEEDF0;
     margin-top: 20px;
-    padding: 10px;  
+    padding: 10px;
+    height: 250px; 
 }
 .mainFooter {
     display: flex;
@@ -344,18 +359,60 @@ footer{
 }
 .icons{
     display: flex;
-    gap: 10px;
     text-align: center;
+    justify-content: space-between;
+    margin-bottom: 10px
 }
-.Privacy {
+.fab, .far {
+    margin: 10px;
+}
+.mail .fa-envelope:before {
+    content: "\f0e0";
+}
+.fa-envelope:before {
+    content: "\f0e0";
+    font-size: 24px;
+}
+.fa-twitter:before {
+    content: "\f099";
+    font-size: 24px;
+}
+.fa-facebook-f:before {
+    content: "\f39e";
+    font-size: 24px;
+}
+.fa-map-marker-alt:before {
+    content: "\f3c5";
+    font-size: 24px;
+}
+.fa-phone:before {
+    content: "\f095";
+    font-size: 24px;
+}
+.linksDiv h3 {
+    padding: 10px 0;
+    font-size: 18px;
+}
+.linksDiv li{
+    padding: 5px 0;
+    list-style: none;
+}
+.linksDiv li a {
+    text-decoration: none;
+}
+.privacy {
+    height: 70px;
     display: flex;
     justify-content: center;
+    align-items: flex-end;
+}
+.privacy a, .privacy p{
+    margin-left: 10px;
 }
 .contact-information {
     display: flex;
+    align-items: center;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
 }
 .contact-information h3 {
     padding: 10px 0;
@@ -363,8 +420,20 @@ footer{
 .address, .email, .phone {
     display: flex;
     align-items: center;
+    color: #555;
 }
-.icon {
-    font-size: 28px;
+.advice {
+    background-color: #555;
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    border: none;
+}
+footer span {
+    padding: 0px 5px;
+}
+.stayInTouch h3 {
+    margin-left: 7px;
+    margin-bottom: 13px;
 }
 /*Footer End*/

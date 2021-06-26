@@ -1,158 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emergency Advisor </title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-  <header>
-    <div class='covid'>
-      <div class="container"><a href="https://www.worldometers.info/coronavirus/">Covid-19 update</a></div>
-    </div>
-    <div class="container">
-
-      <div class='header'>
-        <div class="logo-link"><img src="/img/logo.jpg" alt="logo"></div>
-        <nav class="nav-bar">
-          <a href="#">Home</a>
-          <a href="#">About Us</a>
-          <a href="#">Emergency</a>
-          <a href="#">Contact us</a>
-        </nav>
-        <i class="material-icons">person</i>
-      </div>
-    </div>
-  </header>
-  <main class="homeMain">
-    <section class="hero">
-      <div class="container">
-        <div class="formCenter">
-          <form action="">
-            <fieldset>
-              <legend>Start Consultation</legend>
-              <div class="inputCont">
-                <input name="phone" type="text" placeholder="Phone">
-                <input name="name" type="text" placeholder="Name">
-              </div>
-              <input name="Email" type="text" placeholder="Email">
-
-              <button class="signUp">sign up</button>
-            </fieldset>
-          </form>
-
-          <button class="urgent">Urgent Consultation</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emergency Advisor</title>
+    <link
+      rel="stylesheet"
+      href="../fontawesome-free-5.15.3-web/fontawesome-free-5.15.3-web/css/all.css"
+    />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="covid">
+        <div class="container">
+          <a href="https://www.worldometers.info/coronavirus/"
+            >Covid-19 update</a
+          >
         </div>
-
       </div>
-    </section>
-
-    <section class="container second-section">
-      <div class="first-card">
-        <img src="https://img.icons8.com/ios/250/28B5B5/coronavirus--v1.png" />
-        <h3 class="card-text">COVID-19</h3>
+      <div class="container">
+        <div class="header">
+          <div class="logo-link"><img src="/img/logo.jpg" alt="logo" /></div>
+          <nav class="nav-bar">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Emergency</a>
+            <a href="#">Contact us</a>
+          </nav>
+          <i class="far fa-user"></i>
+        </div>
       </div>
+    </header>
+    <main class="homeMain">
+      <section class="hero">
+        <div class="container">
+          <div class="formCenter">
+            <form action="">
+              <fieldset>
+                <legend>Start Consultation</legend>
+                <div class="inputCont">
+                  <input name="phone" type="text" placeholder="Phone" />
+                  <input name="name" type="text" placeholder="Name" />
+                </div>
+                <input name="Email" type="text" placeholder="Email" />
 
-      <div class="second-card">
-        <img src="https://img.icons8.com/ios/250/28B5B5/medical-heart.png" />
-        <h3 class="card-text">Chronic Diseases</h3>
-      </div>
+                <button class="signUp">sign up</button>
+              </fieldset>
+            </form>
 
-      <div class="last-card">
-        <img src="https://img.icons8.com/material-outlined/250/28B5B5/ambulance.png" />
-        <h3 class="card-text">Emergencies</h3>
-      </div>
-    </section>
-
-    <section class="container map-tip">
-      <div class="map">
-        <div class="mapouter map-picture">
-          <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas"
-              src="https://maps.google.com/maps?q=nearest%20hospitals%20amman&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
-              href="https://fmovies2.org">fmovies</a><br>
-            <style>
-              .mapouter {
-                position: relative;
-                text-align: right;
-                height: 500px;
-                width: 600px;
-              }
-            </style><a href="https://www.embedgooglemap.net">how do i add a google map to my website</a>
-            <style>
-              .gmap_canvas {
-                overflow: hidden;
-                background: none !important;
-                height: 500px;
-                width: 600px;
-              }
-            </style>
+            <button class="urgent">Urgent Consultation</button>
           </div>
         </div>
-        <p class="map-tip-head">Find The Nearest Hospital</p>
-      </div>
+      </section>
 
-      <div class="tip">
-        <p class="map-tip-head">Tips for Healthy & Happy Living</p>
-        <article id="tips">
-          <h2 id="tip-header"></h2>
-          <p class="tip-content" id="tip-content">
-          </p>
-        </article>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="container">
-      <div class='mainFooter'>
-        <div class='contact-information'>
-          <h3> Contact :</h3>
-          <div class="address">
-            <i class="material-icons icon">person</i>
+      <section class="container second-section">
+        <div class="first-card">
+          <img
+            src="https://img.icons8.com/ios/250/28B5B5/coronavirus--v1.png"
+          />
+          <h3 class="card-text">COVID-19</h3>
+        </div>
+
+        <div class="second-card">
+          <img src="https://img.icons8.com/ios/250/28B5B5/medical-heart.png" />
+          <h3 class="card-text">Chronic Diseases</h3>
+        </div>
+
+        <div class="last-card">
+          <img
+            src="https://img.icons8.com/material-outlined/250/28B5B5/ambulance.png"
+          />
+          <h3 class="card-text">Emergencies</h3>
+        </div>
+      </section>
+
+      <section class="container map-tip">
+        <div class="map">
+          <div class="mapouter map-picture">
+            <div class="gmap_canvas">
+              <iframe
+                width="600"
+                height="500"
+                id="gmap_canvas"
+                src="https://maps.google.com/maps?q=nearest%20hospitals%20amman&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0"
+              ></iframe
+              ><a href="https://fmovies2.org">fmovies</a><br />
+              <style>
+                .mapouter {
+                  position: relative;
+                  text-align: right;
+                  height: 500px;
+                  width: 600px;
+                }</style
+              ><a href="https://www.embedgooglemap.net"
+                >how do i add a google map to my website</a
+              >
+              <style>
+                .gmap_canvas {
+                  overflow: hidden;
+                  background: none !important;
+                  height: 500px;
+                  width: 600px;
+                }
+              </style>
+            </div>
+          </div>
+          <p class="map-tip-head">Find The Nearest Hospital</p>
+        </div>
+
+        <div class="tip">
+          <p class="map-tip-head">Tips for Healthy & Happy Living</p>
+          <article id="tips">
+            <h2 id="tip-header"></h2>
+            <p class="tip-content" id="tip-content"></p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="mainFooter">
+          <div class="contact-information">
+            <h3>Contact :</h3>
+            <div class="address">
+              <i class="fas fa-map-marker-alt"></i>
               <span>Address : </span>
               <span>Amman-Jordan</span>
-          </div>
-          <div class="email">
-            <i class="material-icons icon">mail_outline</i>
+            </div>
+            <div class="email">
+              <i class="far fa-envelope"></i>
               <span>Email : </span>
               <span>example@gmail.com</span>
-          </div>
-          <div class="phone">
-            <i class="material-icons icon">phone</i>
+            </div>
+            <div class="phone">
+              <i class="fas fa-phone"></i>
               <span>phone : </span>
               <span>+123-456-0002</span>
+            </div>
+          </div>
+          <div class="linksDiv">
+            <h3>Important links</h3>
+            <li><a href="">www.google.com</a></li>
+            <li><a href="">www.ughlfdkmfkdlvm.com</a></li>
+            <li><a href="">www.fuivbfuvnfgjvng.com</a></li>
+          </div>
+          <div class="stayInTouch">
+            <h3>STAY IN TOUCH</h3>
+            <nav class="icons">
+              <i class="far fa-envelope fa-lg"></i>
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-facebook-f"></i>
+            </nav>
+            <button class="advice">Ask For Free Advice</button>
           </div>
         </div>
-        <div class='linksDiv'>
-          <h3>Important links</h3>
-          <li> <a href="">link 1</a> </li>
-          <li> <a href="">link 2</a></li>
-          <li> <a href="">link 3</a></li>
-        </div>
-        <div class='stayInTouch'>
-          <h3>STAY IN TOUCH</h3>
-          <nav class='icons'>
-            <i class="material-icons">mail_outline</i>
-            <i class="fa fa-twitter"></i>
-            <i class='fa fa-facebook-square'></i>
-          </nav>
-          <button>Ask For Free Advice</button>
-        </div>
+        <nav class="privacy">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Services</a>
+          <a href="#">&copy; By Emergency advisor</a>
+        </nav>
       </div>
-      <nav class='Privacy'>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Services</a>
-        <a href="#">&copy; By Emergency advisor</a>
-      </nav>
-    </div>
-  </footer>
-  <script src="../script/home.js"></script>
-</body>
-
+    </footer>
+    <script src="../script/home.js"></script>
+  </body>
 </html>
