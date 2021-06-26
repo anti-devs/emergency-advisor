@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 body {
     font-family: Arial, Helvetica, sans-serif;
 
@@ -7,6 +10,98 @@ body {
     margin: 0 auto;
     width: 100%;
 }
+header {
+    width: 100%;
+    background-color: #e8e3e3;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+   
+}
+.header .logo-link img{
+    width: 100px;
+}
+.covid {
+    margin: 0 auto;
+    background-color: burlywood;
+    padding: 8px 0;
+}
+.nav-bar {
+    width: 100%;
+}
+.header nav {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.header nav a {
+    padding-left: 40px;
+    text-decoration: none;
+}
+.material-icons {
+    font-size: 32px;
+}
+footer{
+    background-color: rgba(61, 61, 53, 0.705);
+    margin-top: 20px;
+    padding: 10px;  
+}
+.mainFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icons{
+    display: flex;
+    gap: 10px;
+    text-align: center;
+}
+.Privacy {
+    display: flex;
+    justify-content: center;
+}
+.contact-information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.contact-information h3 {
+    padding: 10px 0;
+}
+.address, .email, .phone {
+    display: flex;
+    align-items: center;
+}
+.icon {
+    font-size: 28px;
+}
+/*.fa-twitter{
+    color: #1DA1F2;
+}
+.fa-facebook-square {
+    color: #4267B2;
+}
+
+.ash {
+    display: flex;
+    justify-content: stretch;
+    gap:150px;
+}
+
+
+footer button {
+    margin-top:8px;
+    margin-right: 50px;
+    position: relative;
+    right:70px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color:grey ;
+}*/
 .hero {
     background: url(../img/hero.jpg);
     height: 500px;
@@ -14,6 +109,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.hero-img {
+    height: 600px;
+   width: 100%;
+   background-size: contain;
 }
 .hero .formCenter {
     display: flex;
@@ -107,7 +207,7 @@ legend {
     line-height: 1.6;
     background-color: #7acbcb;
     color: white;
-    border-radius: 20px;
+    border-radius: 15px 80px;
     border: none;
 }
 .map-picture, #tips {
