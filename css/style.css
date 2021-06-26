@@ -1,15 +1,16 @@
+/* global*/
 * {
     box-sizing: border-box;
 }
 body {
     font-family: Arial, Helvetica, sans-serif;
-
 }
 .container {
     max-width: 1170px;
     margin: 0 auto;
     width: 100%;
 }
+/* Header Start*/
 header {
     width: 100%;
     background-color: #e8e3e3;
@@ -44,64 +45,8 @@ header {
 .material-icons {
     font-size: 32px;
 }
-footer{
-    background-color: rgba(61, 61, 53, 0.705);
-    margin-top: 20px;
-    padding: 10px;  
-}
-.mainFooter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.icons{
-    display: flex;
-    gap: 10px;
-    text-align: center;
-}
-.Privacy {
-    display: flex;
-    justify-content: center;
-}
-.contact-information {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-}
-.contact-information h3 {
-    padding: 10px 0;
-}
-.address, .email, .phone {
-    display: flex;
-    align-items: center;
-}
-.icon {
-    font-size: 28px;
-}
-/*.fa-twitter{
-    color: #1DA1F2;
-}
-.fa-facebook-square {
-    color: #4267B2;
-}
+/* Header End*/
 
-.ash {
-    display: flex;
-    justify-content: stretch;
-    gap:150px;
-}
-
-
-footer button {
-    margin-top:8px;
-    margin-right: 50px;
-    position: relative;
-    right:70px;
-    padding: 5px;
-    border-radius: 10px;
-    background-color:grey ;
-}*/
 .hero {
     background: url(../img/hero.jpg);
     height: 500px;
@@ -199,7 +144,6 @@ legend {
 .tip {
     height: 500px;
 }
-
 .tip-content {
     border: 2px solid #000;
     height: 100%;
@@ -212,8 +156,215 @@ legend {
 }
 .map-picture, #tips {
     width: 50%;
-    height: 500px;
-    
-    
-    
+    height: 500px; 
 }
+/*Chronic Section Start*/
+.section-one h3 {
+    font-size: x-large;
+    margin: 60px ;
+}
+.section-one {
+    margin: 160px auto;
+    width: 100%;
+    text-align: center;
+}
+.section-one div{
+    font-size: x-large;
+    border-style: solid ;
+    border-color: darkblue;
+    border-width: 3px;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 10px;  
+}
+/*Chronic Section End*/
+/* Covid Start*/
+.container-covid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    font-size: 20px;
+}
+.covid-header{
+    text-align: center;
+    font-size: 40px;
+    padding: 25px 25px;
+}
+.container-covid h2 {
+    text-align: center;
+    font-size: 25px;
+    padding: 10px 10px;  
+}
+.container-covid section{
+    border: 2px solid rgb(158, 130, 130);
+    height: 100%;
+    border-radius: 12px;
+    width: 90%;
+}
+.spreads , .symptoms , .Preventative {
+    background-color: #f0f4f5;
+}
+.container-covid ul {
+    list-style:square inside ;
+    margin-right: 5px;
+    line-height: 1.5;
+    margin-top: 15px; 
+}
+.container-covid img {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: 125px;
+}
+.spreads:hover , .symptoms:hover , .Preventative:hover {
+    background-color: rgb(0, 255, 255);
+    color: rgb(43, 24, 24);
+}
+.container-covid ul li {
+    margin-left: 5px;
+}
+/* Covid End*/
+/*Emergency Start*/
+.emrgency-container h1{
+    text-align: center;
+    font-size: 25px;
+    margin: 30px 0;
+}
+.emrgency-container h2{
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 10px ;
+    border-radius: 20px;
+    padding: 10px;
+}
+.emergency-section{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+ .FThreeImg , .SthreeImg , .TthreeImg{
+    display: flex;
+    justify-content: space-between; 
+} 
+.emergency-section img {
+    background-color:#e8e3e3;
+    width: 200px;
+    height: 200px;
+    border: none;
+}
+.btn{
+    width: 300px;
+    height: 30px;
+    margin: 20px auto;
+    border-radius: 50px;
+    border: 1px unset palegoldenrod;
+}
+.btn:hover{
+    background-color: darkturquoise;
+}
+.emergency-section img{
+    margin-top: 10px;
+    animation-name: images;
+    animation-duration: 5s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;} 
+@keyframes images {
+    100% {background-color: rgb(147, 173, 121);
+      border-radius: 100px;
+    }
+}
+/*Emergency End*/
+/* Start instruction */
+.instructions-container h1 {
+    font-size: 3rem;
+  }
+  #instructions {
+    margin: 2rem 0;
+    height: 20rem;
+    border-radius: 50px;
+    border: black solid 3px;
+    padding: 1rem;
+  }
+  .instructions-container form {
+    width: 100%;
+    border-radius: 50px;
+    background-color: lightgray;
+  }
+  .instructions-container legend {
+    margin: 2rem auto;
+    font-size: 2rem;
+    padding-top: 2rem;
+    font-weight: bold;
+  }
+  .instructions-container form fieldset{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  .instructions-container fieldset #advice-Name {
+    width: 25%;
+    height: 2rem;
+    padding: 0 1rem;
+    font-size: 1rem;
+  }
+  .instructions-container fieldset #issue {
+    padding: 1rem ;
+    font-size: 1rem;
+  }
+  .instructions-container fieldset #advice-submit {
+    height: 3rem;
+    width: 10rem;
+    margin: auto;
+    border-radius: 1.5rem;
+    box-shadow: 3px 7px 10px black ,  -3px 7px 10px black;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    background-color: green;
+  }
+  .instructions-container fieldset #advice-submit:hover {
+    background-color: darkgreen;
+  }
+  /* End instruction */
+/* Footer Start*/
+footer{
+    background-color: rgba(61, 61, 53, 0.705);
+    margin-top: 20px;
+    padding: 10px;  
+}
+.mainFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icons{
+    display: flex;
+    gap: 10px;
+    text-align: center;
+}
+.Privacy {
+    display: flex;
+    justify-content: center;
+}
+.contact-information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.contact-information h3 {
+    padding: 10px 0;
+}
+.address, .email, .phone {
+    display: flex;
+    align-items: center;
+}
+.icon {
+    font-size: 28px;
+}
+/*Footer End*/
