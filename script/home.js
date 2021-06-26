@@ -45,6 +45,131 @@ function updateTips() {
   tipContent.textContent = content;
 }
 
+
+///////////////////////////////////////////////////////////////////
+window.addEventListener('click', removeDiv);
+
+let main = document.getElementById('main');
+let urgentCons = document.getElementById('urgent');
+urgentCons.addEventListener('click',popUpDiv);
+let compStyles = window.getComputedStyle(urgentCons);
+
+let newDiv =document.createElement('form');
+
+function popUpDiv(e) {
+  // console.log(urgentCons.offsetTop);
+  let winWidth = window.innerWidth;
+  
+  let toLeft = (winWidth - 1170)/2;
+  
+  let top = urgentCons.offsetTop;
+  let left = urgentCons.offsetLeft;
+  let width = urgentCons.offsetWidth;
+  let height = urgentCons.offsetHeight;
+  let limitLeft = left - toLeft;
+  console.log(winWidth);
+  // console.log('hey');
+  
+  let fieldset = document.createElement('fieldset');
+  newDiv.appendChild(fieldset);
+  let select = document.createElement('select');
+  select.style.width = '100%';
+  select.style.margin = 'auto';
+  fieldset.appendChild(select);
+  for (let i = 0; i < 7; i++) {
+    let option = document.createElement('option');
+    option.textContent = 'new option';
+    select.appendChild(option);
+  }
+  let textArea = document.createElement('textarea');
+  textArea.style.width = '100%';
+  textArea.style.height = '100px';
+  textArea.style.marginTop = '5rem';
+  fieldset.appendChild(textArea);
+  let secondSection = document.getElementById('second-section');
+
+  // newDiv.style.border = 'solid red 3px';
+  newDiv.style.margin = 'auto';
+
+  newDiv.style.position = 'absolute';
+  newDiv.style.overflow = 'hidden';
+  newDiv.style.top = top + 'px';
+  newDiv.style.left = left + 'px';
+  newDiv.style.width = width + 'px';
+  newDiv.style.height = 'fit-content';
+
+//   let id = setInterval(animate, 0.1);
+
+//   let counter = 10;
+//   function animate() {
+//     if (newDiv.offsetTop == 300 && newDiv.offsetLeft== 300) {
+//       clearInterval(id);
+//       return;
+//   }
+
+//   newDiv.style.top = counter + 'px';
+//   newDiv.style.left = counter + 'px';
+//   newDiv.style.width = counter + 'px';
+//   counter++;
+// }
+  // newDiv.addEventListener('animationstart', animateY);
+  // main.style.filter = 'blur(5px)';
+//  newDiv.style.width = '100%';
+//  newDiv.style.height = '100%';
+  main.style.zIndex = '0';
+  newDiv.style.zIndex = '99';
+  main.style.opacity = '30%';
+  newDiv.style.background = '#CDF0EA';
+ newDiv.style.borderRadius = '25px';
+  let dimenstion = urgentCons.getComputedStyle;
+  console.log(dimenstion);
+  newDiv.animate([
+  {transform: 'matrix( 2, 0, 0, 2,-300, 200)'}
+
+  ], {
+  duration: 300,
+  iterations: 1,
+  fill: "forwards"
+  });
+  urgentCons.removeEventListener('click',popUpDiv );
+
+
+  document.body.insertBefore(newDiv, main);
+  // newDiv.style.top = "-300px";
+  // newDiv.style.left = "200px";
+}
+
+function removeDiv(e) {
+  console.log(e.target);
+  
+  try {
+    if (e.target.id != 'urgent') {
+      document.body.removeChild(newDiv);
+      main.style.opacity = '100%';
+      newDiv =document.createElement('form');
+      urgentCons.addEventListener('click',popUpDiv);
+    } } catch (error){
+      console.log('element is removed');
+      newDiv =document.createElement('form');
+      urgentCons.addEventListener('click',popUpDiv);
+    } 
+  }
+  
+
+
+
+// function animateY(e) {
+//   console.log('animation going');
+//   newDiv.animate([
+//     {transform: `translateY(${limitLeft + 'px'})`  }
+//     // {transform: `translateY(${limitLeft + 'px'})`  }
+//   ], {
+//   duration: 1000,
+//   iterations: 1,
+//   fill: "forwards"
+//   });
+// }
+
 let inbut = document.getElementById('inbut');
 
 function Form (number , name , email){
@@ -79,3 +204,4 @@ function getData(){
   }
 }
 getData();
+
