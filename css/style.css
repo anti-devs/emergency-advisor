@@ -3,6 +3,7 @@
     box-sizing: border-box;
 }
 body {
+    position: relative;
     font-family: Arial, Helvetica, sans-serif;
 }
 .container {
@@ -41,6 +42,10 @@ header {
 .nav-bar {
     width: 100%;
 }
+.fa-user:before {
+    content: "\f007";
+    font-size: 30px;
+}
 .header nav {
     display: flex;
     justify-content:center;
@@ -54,7 +59,7 @@ header {
     font-size: 32px;
 }
 /* Header End*/
-
+/*main start*/
 .hero {
     background: url(../img/hero.jpg);
     height: 500px;
@@ -143,7 +148,6 @@ legend {
     font-weight: bold;
     width: 50%;
     text-align: center;
-
 }
 .tip {
     height: 500px;
@@ -168,6 +172,7 @@ legend {
     width: 50%;
     height: 500px; 
 }
+/*Main End*/
 /*Chronic Section Start*/
 .section-one h3 {
     font-size: x-large;
@@ -193,7 +198,6 @@ legend {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
-    font-size: 20px;
 }
 .covid-header{
     text-align: center;
@@ -206,18 +210,23 @@ legend {
     padding: 10px 10px;  
 }
 .container-covid section{
-    border: 2px solid rgb(158, 130, 130);
-    height: 100%;
     border-radius: 12px;
-    width: 90%;
+    padding: 25px;
+    margin-bottom: 20px;
 }
 .spreads , .symptoms , .Preventative {
-    background-color: #f0f4f5;
+    background-color: rgb(230, 236, 236);
+    color: #111;
+    transition: all ease-out 300ms;
+}
+.spreads:hover , .symptoms:hover , .Preventative:hover {
+    transform: translate(0, 1em);
+    opacity: 0.7;
 }
 .container-covid ul {
-    list-style:square inside ;
+    list-style: circle;
     margin-right: 5px;
-    line-height: 1.5;
+    line-height: 1.6;
     margin-top: 15px; 
 }
 .container-covid img {
@@ -228,10 +237,6 @@ legend {
     border-radius: 50%;
     margin-left: 125px;
 }
-.spreads:hover , .symptoms:hover , .Preventative:hover {
-    background-color: rgb(0, 255, 255);
-    color: rgb(43, 24, 24);
-}
 .container-covid ul li {
     margin-left: 5px;
 }
@@ -239,76 +244,114 @@ legend {
 /*Emergency Start*/
 .emrgency-container h1{
     text-align: center;
-    font-size: 25px;
+    font-size: 32px;
+    font-weight: bold;
     margin: 30px 0;
 }
-.emrgency-container h2{
+.emrgency-container h2 {
     text-align: center;
     font-size: 15px;
     font-weight: 600;
-    margin-top: 10px ;
+    margin: 10px 5px 0 5px;
     border-radius: 20px;
     padding: 10px;
+    background-color: #DAFAD8;
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+}
+.emergency-section h2:hover {
+   background-color: silver;
 }
 .emergency-section{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    margin: 5px 0;
 }
  .FThreeImg , .SthreeImg , .TthreeImg{
     display: flex;
-    justify-content: space-between; 
-} 
+    justify-content: space-between;
+    width: 100%; 
+}
+.borderH {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    margin: 10px 0;
+    border-radius: 20px;
+}
+
 .emergency-section img {
-    background-color:#e8e3e3;
     width: 200px;
     height: 200px;
-    border: none;
+    margin: 5px 0;
 }
-.btn{
-    width: 300px;
-    height: 30px;
+.btn, .instructions-container fieldset #advice-submit {
+    width: 340px;
+    height: 60px;
     margin: 20px auto;
-    border-radius: 50px;
-    border: 1px unset palegoldenrod;
+    border-radius: 30px;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    transition: linear all 250ms;
+    cursor: pointer;
 }
-.btn:hover{
+.btn {
+    color: #222;
+    background-color: #00EAD3;
+}
+.btn:hover {
     background-color: darkturquoise;
 }
 .emergency-section img{
     margin-top: 10px;
-    animation-name: images;
-    animation-duration: 5s;
-    animation-delay: 2s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;} 
-@keyframes images {
-    100% {background-color: rgb(147, 173, 121);
-      border-radius: 100px;
-    }
 }
 /*Emergency End*/
 /* Start instruction */
+ul, ol {
+    font-size: 18px;
+    font-style: oblique;
+    line-height: 1.6;
+}
+textarea {
+    border-radius: 10px;
+    resize: none;
+}
+.instructions-container {
+    display: flex;
+    flex-direction: column;
+}
 .instructions-container h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    margin: 35px 0 0 0;
   }
   #instructions {
     margin: 2rem 0;
     height: 20rem;
     border-radius: 50px;
-    border: black solid 3px;
+    border: darkturquoise solid 3px;
     padding: 1rem;
+    background-color: white;
+    transition: all linear 350ms;
+  }
+  #instructions:hover {
+      transform: translate(-10px, -10px);
+      background-color: whitesmoke;
   }
   .instructions-container form {
-    width: 100%;
+    margin: 0 auto;
+    width: 70%;
+    height: 500px;
     border-radius: 50px;
-    background-color: lightgray;
+    background-color: #add4d2;
   }
   .instructions-container legend {
     margin: 2rem auto;
     font-size: 2rem;
     padding-top: 2rem;
     font-weight: bold;
+    color: white;
   }
   .instructions-container form fieldset{
     display: flex;
@@ -316,8 +359,15 @@ legend {
     gap: 2rem;
     padding: 2rem;
   }
+  .instructions-container fieldset #advice-submit {
+      color: white;
+      background-color: #555;
+  }
+  .instructions-container fieldset #advice-submit:hover {
+      background-color: #222;
+  }
   .instructions-container fieldset #advice-Name {
-    width: 25%;
+    width: 50%;
     height: 2rem;
     padding: 0 1rem;
     font-size: 1rem;
@@ -325,20 +375,6 @@ legend {
   .instructions-container fieldset #issue {
     padding: 1rem ;
     font-size: 1rem;
-  }
-  .instructions-container fieldset #advice-submit {
-    height: 3rem;
-    width: 10rem;
-    margin: auto;
-    border-radius: 1.5rem;
-    box-shadow: 3px 7px 10px black ,  -3px 7px 10px black;
-    color: white;
-    font-weight: bold;
-    font-size: 1.5rem;
-    background-color: green;
-  }
-  .instructions-container fieldset #advice-submit:hover {
-    background-color: darkgreen;
   }
   /* End instruction */
 /* Footer Start*/
@@ -350,7 +386,11 @@ footer
     background-color: #DEEDF0;
     margin-top: 20px;
     padding: 10px;
-    height: 250px; 
+    height: 250px;
+    position:relative;
+    bottom:0;
+    left:0;
+    width: 100%;
 }
 .mainFooter {
     display: flex;
