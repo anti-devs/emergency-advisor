@@ -44,3 +44,38 @@ function updateTips() {
   tipHeading.textContent = heading;
   tipContent.textContent = content;
 }
+
+let inbut = document.getElementById('inbut');
+
+function Form (number , name , email){
+  this.number = number;
+  this.name = name;
+  this.email = email;
+  Form.all.push(this);
+
+}
+
+Form.all = [];
+
+function info (event){
+  event.preventDefault();
+
+  let number = event.target.phone.value;
+  let name = event.target.name.value;
+  let email = event.target.email.value;
+
+  new Form(number , name , email);
+
+  localStorage.setItem('click', JSON.stringify(Form.all));
+  inbut.reset();
+
+}
+inbut.addEventListener('submit', info);
+
+function getData(){
+  let data = JSON.parse(localStorage.getItem(Form.all));
+  for(let i = 0; i < Form.all.length; i++ ){
+    new Form(data[i].number, data[i].name , data[i].email  );
+  }
+}
+getData();
