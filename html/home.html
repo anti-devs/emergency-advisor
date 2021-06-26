@@ -25,54 +25,60 @@
         <div class="header">
           <div class="logo-link"><img src="/img/logo.jpg" alt="logo" /></div>
           <nav class="nav-bar">
-            <a href="#">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Emergency</a>
-            <a href="#">Contact us</a>
+            <a href="#" class="homeA">Home</a>
+            <a href="emergency.html">Emergency</a>
+            <a href="covid.html">Covid-19</a>
+            <a href="chronic.html">Chronic</a>
+            <a href="aboutUs.html">About-Us</a>
           </nav>
           <i class="far fa-user"></i>
         </div>
       </div>
     </header>
-    <main class="homeMain">
+    <main class="homeMain" id="main">
       <section class="hero">
         <div class="container">
           <div class="formCenter">
-            <form action="">
+            <form action="" id="inbut">
               <fieldset>
                 <legend>Start Consultation</legend>
-                <div class="inputCont">
-                  <input name="phone" type="text" placeholder="Phone" />
-                  <input name="name" type="text" placeholder="Name" />
+                <div class="inputCont" id="signIn">
+                  <input name="phone" type="number" placeholder="Phone" id="userPhone" />
+                  <input name="name" type="text" placeholder="Name"  id="userNmae"/>
                 </div>
-                <input name="Email" type="text" placeholder="Email" />
+                <input name="email" type="text" placeholder="Email"  id="userImael"/>
 
-                <button class="signUp">sign up</button>
+                <button class="signUp" type="submit" >sign up</button>
               </fieldset>
             </form>
 
-            <button class="urgent">Urgent Consultation</button>
+            <button class="urgent" id="urgent">Urgent Consultation</button>
           </div>
         </div>
       </section>
-      <section class="container second-section">
-        <div class="first-card">
-          <img
-            src="https://img.icons8.com/ios/250/28B5B5/coronavirus--v1.png"
-          />
-          <h3 class="card-text">COVID-19</h3>
-        </div>
-
+      <section class="container second-section" id="second-section">
+        
+          <div class="first-card">
+            <a href="covid.html">
+            <img
+              src="https://img.icons8.com/ios/250/28B5B5/coronavirus--v1.png"
+            />
+            <h3 class="card-text">COVID-19</h3></a>
+          </div>
         <div class="second-card">
-          <img src="https://img.icons8.com/ios/250/28B5B5/medical-heart.png" />
+          <a href="chronic.html">
+            <img src="https://img.icons8.com/ios/250/28B5B5/medical-heart.png" />
           <h3 class="card-text">Chronic Diseases</h3>
+          </a>
         </div>
 
         <div class="last-card">
-          <img
+          <a href="emergency.html">
+            <img
             src="https://img.icons8.com/material-outlined/250/28B5B5/ambulance.png"
           />
           <h3 class="card-text">Emergencies</h3>
+          </a>
         </div>
       </section>
 
