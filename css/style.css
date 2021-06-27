@@ -147,18 +147,22 @@ legend {
 #tips {
     border: 2px solid #000;
     height: 100%;
-    padding: 1.2rem;
+    padding: 23px 51px;
     line-height: 1.6;
     background-color: #CDF0EA;
     color: #222;
     border-radius: 15px 80px;
-    border: none;   
+    border: none;
+    font-size: 20px;  
 }
 #tips #tip-header {
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
     font-size: 1.5rem;
+}
+#tip .tip-content {
+    font-size: 28px;
 }
 .map-picture, #tips {
     width: 50%;
