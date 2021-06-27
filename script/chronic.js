@@ -1,5 +1,6 @@
 'use strict';
 
+
 let chronicDis = document.getElementById('section-one');
 chronicDis.addEventListener('click', createChroDiv);
 let hiddenDiv = document.getElementById('hiddenDiv');
@@ -113,4 +114,16 @@ function removeAllChildNodes(parent) {
   while (parent.firstChild) {
       parent.removeChild(parent.firstChild);
   }
+}
+
+
+ let path1=window.location.pathname;
+
+console.log(path1)
+
+
+if(path1=='/html/chronic.html'){
+  let covid=document.getElementById('Chronic');
+  
+  covid.setAttribute('style','color:pink')
 }

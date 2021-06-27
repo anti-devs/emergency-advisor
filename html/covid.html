@@ -31,7 +31,7 @@
           <nav class="nav-bar">
             <a href="../index.html" >Home</a>
             <a href="emergency.html">Emergency</a>
-            <a href="#" class="covidA">Covid-19</a>
+            <a href="#" class="covidA" id='covidA'>Covid-19</a>
             <a href="chronic.html">Chronic</a>
             <a href="aboutUs.html">About-Us</a>
           </nav>
@@ -153,5 +153,17 @@
         </nav>
       </div>
     </footer>
+    <script>
+      let path=window.location.pathname;
+
+console.log(path)
+
+
+if(path=='/html/covid.html'){
+  let covid=document.getElementById('covidA');
+  
+  covid.setAttribute('style','color:pink')
+}
+    </script>
   </body>
 </html>

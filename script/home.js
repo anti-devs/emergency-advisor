@@ -8,6 +8,7 @@ userPic.style.display = 'none';
 document.body.onload = checkLocal(localStorage);
 
 
+
 let tipHeading = document.getElementById('tip-header');
 let tipContent = document.getElementById('tip-content');
 
@@ -99,7 +100,29 @@ function getData(){
 }
 getData();
 
-///////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+let path3=window.location.pathname;
+
+console.log(path3)
+
+
+if(path2=='/html/home.html'){
+  let covid=document.getElementById('Home');
+  
+  covid.setAttribute('style','background:black')
+}
+
+
+
+
+
+
+
+
 
 function checkLocal(local) {
   if (local.hasOwnProperty('click')) {

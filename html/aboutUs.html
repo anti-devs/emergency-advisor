@@ -34,7 +34,7 @@
               <a href="#" >Emergency</a>
               <a href="covid.html">Covid-19</a>
               <a href="chronic.html">Chronic</a>
-              <a href="aboutUs.html">About-Us</a>
+              <a href="aboutUs.html" id='About-Us'>About-Us</a>
             </nav>
             <i class="far fa-user"></i>
           </div>
@@ -141,6 +141,18 @@
            }
          }
        }
+     
+      let path=window.location.pathname;
+
+console.log(path)
+
+
+if(path=='/html/aboutUs.html'){
+  let covid=document.getElementById('About-Us');
+  
+  covid.setAttribute('style','color:pink')
+}
+    
        </script>
        
 </body>
