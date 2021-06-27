@@ -40,18 +40,6 @@
 
  
 
-**Title**: diagnostics 
-
-**Sentence**: As a user I want to select a number of symptoms I am seeing in front of me and I expect to know or see the possible medical condition along with a set of instructions to deal with that. 
-
-**Feature tasks**: to have a number of containers showing an illustration and a symptom description and when the user selects a number of symptoms and clicks “diagnose” it will remove all cards and tries to expect the medical condition and some instructions to deal with this situation. 
-
-**acceptance tests**: based on the selection of cards showing the symptoms, if the algorithm correctly specifies or predicts the medical condition and based on that the cards will fade away and in their place the instructions to do will appear in addition to some information about the possible condition. 
-
-
- ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
- 
 
 **Title**: chronic disease tips and cautionary measures 
 
