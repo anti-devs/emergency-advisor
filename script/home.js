@@ -119,3 +119,64 @@ function checkLocal(local) {
     return false;
   }
 }
+
+///////////////////////////////////Game
+let game =document.getElementById('ask');
+let images=['co2.png','co3.png','co4.png','co5.png','co6.png','co7.png','co8.png','co9.png'];
+let imagesGame=document.getElementById('imagesGame');
+let myImage=document.getElementById('myImage');
+let formm=document.getElementById('formm');
+let p = document.createElement('p');
+let pagegraph=document.getElementById('pagegraph');
+let counter=0;
+let targrt =0;
+
+imagesGame.setAttribute('style','display:none');
+function Game(amgSrc,answerr){
+
+  this.amgSrc=amgSrc;
+  this.answerr=answerr;
+  Game.all.push(this);
+
+}
+Game.all=[];
+for(let i=0;i<images.length;i++)
+{
+  new Game (`../img/${images[i]}`,i+2);
+}
+function render(){
+   
+  imagesGame.setAttribute('style','display:inline');
+  myImage.src=`../img/${images[counter]}`;
+  
+
+}
+
+function hadler(event){
+event.preventDefault();
+let ans=event.target.answer.value;
+if(Game.all[counter].answerr==ans)
+{
+  targrt++; 
+  counter++;
+  render(); 
+}
+else if(counter==7){
+
+  removeEventListener('submit',hadler);
+  imagesGame.setAttribute('style','display:none');
+  
+  p.textContent=`Your Resut Is ${targrt}/8`
+  pagegraph.appendChild(p);
+
+}
+
+else{
+  
+  counter++;
+  render();
+}
+
+}
+
+formm.addEventListener('submit',hadler);
