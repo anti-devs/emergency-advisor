@@ -61,9 +61,10 @@ header {
 /* Header End*/
 /*main start*/
 .hero {
-    background: url(../img/hero.jpg);
+    background: url(../img/blue.jpg);
     height: 500px;
     background-size: cover;
+    background-position-y: center;
     display: flex;
     align-items: center;
     justify-content: space-between;
