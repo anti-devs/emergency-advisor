@@ -31,7 +31,10 @@
             <a href="chronic.html">Chronic</a>
             <a href="aboutUs.html">About-Us</a>
           </nav>
-          <i class="far fa-user"></i>
+          <section id="loggedIn">
+            <i class="far fa-user" id="userPic"></i>
+            <p id="userName">p</p>
+          </section>
         </div>
       </div>
     </header>
@@ -39,7 +42,7 @@
       <section class="hero">
         <div class="container">
           <div class="formCenter">
-            <form action="" id="inbut">
+            <form action="" id="input">
               <fieldset>
                 <legend>Start Consultation</legend>
                 <div class="inputCont" id="signIn">
@@ -99,7 +102,7 @@
           <div class="mapouter map-picture">
             <div class="gmap_canvas">
               <iframe
-                width="600"
+                width="585"
                 height="500"
                 id="gmap_canvas"
                 src="https://maps.google.com/maps?q=nearest%20hospitals%20amman&t=&z=13&ie=UTF8&iwloc=&output=embed"
@@ -107,6 +110,7 @@
                 scrolling="no"
                 marginheight="0"
                 marginwidth="0"
+                overflow="hidden"
               ></iframe
               ><a href="https://fmovies2.org">fmovies</a><br />
               <style>
@@ -114,7 +118,7 @@
                   position: relative;
                   text-align: right;
                   height: 500px;
-                  width: 600px;
+                  width: 585px;
                 }</style
               ><a href="https://www.embedgooglemap.net"
                 >how do i add a google map to my website</a
@@ -124,7 +128,11 @@
                   overflow: hidden;
                   background: none !important;
                   height: 500px;
-                  width: 600px;
+                  width: 585px;
+                  border-top-right-radius:  80px ;
+                  border-bottom-right-radius: 15px;
+                  border-top-left-radius: 15px;
+                  border-bottom-left-radius: 80px;
                 }
               </style>
             </div>
