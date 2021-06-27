@@ -67,7 +67,7 @@ ChronicDiseas.prototype.render = (obj) => {
   let divHeight = div.offsetHeight;
   console.log(divHeight);
   div.style.height = '0';
-  main.style.height = divHeight + 290 + 'px';
+  main.style.height = divHeight + 400 + 'px';
     div.animate([
     {height: `${divHeight}px`}
   

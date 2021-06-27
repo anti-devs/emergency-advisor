@@ -84,15 +84,6 @@ header {
     flex-direction: column;
     justify-content: space-between;
 }
-.urgent {
-    width: 483px;
-    height: 70px;
-    background-color: white;
-    font-size: 45px;
-    border-radius: 25px;
-    font-style: italic;
-    border: none;
-}
 input[type="text"] {
     height: 40px;
     border-radius: 15px;
@@ -180,18 +171,51 @@ legend {
     margin: 60px ;
 }
 .section-one {
-    margin: 160px auto;
+    margin: 90px auto;
     width: 100%;
     text-align: center;
 }
+.section-one h3 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
 .section-one div{
     font-size: x-large;
-    border-style: solid ;
-    border-color: darkblue;
-    border-width: 3px;
-    width: 50%;
+    width: 65%;
     margin: 0 auto;
     margin-bottom: 10px;  
+}
+.insertedDiv {
+    padding: 30px;
+    text-align: left;
+    background-color: #CDF0EA;
+    font-size: 20px;
+    border-radius: 20px;
+}
+.hiddenDiv {
+    border: none;
+}
+.insertedDiv ul {
+    list-style-type: circle;
+    list-style-position: inside;
+}
+.insertedDiv ul li {
+    font-size: 20px;
+}
+.insertedDiv h2 {
+    font-weight: bold;
+    margin: 1rem 0;
+}
+.insertedDiv h2, .insertedDiv p {
+    font-size: 20px;
+    line-height: 1.5;
+}
+#diabetes , #pressure, #heart, #cancer, #angina {
+    border: 2px solid #00EAD3;
+    border-radius: 24px;
+    padding: 15px 0;
+    color: #333;
+    cursor: pointer;
 }
 /*Chronic Section End*/
 /* Covid Start*/
@@ -402,7 +426,8 @@ footer
     display: flex;
     text-align: center;
     justify-content: space-between;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    align-items: center;
 }
 .fab, .far {
     margin: 10px;
@@ -417,10 +442,12 @@ footer
 .fa-twitter:before {
     content: "\f099";
     font-size: 24px;
+    color: #1DA1F2;
 }
 .fa-facebook-f:before {
     content: "\f39e";
     font-size: 24px;
+    color: #3b5998;
 }
 .fa-map-marker-alt:before {
     content: "\f3c5";
@@ -478,3 +505,38 @@ footer span {
     margin-bottom: 13px;
 }
 /*Footer End*/
+main {
+    position: relative;
+}
+.collection {
+    position: fixed;
+    top: 30%;
+    left: 100px;
+    display: grid;
+    gap: 120px;
+    z-index: 99;
+}
+.icons-fixed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    gap: 15px;
+    border: 2px solid #333;
+
+}
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #F1F1F1;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #CDF0EA;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+   background: #00EAD3;
+  }
