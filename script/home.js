@@ -1,12 +1,22 @@
 'use strict';
 
+let INPUT = document.getElementById('input');
+let userImgName = document.getElementById('userName');
+let userPic = document.getElementById('userPic');
+userPic.style.display = 'none';
+
+document.body.onload = checkLocal(localStorage);
+
+
 let tipHeading = document.getElementById('tip-header');
 let tipContent = document.getElementById('tip-content');
 
 let tips = [
-'Eat a combination of different foods, including fruit, vegetables, legumes, nuts and whole grains. Adults should eat at least five portions (400g) of fruit and vegetables per day. You can improve your intake of fruits and vegetables by always including veggies in your meal; eating fresh fruit and vegetables as snacks; eating a variety of fruits and vegetables; and eating them in season. ',
+'Eat a combination of different foods, including fruit, vegetables, legumes, nuts and whole grains. Adults should eat at least five portions (400g) of fruit and vegetables per day. You can improve your intake of fruits and vegetables by always including veggies in your meal; eating fresh fruit and vegetables as snacks; eating a variety of fruits and vegetables; and eating them in season. By eating healthy, you will reduce your risk of malnutrition and noncommunicable diseases (NCDs) such as diabetes, heart disease, stroke and cancer.',
 
-"Fats consumed should be less than 30% of your total energy intake. This will help prevent unhealthy weight gain and NCDs. There are different types of fats, but unsaturated fats are preferable over saturated fats and trans-fats. WHO recommends reducing saturated fats to less than 10% of total energy intake; reducing trans-fats to less than 1% of total energy intake; and replacing both saturated fats and trans-fats to unsaturated fats.",
+"Filipinos consume twice the recommended amount of sodium, putting them at risk of high blood pressure, which in turn increases the risk of heart disease and stroke. Most people get their sodium through salt. Reduce your salt intake to 5g per day, equivalent to about one teaspoon. It’s easier to do this by limiting the amount of salt, soy sauce, fish sauce and other high-sodium condiments when preparing meals; removing salt, seasonings and condiments from your meal table; avoiding salty snacks; and choosing low-sodium products.\nOn the other hand, consuming excessive amounts of sugars increases the risk of tooth decay and unhealthy weight gain. In both adults and children, the intake of free sugars should be reduced to less than 10% of total energy intake. This is equivalent to 50g or about 12 teaspoons for an adult. WHO recommends consuming less than 5% of total energy intake for additional health benefits. You can reduce your sugar intake by limiting the consumption of sugary snacks, candies and sugar-sweetened beverages.",
+
+"Fats consumed should be less than 30% of your total energy intake. This will help prevent unhealthy weight gain and NCDs. There are different types of fats, but unsaturated fats are preferable over saturated fats and trans-fats. WHO recommends reducing saturated fats to less than 10% of total energy intake; reducing trans-fats to less than 1% of total energy intake; and replacing both saturated fats and trans-fats to unsaturated fats.\nThe preferable unsaturated fats are found in fish, avocado and nuts, and in sunflower, soybean, canola and olive oils; saturated fats are found in fatty meat, butter, palm and coconut oil, cream, cheese, ghee and lard; and trans-fats are found in baked and fried foods, and pre-packaged snacks and foods, such as frozen pizza, cookies, biscuits, and cooking oils and spreads.",
 
 'There is no safe level for drinking alcohol. Consuming alcohol can lead to health problems such as mental and behavioural disorders, including alcohol dependence, major NCDs such as liver cirrhosis, some cancers and heart diseases, as well as injuries resulting from violence and road clashes and collisions.',
 
@@ -18,11 +28,11 @@ let tips = [
 
 'Getting yourself tested is an important step in knowing your health status, especially when it comes to HIV, hepatitis B, sexually-transmitted infections (STIs) and tuberculosis (TB). Left untreated, these diseases can lead to serious complications and even death. Knowing your status means you will know how to either continue preventing these diseases or, if you find out that you’re positive, get the care and treatment that you need. Go to a public or private health facility, wherever you are comfortable, to have yourself tested.',
 
-'Vaccination is one of the most effective ways to prevent diseases. Vaccines work with your body’s natural defences to build protection against diseases like cervical cancer, cholera, diphtheria, hepatitis B, influenza, measles, mumps, pneumonia, polio, rabies, rubella, tetanus, typhoid, and yellow fever.\nIn the Philippines, free vaccines are provided to children 1 year old and below as part of the Department of Health’s routine immunization programme.',
+'Vaccination is one of the most effective ways to prevent diseases. Vaccines work with your body’s natural defences to build protection against diseases like cervical cancer, cholera, diphtheria, hepatitis B, influenza, measles, mumps, pneumonia, polio, rabies, rubella, tetanus, typhoid, and yellow fever.\nIn the Philippines, free vaccines are provided to children 1 year old and below as part of the Department of Health’s routine immunization programme. If you are an adolescent or adult, you may ask your physician if to check your immunization status or if you want to have yourself vaccinated.',
 
 'Diseases such as influenza, pneumonia and tuberculosis are transmitted through the air. When an infected person coughs or sneezes, infectious agents may be passed on to others through airborne droplets. When you feel a cough or sneeze coming on, make sure you have covered your mouth with a face mask or use a tissue then dispose it carefully. If you do not have a tissue close by when you cough or sneeze, cover your mouth as much as possible with the crook (or the inside) of your elbow.',
 
-'Mosquitoes are one of the deadliest animals in the world. Diseases like dengue, chikungunya, malaria and lymphatic filariasis are transmitted by mosquitoes and continue to affect Filipinos. You can take simple measures to protect yourself and your loved ones against mosquito-borne diseases. If you’re traveling to an area with known mosquito-borne diseases, consult a physician for a vaccine to prevent diseases such as Japanese encephalitis and yellow fever or if you need to take antimalarial medicines.'
+'Mosquitoes are one of the deadliest animals in the world. Diseases like dengue, chikungunya, malaria and lymphatic filariasis are transmitted by mosquitoes and continue to affect Filipinos. You can take simple measures to protect yourself and your loved ones against mosquito-borne diseases. If you’re traveling to an area with known mosquito-borne diseases, consult a physician for a vaccine to prevent diseases such as Japanese encephalitis and yellow fever or if you need to take antimalarial medicines. Wear light-coloured, long-sleeved shirts and pants and use insect repellent. At home, use window and door screens, use bed nets and clean your surroundings weekly to destroy mosquito breeding sites.'
 ];
 
 let tipTitle = [
@@ -43,15 +53,10 @@ function updateTips() {
   tipContent.textContent = content;
 }
 
-////////////////////////////////////////////////////////////////////////
-userNameContainer.style.background = 'black';
-let INPUT = document.getElementById('input');
-let loggedIn = localStorage.hasOwnProperty('click');
-console.log(loggedIn);
-if (loggedIn) {
-  INPUT.style.display = 'none';
+/////////////////////////////////////////////////////////////////////////////////////////
 
-}
+
+
 
 
 function Form (number , name , email){
@@ -65,35 +70,25 @@ function Form (number , name , email){
 Form.all = [];
 
 function info (event){
-  event.preventDefault();
-
-  let number = event.target.phone.value;
-  let name = event.target.name.value;
-  let email = event.target.email.value;
-
-  new Form(number , name , email);
-
-  localStorage.setItem('click', JSON.stringify(Form.all));
-  INPUT.reset();
-  INPUT.style.display = 'none';
-  INPUT.removeEventListener('submit', info);
-
-  loggedIn = localStorage.hasOwnProperty('click');
-  let userPic = document.getElementById('userPic');
-  let userNameContainer = document.getElementById('userName');
-  console.log(loggedIn);
-  if (loggedIn) {
-    userPic.style.display = 'none';
-    let userNameInput = JSON.parse(localStorage.getItem('click'))[0].name;
-    userNameInput.split('');
-    userNameInput = userNameInput[0].toUpperCase() + userNameInput[1].toUpperCase();
-    userNameContainer.textContent = userNameInput;
-    console.log(userNameInput);
+  
+  if (checkLocal(localStorage)) {
+    return;
   } else {
-    userNameContainer.style.display = 'none';
-  } 
-}
+    event.preventDefault();
 
+    let number = event.target.phone.value;
+    let name = event.target.name.value;
+    let email = event.target.email.value;
+
+    new Form(number , name , email);
+
+    localStorage.setItem('click', JSON.stringify(Form.all));
+    INPUT.reset();
+    checkLocal(localStorage);
+  }
+  
+
+}
 INPUT.addEventListener('submit', info);
 
 function getData(){
@@ -104,185 +99,23 @@ function getData(){
 }
 getData();
 
-////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////
-/*window.addEventListener('click', removeDiv);
-
-let main = document.getElementById('main');
-let urgentCons = document.getElementById('urgent');
-urgentCons.addEventListener('click',popUpDiv);
-let compStyles = window.getComputedStyle(urgentCons);
-
-let newDiv =document.createElement('form');
-
-function popUpDiv(e) {
-  // console.log(urgentCons.offsetTop);
-  let winWidth = window.innerWidth;
-  
-  let toLeft = (winWidth - 1170)/2;
-  
-  let top = urgentCons.offsetTop;
-  let left = urgentCons.offsetLeft;
-  let width = urgentCons.offsetWidth;
-  let height = urgentCons.offsetHeight;
-  let limitLeft = left - toLeft;
-  console.log(winWidth);
-  // console.log('hey');
-  
-  let fieldset = document.createElement('fieldset');
-  newDiv.appendChild(fieldset);
-  let select = document.createElement('select');
-  select.style.width = '100%';
-  select.style.margin = 'auto';
-  fieldset.appendChild(select);
-  for (let i = 0; i < 7; i++) {
-    let option = document.createElement('option');
-    option.textContent = 'new option';
-    select.appendChild(option);
+function checkLocal(local) {
+  if (local.hasOwnProperty('click')) {
+    userImgName.style.display = 'initial';
+    userPic.style.display = 'none';
+    INPUT.style.display = 'none';
+    let name = JSON.parse(localStorage.click)[0].name;
+    name = name.split(' ').map(item => item.toUpperCase()).map(item => {return item[0]}).join('');
+    console.log(name);
+    userImgName.textContent = name;
+    return true;
+  } else {
+    console.log('ket does not exist');
+    userPic.style.display = 'initial';
+    INPUT.style.display = 'initial';
+    userImgName.style.display = 'none';
+    return false;
   }
-  let textArea = document.createElement('textarea');
-  textArea.style.width = '100%';
-  textArea.style.height = '100px';
-  textArea.style.marginTop = '5rem';
-  fieldset.appendChild(textArea);
-  let secondSection = document.getElementById('second-section');
-
-  // newDiv.style.border = 'solid red 3px';
-  newDiv.style.margin = 'auto';
-
-  newDiv.style.position = 'absolute';
-  newDiv.style.overflow = 'hidden';
-  newDiv.style.top = top + 'px';
-  newDiv.style.left = left + 'px';
-  newDiv.style.width = width + 'px';
-  newDiv.style.height = 'fit-content';
-
-//   let id = setInterval(animate, 0.1);
-
-//   let counter = 10;
-//   function animate() {
-//     if (newDiv.offsetTop == 300 && newDiv.offsetLeft== 300) {
-//       clearInterval(id);
-//       return;
-//   }
-
-//   newDiv.style.top = counter + 'px';
-//   newDiv.style.left = counter + 'px';
-//   newDiv.style.width = counter + 'px';
-//   counter++;
-// }
-  // newDiv.addEventListener('animationstart', animateY);
-  // main.style.filter = 'blur(5px)';
-//  newDiv.style.width = '100%';
-//  newDiv.style.height = '100%';
-  main.style.zIndex = '0';
-  newDiv.style.zIndex = '99';
-  main.style.opacity = '30%';
-  newDiv.style.background = '#CDF0EA';
- newDiv.style.borderRadius = '25px';
-  let dimenstion = urgentCons.getComputedStyle;
-  console.log(dimenstion);
-  newDiv.animate([
-  {transform: 'matrix( 2, 0, 0, 2,-300, 200)'}
-
-  ], {
-  duration: 300,
-  iterations: 1,
-  fill: "forwards"
-  });
-  urgentCons.removeEventListener('click',popUpDiv );
-
-
-  document.body.insertBefore(newDiv, main);
-  // newDiv.style.top = "-300px";
-  // newDiv.style.left = "200px";
 }
-
-function removeDiv(e) {
-  console.log(e.target);
-  
-  try {
-    if (e.target.id != 'urgent') {
-      document.body.removeChild(newDiv);
-      main.style.opacity = '100%';
-      newDiv =document.createElement('form');
-      urgentCons.addEventListener('click',popUpDiv);
-    } } catch (error){
-      console.log('element is removed');
-      newDiv =document.createElement('form');
-      urgentCons.addEventListener('click',popUpDiv);
-    } 
-  }
-  
-
-
-
-// function animateY(e) {
-//   console.log('animation going');
-//   newDiv.animate([
-//     {transform: `translateY(${limitLeft + 'px'})`  }
-//     // {transform: `translateY(${limitLeft + 'px'})`  }
-//   ], {
-//   duration: 1000,
-//   iterations: 1,
-//   fill: "forwards"
-//   });
-// }
-*/
-
-

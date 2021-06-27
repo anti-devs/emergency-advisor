@@ -332,6 +332,9 @@ legend {
     justify-content: space-between;
     width: 100%; 
 }
+.SthreeImg {
+    margin-bottom: 4rem ;
+}
 .borderH {
     display: flex;
     flex-direction: column;
@@ -599,6 +602,8 @@ main {
       align-items: center;
       justify-content: center;
       border-radius: 50%;
+      /* outline: solid red 2px; */
+      /* gap: 3rem; */
   }
   #loggedIn p{
     font-size: 1.75rem;
@@ -610,4 +615,3 @@ main {
     color: white;
     background: #1b7a7a;
   }
-
