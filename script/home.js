@@ -22,6 +22,7 @@ if (!localStorage.logInStatus) {
 }
  // default behavior is log out until someone logs in
 
+
 let tipHeading = document.getElementById('tip-header');
 let tipContent = document.getElementById('tip-content');
 
@@ -184,6 +185,7 @@ function getData(){ //////////////
     new Form(data[i].number, data[i].name , data[i].email  );
   }
 }
+
 getData(); /////////////
 
 ////////////////////////////////////////////////////// Animation
@@ -200,3 +202,110 @@ function checkScroll() {
   }, 1);
 }
 /////////////////////////////////////////////////////
+
+getData();
+
+
+
+
+
+
+let path3=window.location.pathname;
+
+console.log(path3)
+
+
+if(path2=='/html/home.html'){
+  let covid=document.getElementById('Home');
+  
+  covid.setAttribute('style','background:black')
+}
+
+
+
+
+
+
+
+
+
+function checkLocal(local) {
+  if (local.hasOwnProperty('click')) {
+    userImgName.style.display = 'initial';
+    userPic.style.display = 'none';
+    INPUT.style.display = 'none';
+    let name = JSON.parse(localStorage.click)[0].name;
+    name = name.split(' ').map(item => item.toUpperCase()).map(item => {return item[0]}).join('');
+    console.log(name);
+    userImgName.textContent = name;
+    return true;
+  } else {
+    console.log('ket does not exist');
+    userPic.style.display = 'initial';
+    INPUT.style.display = 'initial';
+    userImgName.style.display = 'none';
+    return false;
+  }
+}
+
+///////////////////////////////////Game
+let game =document.getElementById('ask');
+let images=['co2.png','co3.png','co4.png','co5.png','co6.png','co7.png','co8.png','co9.png'];
+let imagesGame=document.getElementById('imagesGame');
+let myImage=document.getElementById('myImage');
+let formm=document.getElementById('formm');
+let p = document.createElement('p');
+let pagegraph=document.getElementById('pagegraph');
+let counter=0;
+let targrt =0;
+
+imagesGame.setAttribute('style','display:none');
+function Game(amgSrc,answerr){
+
+  this.amgSrc=amgSrc;
+  this.answerr=answerr;
+  Game.all.push(this);
+
+}
+Game.all=[];
+for(let i=0;i<images.length;i++)
+{
+  new Game (`../img/${images[i]}`,i+2);
+}
+function render(){
+   
+  imagesGame.setAttribute('style','display:inline');
+  myImage.src=`../img/${images[counter]}`;
+  
+
+}
+
+function hadler(event){
+event.preventDefault();
+let ans=event.target.answer.value;
+if(Game.all[counter].answerr==ans)
+{
+  targrt++; 
+  counter++;
+  render(); 
+}
+else if(counter==7){
+
+  removeEventListener('submit',hadler);
+  imagesGame.setAttribute('style','display:none');
+  
+  p.textContent=`Your Resut Is ${targrt}/8`
+  pagegraph.appendChild(p);
+
+}
+
+else{
+  
+  counter++;
+  render();
+}
+
+}
+
+formm.addEventListener('submit',hadler);
+

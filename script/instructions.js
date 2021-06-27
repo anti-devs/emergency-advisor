@@ -1,5 +1,6 @@
 'use strict';
 
+
 /////////////////////////////////////////////////////////
 let userImgName = document.getElementById('userName');
 let userPic = document.getElementById('userPic');
@@ -66,6 +67,7 @@ function checkUser() { // check on login
   }
 } ////////////////////////////////////////
 ////////////////////////////////////////////////////////
+
 let receivedObj = JSON.parse(localStorage.obj);
 console.log(receivedObj);
 let instructionsContainer = document.getElementById('instructions');
@@ -87,3 +89,7 @@ for (let i = 0; i < receivedObj.instructions.length; i++) {
     ol.style.listStyleType = 'none';
   }
 }
+
+let path=window.location.pathname;
+
+console.log(path)

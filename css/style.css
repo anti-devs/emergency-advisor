@@ -207,6 +207,24 @@ legend {
     width: 50%;
     height: 500px; 
 }
+/* .imgGame{
+    display: none;
+} */
+.myGames,.insidegame{
+    display: flex;
+    height: 300px;
+    width: 50%;
+    border:2px solid #CDF0EA ;
+    margin: 20px;
+    margin-left: 200px;  
+    
+}
+
+#imagesGame input{
+    margin-top: 100px;
+    border-radius: 20px;
+    height: 30px;
+}
 /*Main End*/
 /*Chronic Section Start*/
 .section-one h3 {

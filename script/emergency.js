@@ -6,6 +6,7 @@ userPic.style.display = 'none';
 let logOut = document.getElementById('logOut');
 let indexOfLogger;
 
+
 if (!localStorage.logInStatus) {
   updateVisualsLogout();
 } else {
@@ -65,6 +66,7 @@ function checkUser() { // check on login
   }
 } ////////////////////////////////////////
 ////////////////////////////////////////////////////////
+
 let mainContainer = document.getElementById('mainContainer');
 
 function Emergency(name, instructions) {
@@ -111,5 +113,17 @@ function change_page(obj) {
   console.log(obj);
   localStorage.setItem('obj', JSON.stringify(obj));
   window.location.href = '../html/instructions.html';
+}
+
+////////////////////////header ///
+let path2=window.location.pathname;
+
+
+
+
+if(path2=='/html/emergency.html'){
+  let covid=document.getElementById('Emergency');
+  
+  covid.setAttribute('style','color:pink')
 }
 
