@@ -1,10 +1,10 @@
 /* global*/
 * {
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
 body {
     position: relative;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .container {
     max-width: 1170px;
@@ -17,6 +17,7 @@ a {
 }
 /* Header Start*/
 header {
+    font-family: 'Open Sans', sans-serif;
     width: 100%;
     background-color: #cdf0ea45;
 }
@@ -54,6 +55,7 @@ header {
 .header nav a {
     padding-left: 40px;
     text-decoration: none;
+    font-size: 20px;
 }
 .material-icons {
     font-size: 32px;
@@ -80,6 +82,7 @@ header {
     justify-content: space-between;
 }
 .hero form fieldset, .formCenter form{
+    font-size: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -89,6 +92,7 @@ input[type="text"] {
     border-radius: 15px;
     border: none;
     padding-left: 8px;
+    font-size: 18px;
 }
 fieldset {
     gap: 1rem;
@@ -109,15 +113,30 @@ legend {
     height: 40px;
     border-radius: 20px;
     border: none;
-    font-size: 16px;  
+    font-size: 16px;
+    font-size: 20px;
+    transition: all 200ms ease-in-out;
+}
+.signUp:hover{
+    cursor: pointer;
+    background-color: #10b8849e;
+    color: white;
 }
 .second-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 60px auto;
+    transition: ease-in-out all 200ms;
 }
 .second-section .first-card, .second-card, .last-card {
     margin: 1.5rem;
+}
+.first-card img:hover, .second-card img:hover, .last-card img:hover {
+    transform: rotate(-5deg);
+}
+.first-card img, .second-card img, .last-card img {
+    width: 200px;
 }
 .card-text {
     text-align: center;
@@ -153,7 +172,15 @@ legend {
     color: #222;
     border-radius: 15px 80px;
     border: none;
-    font-size: 20px;  
+    font-size: 20px;
+    overflow: scroll;  
+}
+#tips::-webkit-scrollbar {
+    display: none;
+}
+#tips {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 #tips #tip-header {
     font-weight: bold;
@@ -309,7 +336,9 @@ legend {
     margin: 10px 0;
     border-radius: 20px;
 }
-
+.borderH h2 {
+    font-size: 20px;
+}
 .emergency-section img {
     width: 200px;
     height: 200px;
@@ -409,6 +438,7 @@ textarea {
 /* Footer Start*/
 footer
 {
+    font-family: 'Open Sans', sans-serif;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -420,6 +450,7 @@ footer
     bottom:0;
     left:0;
     width: 100%;
+    font-size: 20px;
 }
 .mainFooter {
     display: flex;
@@ -465,12 +496,15 @@ footer
     padding: 10px 0;
     font-size: 18px;
 }
-.linksDiv li{
+.linksDiv li {
     padding: 5px 0;
     list-style: none;
 }
 .linksDiv li a {
     text-decoration: none;
+}
+.linksDiv li a:hover {
+    color: #1DA1F2;
 }
 .privacy {
     height: 70px;
@@ -500,9 +534,18 @@ footer
     border-radius: 20px;
     padding: 10px;
     border: none;
+    cursor: pointer;
+}
+.advice:hover {
+    background-color: #3998BE;
 }
 footer span {
     padding: 0px 5px;
+}
+.stayInTouch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .stayInTouch h3 {
     margin-left: 7px;
@@ -526,6 +569,7 @@ main {
     align-items: center;
     border-radius: 25px;
     gap: 15px;
+    padding: 10px;
     border: 2px solid #333;
 
 }
@@ -544,3 +588,4 @@ main {
   ::-webkit-scrollbar-thumb:hover {
    background: #00EAD3;
   }
+  
