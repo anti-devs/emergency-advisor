@@ -1,12 +1,26 @@
 'use strict';
-
+let hero = document.getElementById('hero');
 let INPUT = document.getElementById('input');
 let userImgName = document.getElementById('userName');
 let userPic = document.getElementById('userPic');
 userPic.style.display = 'none';
+let logOut = document.getElementById('logOut');
+let indexOfLogger;
+// document.body.onload = checkLocal(localStorage);
 
-document.body.onload = checkLocal(localStorage);
-
+if (!localStorage.logInStatus) {
+  updateVisualsLogout();
+} else {
+  let currInd = Number(localStorage.index);
+  console.log(currInd);
+  try {
+    updateVisualsLogIn(JSON.parse(localStorage.click)[currInd].name);
+  } catch {
+    updateVisualsLogout();
+  }
+  
+}
+ // default behavior is log out until someone logs in
 
 let tipHeading = document.getElementById('tip-header');
 let tipContent = document.getElementById('tip-content');
@@ -53,13 +67,12 @@ function updateTips() {
   tipContent.textContent = content;
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 
+INPUT.addEventListener('submit', info);
+logOut.addEventListener('click', logout);
 
-
-
-
-function Form (number , name , email){
+function Form (number, name , email){
   this.number = number;
   this.name = name;
   this.email = email;
@@ -69,13 +82,14 @@ function Form (number , name , email){
 
 Form.all = [];
 
-function info (event){
+function info (event){ // sign up function 
   
-  if (checkLocal(localStorage)) {
-    return;
-  } else {
-    event.preventDefault();
+  event.preventDefault();
 
+  // check localStorage
+  if (!localStorage.click){ // check if localStorage is already empty
+    localStorage.setItem('index', undefined);
+    // if empty, you can execute the rest of statements and create an account
     let number = event.target.phone.value;
     let name = event.target.name.value;
     let email = event.target.email.value;
@@ -84,38 +98,105 @@ function info (event){
 
     localStorage.setItem('click', JSON.stringify(Form.all));
     INPUT.reset();
-    checkLocal(localStorage);
+    localStorage.setItem('logInStatus', true);
+    localStorage.setItem('index', 0);
+    updateVisualsLogIn(name);
+    indexOfLogger = 0;
+  } else {
+
+    let numberNew = event.target.phone.value;
+    let nameNew = event.target.name.value;
+    let emailNew = event.target.email.value;
+
+    INPUT.reset();
+
+    let numofUsers = JSON.parse(localStorage.click).length;
+
+    for (let i = 0; i < numofUsers; i++) {
+      let email = JSON.parse(localStorage.click)[i].email;
+      if (emailNew.toLowerCase() == email.toLowerCase()) {
+          alert('account already exists');
+          localStorage.setItem('logInStatus', false);
+          break;
+      } else {
+        new Form(numberNew, nameNew, emailNew);
+        localStorage.setItem('click', JSON.stringify(Form.all));
+        updateVisualsLogIn(nameNew);
+        localStorage.setItem('logInStatus', true);
+        localStorage.setItem('index', numofUsers );
+      }
+    }
   }
-  
+} 
 
-}
-INPUT.addEventListener('submit', info);
+//////////////////////////////////////////
+function updateVisualsLogIn(name) { // just show and hide stuff based on if the user signs up
+  if (name) {
+    console.log(name);
+  } else {
+    updateVisualsLogout();
+    return;
+  }
+  name = name.split(' ').map(item => item.toUpperCase()).map(item => {return item[0]}).join('');
+  userImgName.textContent = name;
+  logOut.style.display = 'initial';
+  userImgName.style.display = 'initial';
+  userPic.style.display = 'none';
+} ////////////////////////////////////////
+function updateVisualsLogout() { // just show and hide stuff based on if the user logs out 
+  logOut.style.display = 'none';
+  userImgName.style.display = 'none';
+  userPic.style.display = 'initial';
+  localStorage.setItem('logInStatus', false);
+} ////////////////////////////////////////
 
-function getData(){
+function logout() { // when you click log out
+  updateVisualsLogout();
+} ////////////////////////////////////////
+
+function checkUser() { // check on login
+  let userPhone = document.getElementById('userPhone').value;
+  let userName = document.getElementById('userNmae').value;
+  let userEmail = document.getElementById('userImael').value;
+
+  let numofUsers = JSON.parse(localStorage.click).length;
+
+  for (let i = 0; i < numofUsers; i++) {
+    let {number, name, email} = JSON.parse(localStorage.click)[i];
+    if (number == userPhone && name.toLowerCase() == userName.toLowerCase() && userEmail.toLowerCase() == email.toLowerCase()) {
+        console.log('login succesfull !');
+        updateVisualsLogIn(name);
+        INPUT.reset();
+        localStorage.setItem('logInStatus', true);
+        localStorage.setItem('index', i);
+        break;
+    } else {
+      INPUT.reset();
+      alert('User does not exist, please check again.');
+      localStorage.setItem('logInStatus', false);
+    }
+  }
+} ////////////////////////////////////////
+
+function getData(){ ////////////// 
   let data = JSON.parse(localStorage.getItem(Form.all));
   for(let i = 0; i < Form.all.length; i++ ){
     new Form(data[i].number, data[i].name , data[i].email  );
   }
 }
-getData();
+getData(); /////////////
 
-///////////////////////////////////////////////////////////////////////////
-
-function checkLocal(local) {
-  if (local.hasOwnProperty('click')) {
-    userImgName.style.display = 'initial';
-    userPic.style.display = 'none';
-    INPUT.style.display = 'none';
-    let name = JSON.parse(localStorage.click)[0].name;
-    name = name.split(' ').map(item => item.toUpperCase()).map(item => {return item[0]}).join('');
-    console.log(name);
-    userImgName.textContent = name;
-    return true;
-  } else {
-    console.log('ket does not exist');
-    userPic.style.display = 'initial';
-    INPUT.style.display = 'initial';
-    userImgName.style.display = 'none';
-    return false;
-  }
+////////////////////////////////////////////////////// Animation
+let anim;
+window.addEventListener('scroll', checkScroll);
+function checkScroll() {
+  // console.log(window.scrollY);
+  anim = setInterval(() => {
+    hero.style.height = 600 - window.scrollY + 'px';
+    if (hero.offsetHeight ) {
+      clearInterval(anim);
+      return;
+    }
+  }, 1);
 }
+/////////////////////////////////////////////////////
