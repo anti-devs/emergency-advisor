@@ -602,7 +602,7 @@ main {
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      /* outline: solid red 2px; */
+      outline: solid red 2px;
       /* gap: 3rem; */
   }
   #loggedIn p{
