@@ -43,6 +43,122 @@ function updateTips() {
   tipContent.textContent = content;
 }
 
+////////////////////////////////////////////////////////////////////////
+userNameContainer.style.background = 'black';
+let INPUT = document.getElementById('input');
+let loggedIn = localStorage.hasOwnProperty('click');
+console.log(loggedIn);
+if (loggedIn) {
+  INPUT.style.display = 'none';
+
+}
+
+
+function Form (number , name , email){
+  this.number = number;
+  this.name = name;
+  this.email = email;
+  Form.all.push(this);
+
+}
+
+Form.all = [];
+
+function info (event){
+  event.preventDefault();
+
+  let number = event.target.phone.value;
+  let name = event.target.name.value;
+  let email = event.target.email.value;
+
+  new Form(number , name , email);
+
+  localStorage.setItem('click', JSON.stringify(Form.all));
+  INPUT.reset();
+  INPUT.style.display = 'none';
+  INPUT.removeEventListener('submit', info);
+
+  loggedIn = localStorage.hasOwnProperty('click');
+  let userPic = document.getElementById('userPic');
+  let userNameContainer = document.getElementById('userName');
+  console.log(loggedIn);
+  if (loggedIn) {
+    userPic.style.display = 'none';
+    let userNameInput = JSON.parse(localStorage.getItem('click'))[0].name;
+    userNameInput.split('');
+    userNameInput = userNameInput[0].toUpperCase() + userNameInput[1].toUpperCase();
+    userNameContainer.textContent = userNameInput;
+    console.log(userNameInput);
+  } else {
+    userNameContainer.style.display = 'none';
+  } 
+}
+
+INPUT.addEventListener('submit', info);
+
+function getData(){
+  let data = JSON.parse(localStorage.getItem(Form.all));
+  for(let i = 0; i < Form.all.length; i++ ){
+    new Form(data[i].number, data[i].name , data[i].email  );
+  }
+}
+getData();
+
+////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ///////////////////////////////////////////////////////////////////
 /*window.addEventListener('click', removeDiv);
@@ -168,39 +284,5 @@ function removeDiv(e) {
 //   });
 // }
 */
-let inbut = document.getElementById('inbut');
 
-function Form (number , name , email){
-  this.number = number;
-  this.name = name;
-  this.email = email;
-  Form.all.push(this);
-
-}
-
-Form.all = [];
-
-function info (event){
-  event.preventDefault();
-
-  let number = event.target.phone.value;
-  let name = event.target.name.value;
-  let email = event.target.email.value;
-
-  new Form(number , name , email);
-
-  localStorage.setItem('click', JSON.stringify(Form.all));
-  inbut.reset();
-
-}
-
-inbut.addEventListener('submit', info);
-
-function getData(){
-  let data = JSON.parse(localStorage.getItem(Form.all));
-  for(let i = 0; i < Form.all.length; i++ ){
-    new Form(data[i].number, data[i].name , data[i].email  );
-  }
-}
-getData();
 
