@@ -20,6 +20,7 @@ header {
     font-family: 'Open Sans', sans-serif;
     width: 100%;
     background-color: #cdf0ea45;
+    position: relative;
 }
 .header {
     display: flex;
@@ -63,8 +64,8 @@ header {
 /* Header End*/
 /*main start*/
 .hero {
-    background: url(../img/blue.jpg);
-    height: 500px;
+    background: url(../img/alternativeHero.jpg);
+    height: 600px;
     background-size: cover;
     background-position-y: center;
     display: flex;
@@ -78,7 +79,8 @@ header {
 }
 .hero .formCenter {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
 }
 .hero form fieldset, .formCenter form{
@@ -116,11 +118,21 @@ legend {
     font-size: 16px;
     font-size: 20px;
     transition: all 200ms ease-in-out;
+    width: 100%;
+}
+.login {
+    width: 44.45%;
+    margin: 0 23px;
 }
 .signUp:hover{
     cursor: pointer;
     background-color: #10b8849e;
     color: white;
+}
+.login:hover {
+    cursor: pointer;
+    background-color: #e47f7f9e;
+    color: black;
 }
 .second-section {
     display: flex;
@@ -633,3 +645,14 @@ main {
     color: white;
     background: #1b7a7a;
   }
+ #logOut {
+     position: absolute;
+     top: 55%;
+     left: 82.25%;
+     font-size: 1rem;
+ }
+ #logOut:hover {
+     color: #1DA1F2;
+     font-weight: bold;
+     cursor: pointer;
+ }

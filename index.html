@@ -40,9 +40,10 @@
           </section>
         </div>
       </div>
+      <p id="logOut">Log Out</p>
     </header>
     <main class="homeMain" id="main">
-      <section class="hero">
+      <section class="hero" id="hero">
         <div class="container">
           <div class="formCenter">
             <form action="" id="input">
@@ -68,9 +69,11 @@
                   placeholder="Email"
                   id="userImael"
                 />
-                <button class="signUp" type="submit">sign up</button>
+                <button class="signUp" type="submit">Sign Up</button>
+                
               </fieldset>
             </form>
+            <button class="signUp login" onclick="checkUser()">Log In</button>
           </div>
         </div>
       </section>
@@ -140,11 +143,11 @@
               </style>
             </div>
           </div>
-          <p class="map-tip-head">Find The Nearest Hospital</p>
+          <p class="map-tip-head" id="right">Find The Nearest Hospital</p>
         </div>
 
         <div class="tip">
-          <p class="map-tip-head">Tips for Healthy & Happy Living</p>
+          <p class="map-tip-head" id="left">Tips for Healthy & Happy Living</p>
           <article id="tips">
             <h2 id="tip-header"></h2>
             <p class="tip-content" id="tip-content"></p>
