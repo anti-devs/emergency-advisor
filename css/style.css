@@ -945,3 +945,15 @@ main {
     font-size: 2.5rem;
     margin-top: 5rem;
 }
+#oldman {
+    margin: auto;
+    /* outline: solid 3px red; */
+    margin-bottom: 1.25rem
+}
+#oldmansection {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-content: center;
+}
