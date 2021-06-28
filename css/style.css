@@ -158,29 +158,26 @@ legend {
     margin-top: 10px;
     padding: 10px;
 }
-.map-tip {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.tip, .map {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 50px;
+.map-tip-head ,.map-tip-headT {
+    margin: 30px 0;
+    font-size: 28px;
 }
 .map-tip-head {
-    font-size: 32px;
-    font-weight: bold;
-    width: 50%;
     text-align: center;
 }
+.map-tip-headT{
+    text-align: left;
+}
 .tip {
-    height: 500px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 #tips {
     border: 2px solid #000;
     height: 100%;
+    width: 75%;
     padding: 23px 51px;
     line-height: 1.6;
     background-color: #CDF0EA;
@@ -189,6 +186,21 @@ legend {
     border: none;
     font-size: 20px;
     overflow: scroll;  
+}
+.ask {
+    width: 180px;
+    height: 80px;
+    font-size: 20px;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #616161;
+}
+.ask:hover {
+    background-color: #cbcbcb;
+
 }
 #tips::-webkit-scrollbar {
     display: none;
@@ -207,7 +219,6 @@ legend {
     font-size: 28px;
 }
 .map-picture, #tips {
-    width: 50%;
     height: 500px; 
 }
 .myGames,.insidegame{
@@ -329,6 +340,9 @@ legend {
 }
 /* Covid End*/
 /*Emergency Start*/
+.light {
+    background-color: #F7FFFF;
+}
 .emrgency-container h1{
     text-align: center;
     font-size: 32px;
@@ -338,15 +352,18 @@ legend {
 .emrgency-container h2 {
     text-align: center;
     font-size: 15px;
-    font-weight: 600;
     margin: 10px 5px 0 5px;
     border-radius: 20px;
     padding: 10px;
-    background-color: #DAFAD8;
+    background-color: #7C8080;
     cursor: pointer;
+    color: white;
     transition: all 150ms ease-in-out;
 }
-.emergency-section h2:hover {
+.emergency-section h2 a {
+    color: white;
+}
+.emergency-section h2:hover, .emrgency-container h2 a:hover {
    background-color: silver;
 }
 .emergency-section{
@@ -581,7 +598,6 @@ footer
 }
 .linksDiv h3 {
     padding: 10px 0;
-    font-size: 18px;
 }
 .linksDiv li {
     padding: 5px 0;
@@ -592,6 +608,10 @@ footer
 }
 .linksDiv li a:hover {
     color: #1DA1F2;
+}
+.linksDiv {
+    display: flex;
+    flex-direction: column;
 }
 .privacy {
     height: 70px;
@@ -604,7 +624,7 @@ footer
 }
 .contact-information {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
 }
 .contact-information h3 {
@@ -614,6 +634,12 @@ footer
     display: flex;
     align-items: center;
     color: #555;
+}
+.address, .phone {
+    padding: 0 10px;
+}
+.address span:first-child {
+    padding-left: 10px;
 }
 .advice {
     background-color: #555;
@@ -636,7 +662,7 @@ footer span {
 }
 .stayInTouch h3 {
     margin-left: 7px;
-    margin-bottom: 13px;
+    margin-bottom: 4px;
 }
 /*Footer End*/
 main {
@@ -797,11 +823,7 @@ main {
      box-shadow: inset black 2px 2px 0.7rem;
  }
  #numbers div:active {
-     background: green;
- }
- #ask {
-     width: 50px;
-     height: 50px;
+     background: rgb(30, 211, 218);
  }
  #newDiv {
      font-size: 2rem;
@@ -812,6 +834,7 @@ main {
  #removeTest {
      width: 10rem;
      height: 3rem;
+     border: none;
      border-radius: 1.5rem;
      font-size: 1.25rem;
  }

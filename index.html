@@ -82,9 +82,10 @@
     </section>
     <section class="container map-tip">
       <div class="map">
+        <h2 class="map-tip-head" id="right">Find The Nearest Hospital</h2>
         <div class="mapouter map-picture">
           <div class="gmap_canvas">
-            <iframe width="585" height="500" id="gmap_canvas"
+            <iframe width="1170" height="500" id="gmap_canvas"
               src="https://maps.google.com/maps?q=nearest%20hospitals%20amman&t=&z=13&ie=UTF8&iwloc=&output=embed"
               frameborder="0" scrolling="no" marginheight="0" marginwidth="0" overflow="hidden"></iframe><a
               href="https://fmovies2.org">fmovies</a><br />
@@ -93,7 +94,8 @@
                 position: relative;
                 text-align: right;
                 height: 500px;
-                width: 585px;
+                width: 100%;
+                margin-bottom: 10px;
               }
             </style><a href="https://www.embedgooglemap.net">how do i add a google map to my website</a>
             <style>
@@ -101,38 +103,24 @@
                 overflow: hidden;
                 background: none !important;
                 height: 500px;
-                width: 585px;
-                border-top-right-radius: 80px;
-                border-bottom-right-radius: 15px;
-                border-top-left-radius: 15px;
-                border-bottom-left-radius: 80px;
+                width: 100%;
+                border-radius: 15px;
               }
             </style>
           </div>
         </div>
-        <p class="map-tip-head" id="right">Find The Nearest Hospital</p>
       </div>
-
-      <div class="tip">
-        <p class="map-tip-head" id="left">Tips for Healthy & Happy Living</p>
-        <article id="tips">
-          <h2 id="tip-header"></h2>
-          <p class="tip-content" id="tip-content"></p>
-        </article>
-      </div>
+        <h2 class="map-tip-headT" id="left">Tips for Healthy & Happy Living</h2>
+        <div class="tip">
+          <article id="tips">
+            <h2 id="tip-header"></h2>
+            <p class="tip-content" id="tip-content"></p>
+          </article>
+          <div id="divbtnAnsewr">
+            <a href="#ourGame"><button id="ask" class="ask" onclick="gameStart()">Test Your Eyes</button>
+          </div>
+        </div>
     </section>
-    <div class="collection">
-      <div class="icons-fixed">
-        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></i></a>
-        <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.hotmail.com" target="_blank"><i class="far fa-envelope fa-lg"></i></a>
-      </div>
-      <div id="divbtnAnsewr">
-        <a href="#ourGame"> <img id="ask" onclick="gameStart()"
-            src="./img/cb.png" /></a>
-      </div>
-    </div>
-
     <div id="imagesGame" class="imgGame">
       <div class="insidegame" id="insidegame">
         <p id="ourGame">Colorblindness Mini Test</p>
@@ -155,7 +143,7 @@
           </form>
         </div>
         <div id="newDiv"></div>
-      <button id="removeTest" onclick="removeGame()">Remove Test</button>
+      <button id="removeTest" onclick="removeGame()">Close</button>
       </div>
 
     </div>
