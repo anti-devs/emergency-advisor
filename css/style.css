@@ -147,11 +147,17 @@ legend {
 .second-section .first-card, .second-card, .last-card {
     margin: 1.5rem;
 }
+.first-card a,.second-card a,  .last-card a{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
 .first-card img:hover, .second-card img:hover, .last-card img:hover {
     transform: rotate(-5deg);
 }
 .first-card img, .second-card img, .last-card img {
     width: 200px;
+    margin: auto;
 }
 .card-text {
     text-align: center;
