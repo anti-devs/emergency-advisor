@@ -1,229 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Emergency Advisor</title>
-    <link
-      rel="stylesheet"
-      href="./fontawesome-free-5.15.3-web/fontawesome-free-5.15.3-web/css/all.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
-    <header>
-      <div class="covid">
-        <div class="container">
-          <a href="https://www.worldometers.info/coronavirus/"
-            ><i class="fas fa-exclamation-circle"></i> Covid-19 update</a
-          >
-        </div>
-      </div>
-      <div class="container">
-        <div class="header">
-          <div class="logo-link"><img src="./img/logo.png" alt="logo" /></div>
-          <nav class="nav-bar">
-            <a href="./index.html" class="homeA">Home</a>
-            <a href="./html/emergency.html">Emergency</a>
-            <a href="./html/covid.html">Covid-19</a>
-            <a href="./html/chronic.html">Chronic</a>
-            <a href="./html/aboutUs.html">About-Us</a>
-          </nav>
-          <section id="loggedIn">
-            <i class="far fa-user" id="userPic"></i>
-            <p id="userName"></p>
-          </section>
-        </div>
-      </div>
-      <p id="logOut">Log Out</p>
-    </header>
-    <main class="homeMain" id="main">
-      <section class="hero" id="hero">
-        <div class="container">
-          <div class="formCenter">
-            <form action="" id="input">
-              <fieldset>
-                <legend>Start Consultation</legend>
-                <div class="inputCont" id="signIn">
-                  <input
-                    name="phone"
-                    type="text"
-                    placeholder="Phone"
-                    id="userPhone"
-                  />
-                  <input
-                    name="name"
-                    type="text"
-                    placeholder="Name"
-                    id="userNmae"
-                  />
-                </div>
-                <input
-                  name="email"
-                  type="text"
-                  placeholder="Email"
-                  id="userImael"
-                />
-                <button class="signUp" type="submit">Sign Up</button>
-                
-              </fieldset>
-            </form>
-            <button class="signUp login" onclick="checkUser()">Log In</button>
-          </div>
-        </div>
-      </section>
-      <section class="container second-section" id="second-section">
-        <div class="first-card">
-          <a href="./html/covid.html">
-            <img
-              src="https://img.icons8.com/ios/250/28B5B5/coronavirus--v1.png"
-            />
-            <h3 class="card-text">COVID-19</h3></a
-          >
-        </div>
-        <div class="second-card">
-          <a href="./html/chronic.html">
-            <img
-              src="https://img.icons8.com/ios/250/28B5B5/medical-heart.png"
-            />
-            <h3 class="card-text">Chronic Diseases</h3>
-          </a>
-        </div>
-        <div class="last-card">
-          <a href="./html/emergency.html">
-            <img
-              src="https://img.icons8.com/material-outlined/250/28B5B5/ambulance.png"
-            />
-            <h3 class="card-text">Emergencies</h3>
-          </a>
-        </div>
-      </section>
-      <section class="container map-tip">
-        <div class="map">
-          <div class="mapouter map-picture">
-            <div class="gmap_canvas">
-              <iframe
-                width="585"
-                height="500"
-                id="gmap_canvas"
-                src="https://maps.google.com/maps?q=nearest%20hospitals%20amman&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                frameborder="0"
-                scrolling="no"
-                marginheight="0"
-                marginwidth="0"
-                overflow="hidden"
-              ></iframe
-              ><a href="https://fmovies2.org">fmovies</a><br />
-              <style>
-                .mapouter {
-                  position: relative;
-                  text-align: right;
-                  height: 500px;
-                  width: 585px;
-                }</style
-              ><a href="https://www.embedgooglemap.net"
-                >how do i add a google map to my website</a
-              >
-              <style>
-                .gmap_canvas {
-                  overflow: hidden;
-                  background: none !important;
-                  height: 500px;
-                  width: 585px;
-                  border-top-right-radius:  80px ;
-                  border-bottom-right-radius: 15px;
-                  border-top-left-radius: 15px;
-                  border-bottom-left-radius: 80px;
-                }
-              </style>
-            </div>
-          </div>
-          <p class="map-tip-head" id="right">Find The Nearest Hospital</p>
-        </div>
 
-        <div class="tip">
-          <p class="map-tip-head" id="left">Tips for Healthy & Happy Living</p>
-          <article id="tips">
-            <h2 id="tip-header"></h2>
-            <p class="tip-content" id="tip-content"></p>
-          </article>
-        </div>
-      </section>
-      <div class="collection">
-        <div class="icons-fixed">
-          <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></i></a>
-          <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.hotmail.com" target="_blank"><i class="far fa-envelope fa-lg"></i></a>
-        </div>
-        <div id="divbtnAnsewr">
-         <a href="#ourGame"> <img id="ask" onclick="render()" src="https://img.icons8.com/ios-filled/50/000000/ask-question.png"/></a>
-        </div>
-      </div>
-      
-      <div id="imagesGame" class="imgGame">
-        <div class="insidegame">
-          <p id="ourGame" style="font-size: 25px; color: tomato;">Game</p>
-        <img src="" alt="" id="myImage">
-        <form action="" id="formm">
-          <input type="number" id="answer" required placeholder="What you see" style="padding: 10px;">
-           <input type="submit" value="Next" style="width: 100px;">
-        </form>
-          
-        </div>
-      </div>
-      <div id="pagegraph" style="font-size: 100px;"> </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emergency Advisor</title>
+  <link rel="stylesheet" href="./fontawesome-free-5.15.3-web/fontawesome-free-5.15.3-web/css/all.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
 
-    </main>
-    <footer>
+<body>
+  <header>
+    <div class="covid">
       <div class="container">
-        <div class="mainFooter">
-          <div class="contact-information">
-            <h3>Contact :</h3>
-            <div class="address">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>Address : </span>
-              <span>Amman-Jordan</span>
-            </div>
-            <div class="email">
-              <i class="far fa-envelope"></i>
-              <span>Email : </span>
-              <span>example@gmail.com</span>
-            </div>
-            <div class="phone">
-              <i class="fas fa-phone"></i>
-              <span>phone : </span>
-              <span>+123-456-0002</span>
-            </div>
-          </div>
-          <div class="linksDiv">
-            <h3>Important links</h3>
-            <li><a href="">www.google.com</a></li>
-            <li><a href="">www.ughlfdkmfkdlvm.com</a></li>
-            <li><a href="">www.fuivbfuvnfgjvng.com</a></li>
-          </div>
-          <div class="stayInTouch">
-            <h3>STAY IN TOUCH</h3>
-            <nav class="icons">
-              <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></i></a>
-              <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-              <a href="https://www.hotmail.com" target="_blank"><i class="far fa-envelope fa-lg"></i></a>
-            </nav>
-            <button class="advice">Ask For Free Advice</button>
-          </div>
-        </div>
-        <nav class="privacy">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Services</a>
-          <a href="#">&copy; By Emergency advisor</a>
+        <a href="https://www.worldometers.info/coronavirus/"><i class="fas fa-exclamation-circle"></i> Covid-19
+          update</a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="header">
+        <div class="logo-link"><img src="./img/logo.png" alt="logo" /></div>
+        <nav class="nav-bar">
+          <a href="./index.html" class="homeA">Home</a>
+          <a href="./html/emergency.html">Emergency</a>
+          <a href="./html/covid.html">Covid-19</a>
+          <a href="./html/chronic.html">Chronic</a>
+          <a href="./html/aboutUs.html">About-Us</a>
         </nav>
+        <section id="loggedIn">
+          <i class="far fa-user" id="userPic"></i>
+          <p id="userName"></p>
+        </section>
       </div>
-    </footer>
-    
-    <script src="./script/home.js"></script>
-  </body>
+    </div>
+    <p id="logOut">Log Out</p>
+  </header>
+  <main class="homeMain" id="main">
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="formCenter">
+          <form action="" id="input">
+            <fieldset>
+              <legend>Start Consultation</legend>
+              <div class="inputCont" id="signIn">
+                <input name="phone" type="text" placeholder="Phone" id="userPhone" />
+                <input name="name" type="text" placeholder="Name" id="userNmae" />
+              </div>
+              <input name="email" type="text" placeholder="Email" id="userImael" />
+              <button class="signUp" type="submit">Sign Up</button>
+
+            </fieldset>
+          </form>
+          <button class="signUp login" onclick="checkUser()">Log In</button>
+        </div>
+      </div>
+    </section>
+    <section class="container second-section" id="second-section">
+      <div class="first-card">
+        <a href="./html/covid.html">
+          <img src="https://img.icons8.com/ios/250/28B5B5/coronavirus--v1.png" />
+          <h3 class="card-text">COVID-19</h3>
+        </a>
+      </div>
+      <div class="second-card">
+        <a href="./html/chronic.html">
+          <img src="https://img.icons8.com/ios/250/28B5B5/medical-heart.png" />
+          <h3 class="card-text">Chronic Diseases</h3>
+        </a>
+      </div>
+      <div class="last-card">
+        <a href="./html/emergency.html">
+          <img src="https://img.icons8.com/material-outlined/250/28B5B5/ambulance.png" />
+          <h3 class="card-text">Emergencies</h3>
+        </a>
+      </div>
+    </section>
+    <section class="container map-tip">
+      <div class="map">
+        <div class="mapouter map-picture">
+          <div class="gmap_canvas">
+            <iframe width="585" height="500" id="gmap_canvas"
+              src="https://maps.google.com/maps?q=nearest%20hospitals%20amman&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              frameborder="0" scrolling="no" marginheight="0" marginwidth="0" overflow="hidden"></iframe><a
+              href="https://fmovies2.org">fmovies</a><br />
+            <style>
+              .mapouter {
+                position: relative;
+                text-align: right;
+                height: 500px;
+                width: 585px;
+              }
+            </style><a href="https://www.embedgooglemap.net">how do i add a google map to my website</a>
+            <style>
+              .gmap_canvas {
+                overflow: hidden;
+                background: none !important;
+                height: 500px;
+                width: 585px;
+                border-top-right-radius: 80px;
+                border-bottom-right-radius: 15px;
+                border-top-left-radius: 15px;
+                border-bottom-left-radius: 80px;
+              }
+            </style>
+          </div>
+        </div>
+        <p class="map-tip-head" id="right">Find The Nearest Hospital</p>
+      </div>
+
+      <div class="tip">
+        <p class="map-tip-head" id="left">Tips for Healthy & Happy Living</p>
+        <article id="tips">
+          <h2 id="tip-header"></h2>
+          <p class="tip-content" id="tip-content"></p>
+        </article>
+      </div>
+    </section>
+    <div class="collection">
+      <div class="icons-fixed">
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></i></a>
+        <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.hotmail.com" target="_blank"><i class="far fa-envelope fa-lg"></i></a>
+      </div>
+      <div id="divbtnAnsewr">
+        <a href="#ourGame"> <img id="ask" onclick="gameStart()"
+            src="./img/cb.png" /></a>
+      </div>
+    </div>
+
+    <div id="imagesGame" class="imgGame">
+      <div class="insidegame" id="insidegame">
+        <p id="ourGame">Colorblindness Mini Test</p>
+        <div id="imgAndForm">
+          <img src="" alt="" id="myImage">
+          <form action="" id="formm">
+            <!-- <input type="number" id="answer" required placeholder="What you see" style="padding: 10px;"> -->
+            <section id="numbers">
+              <div>1</div>
+              <div>2</div>
+              <div>3</div>
+              <div>4</div>
+              <div>5</div>
+              <div>6</div>
+              <div>7</div>
+              <div>8</div>
+              <div>9</div>
+            </section>
+            <!-- <input type="button" value="Next" id="next"> -->
+          </form>
+        </div>
+        <div id="newDiv"></div>
+      <button id="removeTest" onclick="removeGame()">Remove Test</button>
+      </div>
+
+    </div>
+    <div id="pagegraph" style="font-size: 100px;"> </div>
+
+  </main>
+  <footer>
+    <div class="container">
+      <div class="mainFooter">
+        <div class="contact-information">
+          <h3>Contact :</h3>
+          <div class="address">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Address : </span>
+            <span>Amman-Jordan</span>
+          </div>
+          <div class="email">
+            <i class="far fa-envelope"></i>
+            <span>Email : </span>
+            <span>example@gmail.com</span>
+          </div>
+          <div class="phone">
+            <i class="fas fa-phone"></i>
+            <span>phone : </span>
+            <span>+123-456-0002</span>
+          </div>
+        </div>
+        <div class="linksDiv">
+          <h3>Important links</h3>
+          <li><a href="">www.google.com</a></li>
+          <li><a href="">www.ughlfdkmfkdlvm.com</a></li>
+          <li><a href="">www.fuivbfuvnfgjvng.com</a></li>
+        </div>
+        <div class="stayInTouch">
+          <h3>STAY IN TOUCH</h3>
+          <nav class="icons">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.hotmail.com" target="_blank"><i class="far fa-envelope fa-lg"></i></a>
+          </nav>
+          <button class="advice">Ask For Free Advice</button>
+        </div>
+      </div>
+      <nav class="privacy">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Services</a>
+        <a href="#">&copy; By Emergency advisor</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="./script/home.js"></script>
+</body>
+
 </html>

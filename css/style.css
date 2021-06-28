@@ -656,3 +656,124 @@ main {
      font-weight: bold;
      cursor: pointer;
  }
+
+ .imgGame {
+     max-width: 1170px;
+     margin: 2rem auto;
+     margin-bottom: 6rem;
+     height: fit-content;
+     overflow: hidden;
+     background: black;
+     box-sizing: border-box;
+     border-radius: 80px 15px 80px 15px;
+ }
+ .insidegame {
+     width: 100%;
+     margin: 0;
+     padding: 2rem;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     gap: 2rem;
+     height: fit-content;
+     
+ }
+ #ourGame {
+     text-align: center;
+     font-size: 2rem;
+     height: fit-content;
+     width: 100%;
+     font-weight: bold;
+     color: white;
+     
+ }
+ #imgAndForm {
+     width: 100%;
+     display: flex;
+     gap: 2rem;
+     
+ }
+ #myImage {
+     /* outline: purple solid 3px; */
+     width: 420px;
+     height: 420px;
+     border-radius: 50% ;
+     margin-left: 4rem;
+ }
+ #formm {
+     /* outline: pink solid 3px; */
+     width: 50%;
+     margin: 1rem auto;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 2rem;
+     align-self: flex-end;
+ }
+ #formm input {
+     outline: black solid 3px;
+     margin: auto ;
+     width: 6rem;
+     font-size: large;
+ }
+ #numbers {
+     /* outline: brown solid 3px; */
+     width: 315px;
+     height: 315px;
+     display: grid;
+     grid-template-columns: 105px 105px 105px;
+     grid-template-rows: 105px 105px 105px;
+     margin-left: 7rem ;
+     
+
+ }
+ #numbers div {
+     border: #555 solid 2px;
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: 3rem;
+     background: gray;
+     color: white;
+     
+     
+ }
+ #numbers div:hover ,#removeTest:hover{
+     background: white;
+     color: black;
+     cursor: pointer;
+     box-shadow: inset black 2px 2px 0.3rem;
+ }
+ #numbers div:active {
+     background: green;
+ }
+ #ask {
+     width: 50px;
+     height: 50px;
+ }
+ /* @keyframes rotating {
+     25% {
+         transform: rotate(30deg);
+     }
+     50% {
+         transform: rotate(0deg);
+     }
+     75% {
+         transform: rotate(-30deg);
+     }
+ } */
+ #newDiv {
+     /* outline: white solid 3px; */
+     font-size: 2rem;
+     color: white;
+     text-align: center;
+     margin: 2rem;
+ }
+ #removeTest {
+     width: 10rem;
+     height: 3rem;
+     border-radius: 1.5rem;
+     font-size: 1.25rem;
+ }
