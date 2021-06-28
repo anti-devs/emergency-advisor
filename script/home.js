@@ -381,20 +381,14 @@ footerImage.style.width='600px';
 footerImage.style.height='250px';
 footerImage.style.margin='0 100px 0 0';
 
-
-let num1=0;
+let num1= 0;
 function printImage(){
   footerImage.src=`../tweet/${tweets[num1]}`;
-
-  
   num1++;
-  if(num1==tweets.length) {
-    num1=0;
+  if(num1 == tweets.length) {
+    num1 = 0;
    }
- 
 }
-
-
 window.setInterval(printImage,3000);
 
 
