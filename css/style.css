@@ -123,8 +123,9 @@ legend {
     width: 100%;
 }
 .login {
-    width: 91.7%;
+    width: 80.7%;
     margin: 0 23px;
+    align-self: center;
 }
 .signUp:hover{
     cursor: pointer;
