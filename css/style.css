@@ -816,3 +816,9 @@ main {
      font-size: 1.25rem;
  }
  
+#main h3 {
+    text-align: center;
+    margin: 3rem auto;
+    font-size: 2.5rem;
+    margin-top: 5rem;
+}
