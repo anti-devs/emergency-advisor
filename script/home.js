@@ -1,50 +1,17 @@
 "use strict";
-
+/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////// tap color //////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 let path3 = window.location.pathname; // claimed to have the effect of changing the background color of the navigation element
-
-// console.log(path3);
 
 if (path3 == "/index.html") {
   let covid = document.getElementById("Home");
 
   covid.setAttribute("style", "color:#00EAD3");
 }
-///////////////////////////////////////////////////////// check log in status 
-// try {
-//   let getFromLocal = JSON.parse(localStorage.user);
-//   console.log('user exists');
-// } catch {
-//   console.log('no user');
-//   localStorage.setItem('user', JSON.stringify( ['Hamza', '078979879', 'hamzawi@gmail']));
-
-// }
-
-let hero = document.getElementById("hero");
-let INPUT = document.getElementById("input");
-let userImgName = document.getElementById("userName");
-let userPic = document.getElementById("userPic");
-userPic.style.display = "none";
-let logOut = document.getElementById("logOut");
-let indexOfLogger;
-// document.body.onload = checkLocal(localStorage);
-
-if (!localStorage.logInStatus) {
-  updateVisualsLogout();
-} else {
-  let currInd = Number(localStorage.index);
-  console.log(currInd);
-  try {
-    updateVisualsLogIn(JSON.parse(localStorage.click)[currInd].name);
-  } catch {
-    updateVisualsLogout(); // means that the defualt behavior is to logged out if no name exists based on the last login
-  }
-}
-// default behavior is log out until someone logs in
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////// Tips /////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+/////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////// Tips //////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 let tipHeading = document.getElementById("tip-header");
 let tipContent = document.getElementById("tip-content");
 
@@ -99,145 +66,159 @@ function updateTips() {
   tipHeading.textContent = heading;
   tipContent.textContent = content;
 }
+/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////// User profile ///////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+let c = 0;
+let userData = [];
+let status = {logged: false, index: 0};
+let logOutMessage = document.getElementById('logOut');
+let userPic = document.getElementById('userPic');
+let nameHolder = document.getElementById('userName');
+let loginButton = document.getElementById('logIn');
+let signupButton = document.getElementById('signUp');
+let formAll = document.getElementById('formAll');
+let userNumber = document.getElementById('numr');
+let userName = document.getElementById('name');
+let userEmail = document.getElementById('emal');
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////// User profile ///////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+logOutMessage.addEventListener('click', updateLogOut);
 
-INPUT.addEventListener("submit", info);
-logOut.addEventListener("click", logout);
-
-function Form(number, name, email) {
-  this.number = number;
-  this.name = name;
-  this.email = email;
-  Form.all.push(this);
+try { 
+  userData = JSON.parse(localStorage.userData);
+} catch {
+  console.log('no user exists');
 }
 
-Form.all = [];
+try { 
+  status = JSON.parse(localStorage.status);
+  updatelogIn(JSON.parse(localStorage.status).index);
+} catch {
+  status.logged = false;
+  status.index = 1000; // index is out of range since no user is currently logged in
+  updateLogOut();
+}
 
-function info(event) {
-  // sign up function
+function User(name, number, email) {
+  this.name = name;
+  this.number = number;
+  this.email = email;
+}
 
-  event.preventDefault();
+function Status(log, ind){
+  this.logged= log;
+  this.index = ind;
+}
 
-  // check localStorage
-  if (!localStorage.click) {
-    // check if localStorage is already empty
-    localStorage.setItem("index", undefined);
-    // if empty, you can execute the rest of statements and create an account
-    let number = event.target.phone.value;
-    let name = event.target.name.value;
-    let email = event.target.email.value;
+function signup() {
+  console.log('signup in progress ... ');
 
-    new Form(number, name, email);
+  let number = userNumber.value;
+  let name = userName.value;
+  let email = userEmail.value;
 
-    localStorage.setItem("click", JSON.stringify(Form.all));
-    INPUT.reset();
-    localStorage.setItem("logInStatus", true);
-    localStorage.setItem("index", 0);
-    updateVisualsLogIn(name);
-    indexOfLogger = 0;
+  if (checkUserExists(name, number, email)) {
+    console.log('you already have an account');
+    updateStatus(false, 1000);
+    updateLogOut();
   } else {
-    let numberNew = event.target.phone.value;
-    let nameNew = event.target.name.value;
-    let emailNew = event.target.email.value;
+    if (!userData.length){
+   
+      userData.push(new User(name, number, email));
+      localStorage.setItem('userData',JSON.stringify(userData));
+      updateStatus(true, 0);
+      updatelogIn(JSON.parse(localStorage.status).index);
+    } else {
+      console.log('there is another user');
+      userData.push(new User(name, number, email));
+      localStorage.setItem('userData',JSON.stringify(userData));
+      updateStatus(true, JSON.parse(localStorage.userData).length - 1);
+      updatelogIn(JSON.parse(localStorage.status).index);
+    }
+  }
+}
 
-    INPUT.reset();
+function login() {
 
-    let numofUsers = JSON.parse(localStorage.click).length;
+ console.log('sign in in progress ...');
 
-    for (let i = 0; i < numofUsers; i++) {
-      let email = JSON.parse(localStorage.click)[i].email;
-      if (emailNew.toLowerCase() == email.toLowerCase()) {
-        alert("account already exists");
-        localStorage.setItem("logInStatus", false);
-        break;
+    let number = userNumber.value;
+    let name = userName.value;
+    let email = userEmail.value;
+
+ if (userData.length == 0 ) {
+   console.log('you do not have an account');
+   updateStatus(false, 1000);
+   updateLogOut();
+ } else if (checkUserExists(name, number, email)) {
+    updatelogIn(JSON.parse(localStorage.status).index)
+ }
+}
+
+function updateLogOut() {
+
+  logOutMessage.style.display = 'none';
+  userPic.style.display = 'initial';
+  nameHolder.style.display = 'none';
+  formAll.style.display = 'intital';
+  updateStatus(false, 1000);
+}
+
+function updatelogIn(index) {
+
+  logOutMessage.style.display = 'initial';
+  userPic.style.display = 'none';
+  nameHolder.style.display = 'initial';
+  if (!status.logged) {
+    formAll.style.display = 'initial';
+  } else {
+    formAll.style.display = 'none';
+  }
+  let name = JSON.parse(localStorage.userData)[index].name;
+  name = name.split(" ").map((item) => item.toUpperCase()).map((item) => {
+       return item[0];
+      }).join("");
+  nameHolder.textContent = name;
+  updateStatus(true, index);
+
+  // need to reload the page for once or check again for the flow
+}
+
+function checkUserExists(Nname, Nnumber, Nemail) {
+  
+  try {
+    for (let i = 0; i < JSON.parse(localStorage.userData).length; i++) {
+    
+      let {name, number, email} = JSON.parse(localStorage.userData)[i];
+      console.log(name.toLowerCase() , Nname.toLowerCase(),number , Nnumber,  email.toLowerCase() , Nemail.toLowerCase());
+      if (name.toLowerCase() == Nname.toLowerCase() && number == Nnumber && email.toLowerCase() == Nemail.toLowerCase()) {
+        console.log('logged in successfully');
+        updateStatus(true, i);
+        return true;
       } else {
-        new Form(numberNew, nameNew, emailNew);
-        localStorage.setItem("click", JSON.stringify(Form.all));
-        updateVisualsLogIn(nameNew);
-        localStorage.setItem("logInStatus", true);
-        localStorage.setItem("index", numofUsers);
+        console.log('no user account');
+        updateStatus(false, 1000);
+        continue;
       }
     }
+    return false;
+  } catch {
+    return false;
   }
 }
 
-//////////////////////////////////////////
-function updateVisualsLogIn(name) {
-  // just show and hide stuff based on if the user signs up
-  if (name) {
-    console.log(name);
-  } else {
-    updateVisualsLogout();
-    return;
-  }
-  name = name
-    .split(" ")
-    .map((item) => item.toUpperCase())
-    .map((item) => {
-      return item[0];
-    })
-    .join("");
-  userImgName.textContent = name;
-  logOut.style.display = "initial";
-  userImgName.style.display = "initial";
-  userPic.style.display = "none";
-} ////////////////////////////////////////
-function updateVisualsLogout() {
-  // just show and hide stuff based on if the user logs out
-  logOut.style.display = "none";
-  userImgName.style.display = "none";
-  userPic.style.display = "initial";
-  localStorage.setItem("logInStatus", false);
-} ////////////////////////////////////////
+function updateStatus(log, ind) {
 
-function logout() {
-  // when you click log out
-  updateVisualsLogout();
-} ////////////////////////////////////////
-
-function checkUser() {
-  // check on login
-  let userPhone = document.getElementById("userPhone").value;
-  let userName = document.getElementById("userNmae").value;
-  let userEmail = document.getElementById("userImael").value;
-
-  let numofUsers = JSON.parse(localStorage.click).length;
-
-  for (let i = 0; i < numofUsers; i++) {
-    let { number, name, email } = JSON.parse(localStorage.click)[i];
-    if (
-      number == userPhone &&
-      name.toLowerCase() == userName.toLowerCase() &&
-      userEmail.toLowerCase() == email.toLowerCase()
-    ) {
-      console.log("login succesfull !");
-      updateVisualsLogIn(name);
-      INPUT.reset();
-      localStorage.setItem("logInStatus", true);
-      localStorage.setItem("index", i);
-      break;
-    } else {
-      INPUT.reset();
-      alert("User does not exist, please check again.");
-      localStorage.setItem("logInStatus", false);
-    }
-  }
-} ////////////////////////////////////////
-
-function getData() {
-  //////////////
-  let data = JSON.parse(localStorage.getItem(Form.all));
-  for (let i = 0; i < Form.all.length; i++) {
-    new Form(data[i].number, data[i].name, data[i].email);
-  }
+  localStorage.setItem('status',JSON.stringify(new Status(log, ind)));
 }
 
-getData(); /////////////
+function somethingNeeded() {
 
-////////////////////////////////////////////////////// Animation
+  c == 0 ? location.reload() : c++;
+}
+/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////// Animation ////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 let anim;
 window.addEventListener("scroll", checkScroll);
 function checkScroll() {
@@ -250,37 +231,9 @@ function checkScroll() {
     }
   }, 1);
 }
-/////////////////////////////////////////////////////
-
-getData();
-
-function checkLocal(local) {
-  if (local.hasOwnProperty("click")) {
-    userImgName.style.display = "initial";
-    userPic.style.display = "none";
-    INPUT.style.display = "none";
-    let name = JSON.parse(localStorage.click)[0].name;
-    name = name
-      .split(" ")
-      .map((item) => item.toUpperCase())
-      .map((item) => {
-        return item[0];
-      })
-      .join("");
-    console.log(name);
-    userImgName.textContent = name;
-    return true;
-  } else {
-    console.log("ket does not exist");
-    userPic.style.display = "initial";
-    INPUT.style.display = "initial";
-    userImgName.style.display = "none";
-    return false;
-  }
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////// Game /////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////// Game ///////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 let num;
 let game = document.getElementById("ask"); // accesssing the icon to start the game once clicked
 let images = [
@@ -369,9 +322,9 @@ function removeGame() {
   counter = 0;
   location.reload();
 }
-
-
-///// foooter image
+/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////// footer image ///////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 let tweets=['tweet1.jpg','tweet2.jpg','tweet3.jpg','tweet4.png','tweet5.png','tweet6.png','tweet7.png','tweet8.png','tweet9.png',
 'tweet10.png','tweet11.png','tweet12.png','tweet13.png','tweet14.png','tweet15.png','tweet16.png','tweet17.png','tweet18.png']
 
@@ -390,6 +343,198 @@ function printImage(){
    }
 }
 window.setInterval(printImage,3000);
+/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////// Comments ///////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 
+// // try {
+// //   let getFromLocal = JSON.parse(localStorage.user);
+// //   console.log('user exists');
+// // } catch {
+// //   console.log('no user');
+// //   localStorage.setItem('user', JSON.stringify( ['Hamza', '078979879', 'hamzawi@gmail']));
 
+// // }
+
+// let hero = document.getElementById("hero");
+// let INPUT = document.getElementById("input");
+// let userImgName = document.getElementById("userName");
+// let userPic = document.getElementById("userPic");
+// userPic.style.display = "none";
+// let logOut = document.getElementById("logOut");
+// let indexOfLogger;
+// // document.body.onload = checkLocal(localStorage);
+
+// if (!localStorage.logInStatus) {
+//   updateVisualsLogout();
+// } else {
+//   let currInd = Number(localStorage.index);
+//   // console.log(currInd);
+//   try {
+//     updateVisualsLogIn(JSON.parse(localStorage.click)[currInd].name);
+//   } catch {
+//     updateVisualsLogout(); // means that the defualt behavior is to logged out if no name exists based on the last login
+//   }
+// }
+// default behavior is log out until someone logs in
+/////////////////////////////////////////////////////
+
+// getData();
+
+// function checkLocal(local) {
+//   if (local.hasOwnProperty("click")) {
+//     userImgName.style.display = "initial";
+//     userPic.style.display = "none";
+//     INPUT.style.display = "none";
+//     let name = JSON.parse(localStorage.click)[0].name;
+//     name = name
+//       .split(" ")
+//       .map((item) => item.toUpperCase())
+//       .map((item) => {
+//         return item[0];
+//       })
+//       .join("");
+//     console.log(name);
+//     userImgName.textContent = name;
+//     return true;
+//   } else {
+//     console.log("ket does not exist");
+//     userPic.style.display = "initial";
+//     INPUT.style.display = "initial";
+//     userImgName.style.display = "none";
+//     return false;
+//   }
+// }
+// INPUT.addEventListener("submit", info);
+// logOut.addEventListener("click", logout);
+
+// function Form(number, name, email) {
+//   this.number = number;
+//   this.name = name;
+//   this.email = email;
+//   Form.all.push(this);
+// }
+
+// Form.all = [];
+
+// function info(event) {
+//   // sign up function
+
+//   event.preventDefault();
+
+//   // check localStorage
+//   if (!localStorage.click) {
+//     // check if localStorage is already empty
+//     localStorage.setItem("index", undefined);
+//     // if empty, you can execute the rest of statements and create an account
+//     let number = event.target.phone.value;
+//     let name = event.target.name.value;
+//     let email = event.target.email.value;
+
+//     new Form(number, name, email);
+
+//     localStorage.setItem("click", JSON.stringify(Form.all));
+//     INPUT.reset();
+//     localStorage.setItem("logInStatus", true);
+//     localStorage.setItem("index", 0);
+//     updateVisualsLogIn(name);
+//     indexOfLogger = 0;
+//   } else {
+//     let numberNew = event.target.phone.value;
+//     let nameNew = event.target.name.value;
+//     let emailNew = event.target.email.value;
+
+//     INPUT.reset();
+
+//     let numofUsers = JSON.parse(localStorage.click).length;
+
+//     for (let i = 0; i < numofUsers; i++) {
+//       let email = JSON.parse(localStorage.click)[i].email;
+//       if (emailNew.toLowerCase() == email.toLowerCase()) {
+//         alert("account already exists");
+//         localStorage.setItem("logInStatus", false);
+//         break;
+//       } else {
+//         new Form(numberNew, nameNew, emailNew);
+//         localStorage.setItem("click", JSON.stringify(Form.all));
+//         updateVisualsLogIn(nameNew);
+//         localStorage.setItem("logInStatus", true);
+//         localStorage.setItem("index", numofUsers);
+//       }
+//     }
+//   }
+// }
+
+// //////////////////////////////////////////
+// function updateVisualsLogIn(name) {
+//   // just show and hide stuff based on if the user signs up
+//   if (name) {
+//     console.log(name);
+//   } else {
+//     updateVisualsLogout();
+//     return;
+//   }
+//   name = name
+//     .split(" ")
+//     .map((item) => item.toUpperCase())
+//     .map((item) => {
+//       return item[0];
+//     })
+//     .join("");
+//   userImgName.textContent = name;
+//   logOut.style.display = "initial";
+//   userImgName.style.display = "initial";
+//   userPic.style.display = "none";
+// } ////////////////////////////////////////
+// function updateVisualsLogout() {
+//   // just show and hide stuff based on if the user logs out
+//   logOut.style.display = "none";
+//   userImgName.style.display = "none";
+//   userPic.style.display = "initial";
+//   localStorage.setItem("logInStatus", false);
+// } ////////////////////////////////////////
+
+// function logout() {
+//   // when you click log out
+//   updateVisualsLogout();
+// } ////////////////////////////////////////
+
+// function checkUser() {
+//   // check on login
+//   let userPhone = document.getElementById("userPhone").value;
+//   let userName = document.getElementById("userNmae").value;
+//   let userEmail = document.getElementById("userImael").value;
+
+//   let numofUsers = JSON.parse(localStorage.click).length;
+
+//   for (let i = 0; i < numofUsers; i++) {
+//     let { number, name, email } = JSON.parse(localStorage.click)[i];
+//     if (
+//       number == userPhone &&
+//       name.toLowerCase() == userName.toLowerCase() &&
+//       userEmail.toLowerCase() == email.toLowerCase()
+//     ) {
+//       console.log("login succesfull !");
+//       updateVisualsLogIn(name);
+//       INPUT.reset();
+//       localStorage.setItem("logInStatus", true);
+//       localStorage.setItem("index", i);
+//       break;
+//     } else {
+//       INPUT.reset();
+//       alert("User does not exist, please check again.");
+//       localStorage.setItem("logInStatus", false);
+//     }
+//   }
+// } ////////////////////////////////////////
+
+// function getData() {
+//   //////////////
+//   let data = JSON.parse(localStorage.getItem(Form.all));
+//   for (let i = 0; i < Form.all.length; i++) {
+//     new Form(data[i].number, data[i].name, data[i].email);
+//   }
+// }
+
+// getData(); /////////////
 

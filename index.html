@@ -42,21 +42,21 @@
   </header>
   <main class="homeMain" id="main">
     <section class="hero" id="hero">
-      <div class="container">
+      <div class="container" id="formAll">
         <div class="formCenter">
           <form action="" id="input">
             <fieldset>
               <legend>Start Consultation</legend>
               <div class="inputCont" id="signIn">
-                <input name="phone" type="text" placeholder="Phone" id="userPhone" pattern="\+[0-9-]+" />
-                <input name="name" type="text" placeholder="Name" id="userNmae" pattern="\w[a-zA-Z ]+" />
+                <input name="phone" type="text" placeholder="Phone" id="numr" pattern="\+[0-9-]+" />
+                <input name="name" type="text" placeholder="Name" id="name" pattern="\w[a-zA-Z ]+" />
               </div>
-              <input name="email" type="text" placeholder="Email" id="userImael" />
-              <button class="signUp" type="submit">Sign Up</button>
-
+              <input name="email" type="text" placeholder="Email" id="emal" />
+              
             </fieldset>
           </form>
-          <button class="signUp login" onclick="checkUser()">Log In</button>
+          <button class="signUp login" style="margin: 1rem;" id="signUp" onclick="signup()">Sign Up</button>
+            <button class="signUp login" style="margin: 1rem;" id="logIn" onclick="login()">Log In</button>
         </div>
       </div>
     </section>
