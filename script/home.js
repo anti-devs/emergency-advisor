@@ -1,4 +1,15 @@
 "use strict";
+
+let path3 = window.location.pathname;
+
+console.log(path3);
+
+if (path3 == "/html/home.html") {
+  let covid = document.getElementById("Home");
+
+  covid.setAttribute("style", "background:#00EAD3");
+}
+/////////////////////////////////////////////////////////
 let hero = document.getElementById("hero");
 let INPUT = document.getElementById("input");
 let userImgName = document.getElementById("userName");
@@ -228,16 +239,6 @@ function checkScroll() {
 
 getData();
 
-let path3 = window.location.pathname;
-
-console.log(path3);
-
-if (path3 == "/html/home.html") {
-  let covid = document.getElementById("Home");
-
-  covid.setAttribute("style", "background:black");
-}
-
 function checkLocal(local) {
   if (local.hasOwnProperty("click")) {
     userImgName.style.display = "initial";
@@ -276,7 +277,6 @@ let images = [
   ["img3.jpg",7],
   ["co8.png",8],
   ["co9.png",9]]; // an array holding the images names
-
 let newImages = randomize(images); // getting a randomized array of images
 
 let imagesGame = document.getElementById("imagesGame"); // div containing the whole game
@@ -286,14 +286,13 @@ let p = document.createElement("p"); // just the title "game"
 let pagegraph = document.getElementById("pagegraph"); // a random paragraph!
 let counter = 0; // counter
 let score = 0; // target
-let numbers = document.getElementById('numbers');
-let next = document.getElementById('next');
-numbers.addEventListener('click', getNumber);
-let insidegame = document.getElementById('insidegame');
-let imgAndForm = document.getElementById('imgAndForm');
-let newDiv = document.getElementById('newDiv');
-// myImage.src = `../img/${newImages[counter][0]}`
-imagesGame.style.display = 'none';
+let numbers = document.getElementById("numbers");
+let next = document.getElementById("next");
+numbers.addEventListener("click", getNumber);
+let insidegame = document.getElementById("insidegame");
+let imgAndForm = document.getElementById("imgAndForm");
+let newDiv = document.getElementById("newDiv");
+imagesGame.style.display = "none";
 function gameStart() {
   imagesGame.style.display = 'block';
   myImage.src = `./img/${newImages[counter][0]}`;
@@ -303,12 +302,12 @@ function returnNum() {
   return num;
 }
 function getNumber(e) {
-  num =  Number(e.target.textContent);
-  if (num == newImages[counter][1]  ) {
+  num = Number(e.target.textContent);
+  if (num == newImages[counter][1]) {
     counter++;
     score++;
   } else {
-    counter ++;
+    counter++;
   }
   if (counter == 9) {
     
@@ -319,13 +318,14 @@ function getNumber(e) {
     newDiv.style.textAlign = 'center';
     newDiv.style.display = 'initial';
     counter = 0;
-    numbers.removeEventListener('click', getNumber);
+    numbers.removeEventListener("click", getNumber);
     return;
   }
   gameStart(); // get selected number
 }
 // randomize(images);
-function randomize(arr) { // suppose we have an array and we want to have a copy that is randomized
+function randomize(arr) {
+  // suppose we have an array and we want to have a copy that is randomized
   let randArr = [];
   while (randArr.length != 9) {
     let rand = getRandomIntInclusive(0, 8);
@@ -336,16 +336,14 @@ function randomize(arr) { // suppose we have an array and we want to have a copy
      }
   }
   let imgCopy = arr.slice(0);
-  for (let i = 0; i < imgCopy.length ; i++) {
+  for (let i = 0; i < imgCopy.length; i++) {
     imgCopy[i] = arr[randArr[i]];
   }
   return imgCopy;
 }
 
-
-function removeGame(){
-  
-  imagesGame.style.display = 'none';
+function removeGame() {
+  imagesGame.style.display = "none";
   counter = 0;
   location.reload();
 }
@@ -374,6 +372,7 @@ function removeGame(){
 //   imagesGame.setAttribute("style", "display:initial");
 //   myImage.src = `../img/${images[counter]}`;
 // }
+
 // function hadler(event) {
 //   event.preventDefault();
 //   numbers.addEventListener('click', getNumber);
@@ -396,4 +395,3 @@ function removeGame(){
 // }
 
 // formm.addEventListener("submit", hadler);
-
