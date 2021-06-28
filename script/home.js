@@ -1,4 +1,15 @@
 "use strict";
+
+let path3 = window.location.pathname;
+
+console.log(path3);
+
+if (path3 == "/html/home.html") {
+  let covid = document.getElementById("Home");
+
+  covid.setAttribute("style", "background:#00EAD3");
+}
+/////////////////////////////////////////////////////////
 let hero = document.getElementById("hero");
 let INPUT = document.getElementById("input");
 let userImgName = document.getElementById("userName");
@@ -228,16 +239,6 @@ function checkScroll() {
 
 getData();
 
-let path3 = window.location.pathname;
-
-console.log(path3);
-
-if (path3 == "/html/home.html") {
-  let covid = document.getElementById("Home");
-
-  covid.setAttribute("style", "background:black");
-}
-
 function checkLocal(local) {
   if (local.hasOwnProperty("click")) {
     userImgName.style.display = "initial";
@@ -267,14 +268,15 @@ function checkLocal(local) {
 let num;
 let game = document.getElementById("ask"); // accesssing the icon to start the game once clicked
 let images = [
-  ["co2.png",2],
-  ["co3.png",3],
-  ["co4.png",4],
-  ["co5.png",5],
-  ["co6.png",6],
-  ["co7.png",7],
-  ["co8.png",8],
-  ["co9.png",9]]; // an array holding the images names
+  ["co2.png", 2],
+  ["co3.png", 3],
+  ["co4.png", 4],
+  ["co5.png", 5],
+  ["co6.png", 6],
+  ["co7.png", 7],
+  ["co8.png", 8],
+  ["co9.png", 9],
+]; // an array holding the images names
 
 let newImages = randomize(images); // getting a randomized array of images
 
@@ -285,16 +287,16 @@ let p = document.createElement("p"); // just the title "game"
 let pagegraph = document.getElementById("pagegraph"); // a random paragraph!
 let counter = 0; // counter
 let score = 0; // target
-let numbers = document.getElementById('numbers');
-let next = document.getElementById('next');
-numbers.addEventListener('click', getNumber);
-let insidegame = document.getElementById('insidegame');
-let imgAndForm = document.getElementById('imgAndForm');
-let newDiv = document.getElementById('newDiv');
+let numbers = document.getElementById("numbers");
+let next = document.getElementById("next");
+numbers.addEventListener("click", getNumber);
+let insidegame = document.getElementById("insidegame");
+let imgAndForm = document.getElementById("imgAndForm");
+let newDiv = document.getElementById("newDiv");
 // myImage.src = `../img/${newImages[counter][0]}`
-imagesGame.style.display = 'none';
+imagesGame.style.display = "none";
 function gameStart() {
-  imagesGame.style.display = 'block';
+  imagesGame.style.display = "block";
   myImage.src = `../img/${newImages[counter][0]}`;
 }
 
@@ -302,49 +304,47 @@ function returnNum() {
   return num;
 }
 function getNumber(e) {
-  num =  Number(e.target.textContent);
-  if (num == newImages[counter][1]  ) {
+  num = Number(e.target.textContent);
+  if (num == newImages[counter][1]) {
     counter++;
     score++;
   } else {
-    counter ++;
+    counter++;
   }
   if (counter == 8) {
-    
     insidegame.appendChild(newDiv);
     newDiv.textContent = `Game is over, and your score is ${score} out of 8.`;
-    newDiv.style.color = 'white';
-    newDiv.style.fontSize = '2rem';
-    newDiv.style.textAlign = 'center';
-    newDiv.style.display = 'initial';
+    newDiv.style.color = "white";
+    newDiv.style.fontSize = "2rem";
+    newDiv.style.textAlign = "center";
+    newDiv.style.display = "initial";
     counter = 0;
-    numbers.removeEventListener('click', getNumber);
+    numbers.removeEventListener("click", getNumber);
     return;
   }
   gameStart(); // get selected number
 }
 // randomize(images);
-function randomize(arr) { // suppose we have an array and we want to have a copy that is randomized
+function randomize(arr) {
+  // suppose we have an array and we want to have a copy that is randomized
   let randArr = [];
   while (randArr.length != 8) {
     let rand = getRandomIntInclusive(0, 7);
-     if (!randArr.includes(rand)) {
-       randArr.push(rand);
-     } else {
-       continue;
-     }
+    if (!randArr.includes(rand)) {
+      randArr.push(rand);
+    } else {
+      continue;
+    }
   }
   let imgCopy = arr.slice(0);
-  for (let i = 0; i < imgCopy.length ; i++) {
+  for (let i = 0; i < imgCopy.length; i++) {
     imgCopy[i] = arr[randArr[i]];
   }
   return imgCopy;
 }
 
-
-function removeGame(){
-  
-  imagesGame.style.display = 'none';
+function removeGame() {
+  imagesGame.style.display = "none";
   counter = 0;
   location.reload();
 }
@@ -374,9 +374,6 @@ function removeGame(){
 //   myImage.src = `../img/${images[counter]}`;
 // }
 
-
-
-
 // function hadler(event) {
 //   event.preventDefault();
 //   numbers.addEventListener('click', getNumber);
@@ -399,4 +396,3 @@ function removeGame(){
 // }
 
 // formm.addEventListener("submit", hadler);
-

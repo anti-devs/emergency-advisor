@@ -627,7 +627,7 @@ main {
    background: #00EAD3;
   }
 
-  #loggedIn {
+  #loggedIn , #divbtnAnsewr{
       display: flex;
       align-items: center;
       justify-content: center;
@@ -677,6 +677,7 @@ main {
      justify-content: center;
      gap: 2rem;
      height: fit-content;
+     background: #555;
      
  }
  #ourGame {
@@ -744,7 +745,7 @@ main {
      background: white;
      color: black;
      cursor: pointer;
-     box-shadow: inset black 2px 2px 0.3rem;
+     box-shadow: inset black 2px 2px 0.7rem;
  }
  #numbers div:active {
      background: green;
