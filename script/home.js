@@ -308,9 +308,11 @@ numbers.addEventListener("click", getNumber);
 let insidegame = document.getElementById("insidegame");
 let imgAndForm = document.getElementById("imgAndForm");
 let newDiv = document.getElementById("newDiv");
+let divbtnAnsewr = document.getElementById('divbtnAnsewr');
 imagesGame.style.display = "none";
 
 function gameStart() {
+  game.style.display = 'none';
   imagesGame.style.display = 'block';
   myImage.src = `./img/${newImages[counter][0]}`;
 }
@@ -335,6 +337,7 @@ function getNumber(e) {
     newDiv.style.fontSize = '2rem';
     newDiv.style.textAlign = 'center';
     newDiv.style.display = 'initial';
+    game.style.display = 'initial';
     counter = 0;
     numbers.removeEventListener("click", getNumber);
     return;

@@ -155,7 +155,7 @@ ChronicDiseas.prototype.render = (obj) => {
   div.className = "insertedDiv";
   let divHeight = div.offsetHeight;
   div.style.height = "0";
-  main.style.height = divHeight + 400 + "px";
+  main.style.height = divHeight + 500 + "px";
   div.animate([{ height: `${divHeight}px` }], {
     duration: 350,
     iterations: 1,
@@ -196,19 +196,15 @@ let diseasesArray = [
 function createChroDiv(evt) {
   let index = Number(evt.target.getAttribute("index"));
   if (index <= 4) {
-    if (false) {
-      console.log(ChronicDiseas.lastIndex);
-      return;
-    } else {
-      let [about, symptoms, tips] = getFromArray(index);
-      let chosenDisease = new ChronicDiseas(about, symptoms, tips);
-      ChronicDiseas.lastIndex = index;
-      indexPlusOne = index + 1;
-      try {
-        chronicDis.removeChild(div);
-      } catch {
-        console.log("div already removed");
-      }
+    let [about, symptoms, tips] = getFromArray(index);
+    let chosenDisease = new ChronicDiseas(about, symptoms, tips);
+    ChronicDiseas.lastIndex = index;
+    indexPlusOne = index + 1;
+    try {
+      chronicDis.removeChild(div);
+    } catch {
+      console.log("div already removed");
+
       chosenDisease.render(chosenDisease);
     }
   }
@@ -225,23 +221,21 @@ function removeAllChildNodes(parent) {
 }
 
 function retract(evt) {
-  
   div.animate([{ height: `0` }], {
     duration: 400,
     iterations: 1,
     fill: "forwards",
   });
-  div.style.padding= '0 30px';
+  div.style.padding = "0 30px";
 
-  setTimeout(function(){ 
+  setTimeout(function () {
     try {
       chronicDis.removeChild(div);
-      console.log('removed');
+      console.log("removed");
     } catch {
       console.log("div already removed");
     }
-   }, 500);
-   main.style.height = 'initial';
+  }, 500);
+  main.style.height = "initial";
   chronicDis.removeEventListener("click", retract);
-  
 }
