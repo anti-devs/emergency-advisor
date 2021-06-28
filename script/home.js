@@ -1,15 +1,24 @@
 "use strict";
 
-let path3 = window.location.pathname;
+let path3 = window.location.pathname; // claimed to have the effect of changing the background color of the navigation element
 
-console.log(path3);
+// console.log(path3);
 
-if (path3 == "/html/home.html") {
+if (path3 == "/index.html") {
   let covid = document.getElementById("Home");
 
-  covid.setAttribute("style", "background:#00EAD3");
+  covid.setAttribute("style", "color:#00EAD3");
 }
-/////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////// check log in status 
+// try {
+//   let getFromLocal = JSON.parse(localStorage.user);
+//   console.log('user exists');
+// } catch {
+//   console.log('no user');
+//   localStorage.setItem('user', JSON.stringify( ['Hamza', '078979879', 'hamzawi@gmail']));
+
+// }
+
 let hero = document.getElementById("hero");
 let INPUT = document.getElementById("input");
 let userImgName = document.getElementById("userName");
@@ -27,10 +36,14 @@ if (!localStorage.logInStatus) {
   try {
     updateVisualsLogIn(JSON.parse(localStorage.click)[currInd].name);
   } catch {
-    updateVisualsLogout();
+    updateVisualsLogout(); // means that the defualt behavior is to logged out if no name exists based on the last login
   }
 }
 // default behavior is log out until someone logs in
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////// Tips /////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let tipHeading = document.getElementById("tip-header");
 let tipContent = document.getElementById("tip-content");
@@ -87,7 +100,9 @@ function updateTips() {
   tipContent.textContent = content;
 }
 
-////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////// User profile ///////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 INPUT.addEventListener("submit", info);
 logOut.addEventListener("click", logout);
@@ -263,8 +278,9 @@ function checkLocal(local) {
     return false;
   }
 }
-
-///////////////////////////////////Game
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////// Game /////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 let num;
 let game = document.getElementById("ask"); // accesssing the icon to start the game once clicked
 let images = [
@@ -293,6 +309,7 @@ let insidegame = document.getElementById("insidegame");
 let imgAndForm = document.getElementById("imgAndForm");
 let newDiv = document.getElementById("newDiv");
 imagesGame.style.display = "none";
+
 function gameStart() {
   imagesGame.style.display = 'block';
   myImage.src = `./img/${newImages[counter][0]}`;
@@ -301,6 +318,7 @@ function gameStart() {
 function returnNum() {
   return num;
 }
+
 function getNumber(e) {
   num = Number(e.target.textContent);
   if (num == newImages[counter][1]) {
@@ -323,6 +341,7 @@ function getNumber(e) {
   }
   gameStart(); // get selected number
 }
+
 // randomize(images);
 function randomize(arr) {
   // suppose we have an array and we want to have a copy that is randomized
@@ -347,51 +366,3 @@ function removeGame() {
   counter = 0;
   location.reload();
 }
-
-// getRandomIntInclusive(min, max) min = 0 max= 7
-// imagesGame.setAttribute("style", "display:none"); // hide the game at first
-
-// function Game(amgSrc, answerr) {
-//   // game constructor
-
-//   this.amgSrc = amgSrc; // source
-//   this.answerr = answerr; // answer
-//   Game.all.push(this); // push to all every instance
-// }
-// Game.all = [];
-
-// for (
-//   let i = 0;
-//   i < images.length;
-//   i++ // llooping over the images array
-// ) {
-//   new Game(`../img/${images[i]}`, i + 2); // creating instances
-// }
-
-// function render() {
-//   imagesGame.setAttribute("style", "display:initial");
-//   myImage.src = `../img/${images[counter]}`;
-// }
-
-// function hadler(event) {
-//   event.preventDefault();
-//   numbers.addEventListener('click', getNumber);
-//   let ans = num;
-//   console.log(ans);
-//   if (Game.all[counter].answerr == ans) {
-//     targrt++;
-//     counter++;
-//     render();
-//   } else if (counter == 7) {
-//     removeEventListener("submit", hadler);
-//     imagesGame.setAttribute("style", "display:none");
-
-//     p.textContent = `Your Resut Is ${targrt}/8`;
-//     pagegraph.appendChild(p);
-//   } else {
-//     counter++;
-//     render();
-//   }
-// }
-
-// formm.addEventListener("submit", hadler);
