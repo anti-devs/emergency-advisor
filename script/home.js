@@ -267,12 +267,13 @@ function checkLocal(local) {
 let num;
 let game = document.getElementById("ask"); // accesssing the icon to start the game once clicked
 let images = [
+  ["img1.jpg",1],
   ["co2.png",2],
   ["co3.png",3],
   ["co4.png",4],
   ["co5.png",5],
   ["co6.png",6],
-  ["co7.png",7],
+  ["img3.jpg",7],
   ["co8.png",8],
   ["co9.png",9]]; // an array holding the images names
 
@@ -295,7 +296,7 @@ let newDiv = document.getElementById('newDiv');
 imagesGame.style.display = 'none';
 function gameStart() {
   imagesGame.style.display = 'block';
-  myImage.src = `../img/${newImages[counter][0]}`;
+  myImage.src = `./img/${newImages[counter][0]}`;
 }
 
 function returnNum() {
@@ -309,10 +310,10 @@ function getNumber(e) {
   } else {
     counter ++;
   }
-  if (counter == 8) {
+  if (counter == 9) {
     
     insidegame.appendChild(newDiv);
-    newDiv.textContent = `Game is over, and your score is ${score} out of 8.`;
+    newDiv.textContent = `Game is over, and your score is ${score} out of 9.`;
     newDiv.style.color = 'white';
     newDiv.style.fontSize = '2rem';
     newDiv.style.textAlign = 'center';
@@ -326,8 +327,8 @@ function getNumber(e) {
 // randomize(images);
 function randomize(arr) { // suppose we have an array and we want to have a copy that is randomized
   let randArr = [];
-  while (randArr.length != 8) {
-    let rand = getRandomIntInclusive(0, 7);
+  while (randArr.length != 9) {
+    let rand = getRandomIntInclusive(0, 8);
      if (!randArr.includes(rand)) {
        randArr.push(rand);
      } else {
@@ -373,10 +374,6 @@ function removeGame(){
 //   imagesGame.setAttribute("style", "display:initial");
 //   myImage.src = `../img/${images[counter]}`;
 // }
-
-
-
-
 // function hadler(event) {
 //   event.preventDefault();
 //   numbers.addEventListener('click', getNumber);
