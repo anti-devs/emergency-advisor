@@ -293,11 +293,10 @@ numbers.addEventListener("click", getNumber);
 let insidegame = document.getElementById("insidegame");
 let imgAndForm = document.getElementById("imgAndForm");
 let newDiv = document.getElementById("newDiv");
-// myImage.src = `../img/${newImages[counter][0]}`
 imagesGame.style.display = "none";
 function gameStart() {
   imagesGame.style.display = "block";
-  myImage.src = `../img/${newImages[counter][0]}`;
+  myImage.src = `./img/${newImages[counter][0]}`;
 }
 
 function returnNum() {
