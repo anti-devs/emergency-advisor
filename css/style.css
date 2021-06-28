@@ -1,4 +1,4 @@
-/* global*/
+
 * {
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
@@ -679,7 +679,6 @@ textarea {
 footer
 {
     font-family: 'Open Sans', sans-serif;
-    
     align-items: center;
     flex-direction: row;
     background-color: #DEEDF0;
@@ -746,20 +745,16 @@ footer
     color: #1DA1F2;
 }
 .linksDiv {
-     
     flex-direction: column;
 }
 .privacy {
     height: 70px;
     display: flex;
     justify-content:center;
-    align-items: flex-end;
-    
-    
+    align-items: flex-end;    
 }
 .privacy a, .privacy p{
     margin-left: 10px;
-
 }
 .contact-information {
     display: flex;
@@ -767,7 +762,7 @@ footer
     flex-direction: column;
 }
 .contact-information h3 {
-    padding: 10px 0;
+    padding: 10px 9px;
 }
 .address, .email, .phone {
     display: flex;
@@ -791,9 +786,6 @@ footer
 .advice:hover {
     background-color: #3998BE;
 }
-footer span {
-    padding: 0px 5px;
-}
 .stayInTouch {
     display: flex;
     flex-direction: column;
@@ -802,6 +794,16 @@ footer span {
 .stayInTouch h3 {
     margin-left: 7px;
     margin-bottom: 4px;
+}
+.fa-map-marker-alt:before {
+    content: "\f3c5";
+    font-size: 24px;
+    padding: 0 6px;
+}
+.fa-phone:before {
+    content: "\f095";
+    font-size: 24px;
+    padding: 0 6px;
 }
 /*Footer End*/
 main {
