@@ -186,26 +186,53 @@
         </div>
       </div>
     </div>
-  </main>
-  <footer>
-    <div class="container">
-      <div class="mainFooter">
-        <div class="contact-information">
-          <h3>Contact :</h3>
-          <div class="address">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Address : </span>
-            <span>Amman-Jordan</span>
-          </div>
-          <div class="email">
-            <i class="far fa-envelope"></i>
-            <span>Email : </span>
-            <span>example@gmail.com</span>
-          </div>
-          <div class="phone">
-            <i class="fas fa-phone"></i>
-            <span>phone : </span>
-            <span>+123-456-0002</span>
+
+</div>
+</div>
+</div>
+</section>
+
+    
+        </section>
+    
+
+        </main>
+      
+       <footer>
+        <div class="container">
+          <div class="mainFooter">
+            <div class="contact-information">
+              <h3>Contact :</h3>
+              <div class="address">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Address : </span>
+                <span>Amman-Jordan</span>
+              </div>
+              <div class="email">
+                <i class="far fa-envelope"></i>
+                <span>Email : </span>
+                <span>example@gmail.com</span>
+              </div>
+              <div class="phone">
+                <i class="fas fa-phone"></i>
+                <span>phone : </span>
+                <span>+123-456-0002</span>
+              </div>
+            </div>
+            <div class="linksDiv">
+              <img src="" alt="" id="footerImage";>
+            </div>
+            <div class="stayInTouch">
+              <h3>STAY IN TOUCH</h3>
+              <nav class="icons">
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></i></a>
+                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.hotmail.com" target="_blank"><i class="far fa-envelope fa-lg"></i></a>
+              </nav>
+              <button class="advice">Ask For Free Advice</button>
+            </div>
+
+
           </div>
         </div>
         <div class="linksDiv">
@@ -248,6 +275,43 @@
     }
 
   </script>
+
+
+if(path=='/html/aboutUs.html'){
+  let covid=document.getElementById('About-Us');
+  
+  covid.setAttribute('style','color:#00EAD3')
+}
+
+
+let tweets=['tweet1.jpg','tweet2.jpg','tweet3.jpg','tweet4.png','tweet5.png','tweet6.png','tweet7.png','tweet8.png','tweet9.png',
+'tweet10.png','tweet11.png','tweet12.png','tweet13.png','tweet14.png','tweet15.png','tweet16.png','tweet17.png','tweet18.png']
+
+let footerImage=document.getElementById('footerImage');
+
+footerImage.style.width='600px';
+footerImage.style.height='250px';
+footerImage.style.margin='0 100px 0 0';
+
+
+let num1=5;
+function printImage(){
+  footerImage.src=`../tweet/${tweets[num1]}`;
+
+  
+  num1++;
+  if(num1==tweets.length) {
+    num1=0;
+   }
+ 
+}
+
+
+window.setInterval(printImage,3000);
+
+    
+       </script>
+       
 
 </body>
 

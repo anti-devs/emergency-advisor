@@ -679,13 +679,13 @@ textarea {
 footer
 {
     font-family: 'Open Sans', sans-serif;
-    display: flex;
+    
     align-items: center;
     flex-direction: row;
     background-color: #DEEDF0;
     margin-top: 20px;
     padding: 10px;
-    height: 250px;
+    height: 350px;
     position:relative;
     bottom:0;
     left:0;
@@ -746,17 +746,20 @@ footer
     color: #1DA1F2;
 }
 .linksDiv {
-    display: flex;
+     
     flex-direction: column;
 }
 .privacy {
     height: 70px;
     display: flex;
-    justify-content: center;
+    justify-content:center;
     align-items: flex-end;
+    
+    
 }
 .privacy a, .privacy p{
     margin-left: 10px;
+
 }
 .contact-information {
     display: flex;
