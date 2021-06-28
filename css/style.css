@@ -370,7 +370,7 @@ legend {
     margin: 10px 0;
     border-radius: 20px;
 }
-.borderH h2 {
+.borderH h2, #aaa {
     font-size: 20px;
 }
 .emergency-section img {

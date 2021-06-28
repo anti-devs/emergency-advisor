@@ -94,7 +94,7 @@ function Emergency(name, instructions) {
   this.name = name;
   this.instructions = instructions;
   Emergency.prototype.render = () => {
-    console.log(this);
+    // console.log(this);
   };
 }
 
@@ -140,18 +140,21 @@ function checkChoice(e) {
   // console.log(e.target.parentNode.children[1]);
   let instructions;
   let name = e.target.parentNode.children[1].textContent;
-  console.log(name); //
+  console.log(name.length);
   for (let i = 0; i < instructionsArray.length; i++) {
-    if (name == "more") {
+    if (name == "More" || name.length > 20) {
+      console.log('5555555555555555555555555555555');
       return;
     }
-    if (instructionsArray[i].includes(name)) {
-      // console.log(i);
-      instructions = instructionsArray[i][1].split("/");
-    }
+   
+      if (instructionsArray[i].includes(name)) {
+        // console.log(i);
+        instructions = instructionsArray[i][1].split("/");
+      }
+    
+    
   }
   let emergency = new Emergency(name, instructions);
-  // console.log(emergency);
   localStorage.clear();
   change_page(emergency);
   emergency.render();
