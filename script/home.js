@@ -297,7 +297,7 @@ let newDiv = document.getElementById("newDiv");
 imagesGame.style.display = "none";
 function gameStart() {
   imagesGame.style.display = "block";
-  myImage.src = `./../img/${newImages[counter][0]}`;
+  myImage.src = `./img/${newImages[counter][0]}`;
 }
 
 function returnNum() {
