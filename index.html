@@ -26,7 +26,7 @@
       <div class="header">
         <div class="logo-link"><img src="./img/logo.png" alt="logo" /></div>
         <nav class="nav-bar">
-          <a href="./index.html" class="homeA">Home</a>
+          <a href="./index.html" id='Home' class="homeA">Home</a>
           <a href="./html/emergency.html">Emergency</a>
           <a href="./html/covid.html">Covid-19</a>
           <a href="./html/chronic.html">Chronic</a>
@@ -48,8 +48,8 @@
             <fieldset>
               <legend>Start Consultation</legend>
               <div class="inputCont" id="signIn">
-                <input name="phone" type="text" placeholder="Phone" id="userPhone" />
-                <input name="name" type="text" placeholder="Name" id="userNmae" />
+                <input name="phone" type="text" placeholder="Phone" id="userPhone" pattern="\+[0-9-]+"/>
+                <input name="name" type="text" placeholder="Name" id="userNmae" pattern="\w[a-zA-Z ]+" />
               </div>
               <input name="email" type="text" placeholder="Email" id="userImael" />
               <button class="signUp" type="submit">Sign Up</button>
