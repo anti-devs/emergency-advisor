@@ -121,7 +121,7 @@ legend {
     width: 100%;
 }
 .login {
-    width: 44.45%;
+    width: 463.2px;
     margin: 0 23px;
 }
 .signUp:hover{
@@ -207,19 +207,14 @@ legend {
     width: 50%;
     height: 500px; 
 }
-/* .imgGame{
-    display: none;
-} */
 .myGames,.insidegame{
     display: flex;
     height: 300px;
     width: 50%;
     border:2px solid #CDF0EA ;
     margin: 20px;
-    margin-left: 200px;  
-    
+    margin-left: 200px;
 }
-
 #imagesGame input{
     margin-top: 100px;
     border-radius: 20px;
@@ -473,6 +468,57 @@ textarea {
     font-size: 1rem;
   }
   /* End instruction */
+  /*AboutUs Start*/
+ .mainAbotme{
+    position: relative;
+  }
+  .ourStorie{
+    text-align: center;
+    position: relative;
+    height: 600px;
+  }
+  .headerAboutme{
+    text-align: center;
+    font-size: 25px;
+    margin:10px 0 0 0;
+  }
+ .ourStorie img {
+   width: 1100px;
+   position: relative;
+   top: 0;
+   left: 0;
+   height: 590px;
+   opacity: 0.7;
+ }
+ .ourStorie pre {
+   text-overflow: unset; 
+   opacity: 2.0;
+   width: 100%;
+   position: absolute;
+ 
+   top: 98px;
+   height: 400px;
+   font-size: 30px;
+   font-family: 'Just Another Hand', cursive;
+ }
+ @keyframes example {
+    0%{top: 14%;}
+    50%{top: 75%;}
+   100% {
+     top:14%;
+   }
+ }
+ .iconRead {
+   position: absolute;
+   left: 22%;
+   top: 60px;
+   font-size: 30px;
+   animation-name: example;
+   animation-duration: 10s;
+   animation-delay: 2s;
+   animation-iteration-count: 2; 
+ }
+ /*AboutUs End*/
 /* Footer Start*/
 footer
 {
@@ -753,19 +799,7 @@ main {
      width: 50px;
      height: 50px;
  }
- /* @keyframes rotating {
-     25% {
-         transform: rotate(30deg);
-     }
-     50% {
-         transform: rotate(0deg);
-     }
-     75% {
-         transform: rotate(-30deg);
-     }
- } */
  #newDiv {
-     /* outline: white solid 3px; */
      font-size: 2rem;
      color: white;
      text-align: center;
@@ -777,3 +811,4 @@ main {
      border-radius: 1.5rem;
      font-size: 1.25rem;
  }
+ 
