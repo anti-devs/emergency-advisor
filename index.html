@@ -48,7 +48,7 @@
             <fieldset>
               <legend>Start Consultation</legend>
               <div class="inputCont" id="signIn">
-                <input name="phone" type="text" placeholder="Phone" id="userPhone" pattern="\+[0-9-]+"/>
+                <input name="phone" type="text" placeholder="Phone" id="userPhone" pattern="\+[0-9-]+" />
                 <input name="name" type="text" placeholder="Name" id="userNmae" pattern="\w[a-zA-Z ]+" />
               </div>
               <input name="email" type="text" placeholder="Email" id="userImael" />
@@ -110,16 +110,16 @@
           </div>
         </div>
       </div>
-        <h2 class="map-tip-headT" id="left">Tips for Healthy & Happy Living</h2>
-        <div class="tip">
-          <article id="tips">
-            <h2 id="tip-header"></h2>
-            <p class="tip-content" id="tip-content"></p>
-          </article>
-          <div id="divbtnAnsewr">
-            <a href="#ourGame"><button id="ask" class="ask" onclick="gameStart()">Test Your Eyes</button></a>
-          </div>
+      <h2 class="map-tip-headT" id="left">Tips for Healthy & Happy Living</h2>
+      <div class="tip">
+        <article id="tips">
+          <h2 id="tip-header"></h2>
+          <p class="tip-content" id="tip-content"></p>
+        </article>
+        <div id="divbtnAnsewr">
+          <a href="#ourGame"><button id="ask" class="ask" onclick="gameStart()">Test Your Eyes</button></a>
         </div>
+      </div>
     </section>
     <div id="imagesGame" class="imgGame">
       <div class="insidegame" id="insidegame">
@@ -143,7 +143,7 @@
           </form>
         </div>
         <div id="newDiv"></div>
-      <button id="removeTest" onclick="removeGame()">Close</button>
+        <button id="removeTest" onclick="removeGame()">Close</button>
       </div>
 
     </div>
@@ -151,46 +151,44 @@
 
   </main>
   <footer>
-      <div class="container mainFooter">
-        <div class="contact-information">
-          <h3>Contact :</h3>
-          <div class="address">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Address : </span>
-            <span>Amman-Jordan</span>
-          </div>
-          <div class="email">
-            <i class="far fa-envelope"></i>
-            <span>Email : </span>
-            <span>example@gmail.com</span>
-          </div>
-          <div class="phone">
-            <i class="fas fa-phone"></i>
-            <span>phone : </span>
-            <span>+123-456-0002</span>
-          </div>
+    <div class="mainFooter">
+      <div class="contact-information">
+        <h3>Contact :</h3>
+        <div class="address">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Address : </span>
+          <span>Amman-Jordan</span>
         </div>
-        <div class="linksDiv">
-          <img src="" alt="" id="footerImage";>
+        <div class="email">
+          <i class="far fa-envelope"></i>
+          <span>Email : </span>
+          <span>example@gmail.com</span>
         </div>
-        <div class="stayInTouch">
-          <h3>STAY IN TOUCH</h3>
-          <nav class="icons">
-            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></i></a>
-            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.hotmail.com" target="_blank"><i class="far fa-envelope fa-lg"></i></a>
-          </nav>
-          <button class="advice">Ask For Free Advice</button>
+        <div class="phone">
+          <i class="fas fa-phone"></i>
+          <span>phone : </span>
+          <span>+123-456-0002</span>
         </div>
       </div>
-      <nav class="privacy">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Services</a>
-        <a href="#">&copy; By Emergency advisor</a>
-      </nav>
-   
+      <div class="linksDiv">
+        <img src="" alt="" id="footerImage" ;>
+      </div>
+      <div class="stayInTouch">
+        <h3>STAY IN TOUCH</h3>
+        <nav class="icons">
+          <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></i></a>
+          <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.hotmail.com" target="_blank"><i class="far fa-envelope fa-lg"></i></a>
+        </nav>
+        <button class="advice">Ask For Free Advice</button>
+      </div>
+    </div>
+    <nav class="privacy">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Services</a>
+      <a href="#">&copy; By Emergency advisor</a>
+    </nav>
   </footer>
-
   <script src="./script/home.js"></script>
 </body>
 
