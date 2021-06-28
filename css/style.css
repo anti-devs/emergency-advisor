@@ -82,7 +82,6 @@ header {
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    /* outline: red solid 3px; */
     width: fit-content;
 }
 .hero form fieldset, .formCenter form{
@@ -187,16 +186,20 @@ legend {
 }
 #tips {
     border: 2px solid #000;
-    height: 50%;
     width: 100%;
-    padding: 23px 51px;
+    display: flex;
+    height: 450px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 51px;
     line-height: 1.6;
     background-color: #CDF0EA;
     color: #222;
     border-radius: 15px 80px;
     border: none;
     font-size: 20px;
-    overflow: scroll;  
+    overflow: scroll; 
 }
 .ask {
     width: 180px;
@@ -211,7 +214,6 @@ legend {
 }
 .ask:hover {
     background-color: #cbcbcb;
-
 }
 #tips::-webkit-scrollbar {
     display: none;
@@ -223,13 +225,13 @@ legend {
 #tips #tip-header {
     font-weight: bold;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 42px;
     font-size: 1.5rem;
 }
 #tip .tip-content {
     font-size: 28px;
 }
-.map-picture, #tips {
+.map-picture {
     height: 500px; 
 }
 .myGames,.insidegame{
@@ -500,13 +502,37 @@ textarea {
   }
   /* End instruction */
   /*AboutUs Start*/
-  .our-team-section {
+.our-team-section {
     display: flex;
     position: relative;
     padding-top: 40px;
     padding-bottom: 40px;
-    justify-content: space-between;
-    
+    justify-content: space-between; 
+}
+.row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.about-us h3 {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+.about-us p {
+    font-style: italic;
+    font-size: 24px;
+    color: #00325a;
+    line-height: 1.5;
+    text-indent: 70px;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    border: #00325a 2px solid;
+    border-radius: 15px;
 }
 .our-team-section:before {
     position: absolute;
@@ -648,7 +674,6 @@ textarea {
     font-size: 1.5rem;
     font-weight: bold;
 }
-  
  /*AboutUs End*/
 /* Footer Start*/
 footer
@@ -795,7 +820,6 @@ main {
     gap: 15px;
     padding: 10px;
     border: 2px solid #333;
-
 }
 ::-webkit-scrollbar {
     width: 15px;
@@ -818,8 +842,6 @@ main {
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      /* outline: solid red 2px; */
-      /* gap: 3rem; */
   }
   #divbtnAnsewr {
       width: 50%;
@@ -854,7 +876,6 @@ main {
      font-weight: bold;
      cursor: pointer;
  }
-
  .imgGame {
      max-width: 1170px;
      margin: 2rem auto;
@@ -924,8 +945,6 @@ main {
      grid-template-columns: 105px 105px 105px;
      grid-template-rows: 105px 105px 105px;
      margin-left: 7rem ;
-     
-
  }
  #numbers div {
      border: #555 solid 2px;
@@ -936,8 +955,6 @@ main {
      font-size: 3rem;
      background: gray;
      color: white;
-     
-     
  }
  #numbers div:hover ,#removeTest:hover{
      background: white;
@@ -968,15 +985,9 @@ main {
     font-size: 2.5rem;
     margin-top: 5rem;
 }
-#oldman {
-    margin: auto;
-    /* outline: solid 3px red; */
-    margin-bottom: 1.25rem
-}
-#oldmansection {
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    align-content: center;
+#divbtnAnsewr a button {
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    font-size: 22px;
 }
