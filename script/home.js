@@ -268,16 +268,15 @@ function checkLocal(local) {
 let num;
 let game = document.getElementById("ask"); // accesssing the icon to start the game once clicked
 let images = [
-  ["co2.png", 2],
-  ["co3.png", 3],
-  ["co4.png", 4],
-  ["co5.png", 5],
-  ["co6.png", 6],
-  ["co7.png", 7],
-  ["co8.png", 8],
-  ["co9.png", 9],
-]; // an array holding the images names
-
+  ["img1.jpg",1],
+  ["co2.png",2],
+  ["co3.png",3],
+  ["co4.png",4],
+  ["co5.png",5],
+  ["co6.png",6],
+  ["img3.jpg",7],
+  ["co8.png",8],
+  ["co9.png",9]]; // an array holding the images names
 let newImages = randomize(images); // getting a randomized array of images
 
 let imagesGame = document.getElementById("imagesGame"); // div containing the whole game
@@ -295,7 +294,7 @@ let imgAndForm = document.getElementById("imgAndForm");
 let newDiv = document.getElementById("newDiv");
 imagesGame.style.display = "none";
 function gameStart() {
-  imagesGame.style.display = "block";
+  imagesGame.style.display = 'block';
   myImage.src = `./img/${newImages[counter][0]}`;
 }
 
@@ -310,13 +309,14 @@ function getNumber(e) {
   } else {
     counter++;
   }
-  if (counter == 8) {
+  if (counter == 9) {
+    
     insidegame.appendChild(newDiv);
-    newDiv.textContent = `Game is over, and your score is ${score} out of 8.`;
-    newDiv.style.color = "white";
-    newDiv.style.fontSize = "2rem";
-    newDiv.style.textAlign = "center";
-    newDiv.style.display = "initial";
+    newDiv.textContent = `Game is over, and your score is ${score} out of 9.`;
+    newDiv.style.color = 'white';
+    newDiv.style.fontSize = '2rem';
+    newDiv.style.textAlign = 'center';
+    newDiv.style.display = 'initial';
     counter = 0;
     numbers.removeEventListener("click", getNumber);
     return;
@@ -327,13 +327,13 @@ function getNumber(e) {
 function randomize(arr) {
   // suppose we have an array and we want to have a copy that is randomized
   let randArr = [];
-  while (randArr.length != 8) {
-    let rand = getRandomIntInclusive(0, 7);
-    if (!randArr.includes(rand)) {
-      randArr.push(rand);
-    } else {
-      continue;
-    }
+  while (randArr.length != 9) {
+    let rand = getRandomIntInclusive(0, 8);
+     if (!randArr.includes(rand)) {
+       randArr.push(rand);
+     } else {
+       continue;
+     }
   }
   let imgCopy = arr.slice(0);
   for (let i = 0; i < imgCopy.length; i++) {
