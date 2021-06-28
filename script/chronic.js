@@ -2,7 +2,7 @@
 
 let path1 = window.location.pathname;
 
-console.log(path1);
+// console.log(path1);
 
 if (path1 == "/html/chronic.html") {
   let covid = document.getElementById("Chronic");
@@ -21,7 +21,7 @@ if (!localStorage.logInStatus) {
   updateVisualsLogout();
 } else {
   let currInd = Number(localStorage.index);
-  console.log(currInd);
+  // console.log(currInd);
   try {
     updateVisualsLogIn(JSON.parse(localStorage.click)[currInd].name);
   } catch {
@@ -31,7 +31,7 @@ if (!localStorage.logInStatus) {
 function updateVisualsLogIn(name) {
   // just show and hide stuff based on if the user signs up
   if (name) {
-    console.log(name);
+    console.log();
   } else {
     updateVisualsLogout();
     return;
@@ -93,6 +93,7 @@ function checkUser() {
 
 let chronicDis = document.getElementById("section-one");
 chronicDis.addEventListener("click", createChroDiv);
+// chronicDis.addEventListener('click', retract);
 let hiddenDiv = document.getElementById("hiddenDiv");
 hiddenDiv.style.opacity = "0";
 let indexPlusOne = 0;
@@ -108,11 +109,11 @@ function ChronicDiseas(about, symptoms, tips) {
   ChronicDiseas.lastIndex = 1000;
 }
 ChronicDiseas.all = [];
-
+let open;
 ChronicDiseas.prototype.render = (obj) => {
   div = document.createElement("div");
   let nextDiv = chronicDis.children[indexPlusOne + 1];
-  console.log(nextDiv);
+  // console.log(nextDiv);
   chronicDis.insertBefore(div, nextDiv);
 
   // div.style.height = '0';
@@ -153,7 +154,6 @@ ChronicDiseas.prototype.render = (obj) => {
   }
   div.className = "insertedDiv";
   let divHeight = div.offsetHeight;
-  console.log(divHeight);
   div.style.height = "0";
   main.style.height = divHeight + 400 + "px";
   div.animate([{ height: `${divHeight}px` }], {
@@ -161,6 +161,8 @@ ChronicDiseas.prototype.render = (obj) => {
     iterations: 1,
     fill: "forwards",
   });
+  open = true;
+  chronicDis.addEventListener("click", retract);
 };
 
 let diseasesArray = [
@@ -194,7 +196,8 @@ let diseasesArray = [
 function createChroDiv(evt) {
   let index = Number(evt.target.getAttribute("index"));
   if (index <= 4) {
-    if (index == ChronicDiseas.lastIndex) {
+    if (false) {
+      console.log(ChronicDiseas.lastIndex);
       return;
     } else {
       let [about, symptoms, tips] = getFromArray(index);
@@ -221,3 +224,24 @@ function removeAllChildNodes(parent) {
   }
 }
 
+function retract(evt) {
+  
+  div.animate([{ height: `0` }], {
+    duration: 400,
+    iterations: 1,
+    fill: "forwards",
+  });
+  div.style.padding= '0 30px';
+
+  setTimeout(function(){ 
+    try {
+      chronicDis.removeChild(div);
+      console.log('removed');
+    } catch {
+      console.log("div already removed");
+    }
+   }, 500);
+   main.style.height = 'initial';
+  chronicDis.removeEventListener("click", retract);
+  
+}
