@@ -190,7 +190,8 @@
     </div>
   </main>
   <footer>
-      <div class="container mainFooter">
+    <div class="container">
+      <div class="mainFooter">
         <div class="contact-information">
           <h3>Contact :</h3>
           <div class="address">
@@ -228,7 +229,6 @@
         <a href="#">&copy; By Emergency advisor</a>
       </nav>
     </div>
-   
   </footer>
   <script>
     let path = window.location.pathname;
@@ -244,7 +244,7 @@
 
     footerImage.style.width = '600px';
     footerImage.style.height = '250px';
-    
+
     let num1 = 0;
     function printImage() {
       footerImage.src = `../tweet/${tweets[num1]}`;
