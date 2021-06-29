@@ -12,6 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/reset.css" />
   <link rel="stylesheet" href="./css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -43,11 +46,11 @@
   </header>
   <main class="homeMain" id="main">
     <section class="hero" id="hero">
-      <div class="container" id="formAll">
+      <div class="container" id="formAll" ">
         <div class="formCenter">
           <form action="" id="input">
             <fieldset>
-              <legend>Start Consultation</legend>
+              <legend style="margin-left: 0.5rem; margin-bottom: 1rem;">Log In or Sign Up</legend>
               <div class="inputCont" id="signIn">
                 <input name="phone" type="text" placeholder="Phone" id="numr" pattern="\+?[0-9-]+" required/>
                 <input name="name" type="text" placeholder="Name" id="name" pattern="\w[a-zA-Z ]+" required/>
@@ -58,6 +61,7 @@
           </form>
           <button class="signUp " style="margin: 1rem;" id="signUp" onclick="signup()">Sign Up</button>
             <button class="signUp login" style="margin: 1rem;" id="logIn" onclick="login()">Log In</button>
+            <p id="logMessage">hello</p>
         </div>
       </div>
     </section>
@@ -187,8 +191,8 @@
       </div>      
     </div>
     <nav class="privacy">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Services</a>
+      <a href="#">Privacy Policy &middot; </a>
+      <a href="#">Services &middot; </a>
       <a href="#">&copy; By Emergency advisor</a>
     </nav>
   </footer>
