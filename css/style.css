@@ -731,22 +731,6 @@ footer
     content: "\f095";
     font-size: 24px;
 }
-.linksDiv h3 {
-    padding: 10px 0;
-}
-.linksDiv li {
-    padding: 5px 0;
-    list-style: none;
-}
-.linksDiv li a {
-    text-decoration: none;
-}
-.linksDiv li a:hover {
-    color: #1DA1F2;
-}
-.linksDiv {
-    flex-direction: column;
-}
 .privacy {
     height: 70px;
     display: flex;
@@ -762,7 +746,8 @@ footer
     flex-direction: column;
 }
 .contact-information h3 {
-    padding: 10px 9px;
+    padding: 10px 5px;
+    margin: 10px 0;
 }
 .address, .email, .phone {
     display: flex;
