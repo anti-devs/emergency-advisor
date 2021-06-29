@@ -18,7 +18,7 @@ let tipContent = document.getElementById("tip-content");
 let tips = [
   "Eat a combination of different foods, including fruit, vegetables, legumes, nuts and whole grains. Adults should eat at least five portions (400g) of fruit and vegetables per day. You can improve your intake of fruits and vegetables by always including veggies in your meal; eating fresh fruit and vegetables as snacks; eating a variety of fruits and vegetables; and eating them in season. By eating healthy, you will reduce your risk of malnutrition and noncommunicable diseases (NCDs) such as diabetes, heart disease, stroke and cancer.",
 
-  "Filipinos consume twice the recommended amount of sodium, putting them at risk of high blood pressure, which in turn increases the risk of heart disease and stroke. Most people get their sodium through salt. Reduce your salt intake to 5g per day, equivalent to about one teaspoon. It’s easier to do this by limiting the amount of salt, soy sauce, fish sauce and other high-sodium condiments when preparing meals; removing salt, seasonings and condiments from your meal table; avoiding salty snacks; and choosing low-sodium products.\nOn the other hand, consuming excessive amounts of sugars increases the risk of tooth decay and unhealthy weight gain. In both adults and children, the intake of free sugars should be reduced to less than 10% of total energy intake. This is equivalent to 50g or about 12 teaspoons for an adult. WHO recommends consuming less than 5% of total energy intake for additional health benefits. You can reduce your sugar intake by limiting the consumption of sugary snacks, candies and sugar-sweetened beverages.",
+  "Filipinos consume twice the recommended amount of sodium, putting them at risk of high blood pressure, which in turn increases the risk of heart disease and stroke. Most people get their sodium through salt. Reduce your salt intake to 5g per day, equivalent to about one teaspoon. It’s easier to do this by limiting the amount of salt, soy sauce, fish sauce and other high-sodium condiments when preparing meals; removing salt, seasonings and condiments from your meal table; avoiding salty snacks; and choosing low-sodium products.\nOn the other hand, consuming excessive amounts of sugars increases the risk of tooth decay and unhealthy weight gain. In both adults and children, the intake of free sugars should be reduced to less than 10% of total energy intake.",
 
   "Fats consumed should be less than 30% of your total energy intake. This will help prevent unhealthy weight gain and NCDs. There are different types of fats, but unsaturated fats are preferable over saturated fats and trans-fats. WHO recommends reducing saturated fats to less than 10% of total energy intake; reducing trans-fats to less than 1% of total energy intake; and replacing both saturated fats and trans-fats to unsaturated fats.\nThe preferable unsaturated fats are found in fish, avocado and nuts, and in sunflower, soybean, canola and olive oils; saturated fats are found in fatty meat, butter, palm and coconut oil, cream, cheese, ghee and lard; and trans-fats are found in baked and fried foods, and pre-packaged snacks and foods, such as frozen pizza, cookies, biscuits, and cooking oils and spreads.",
 
@@ -112,30 +112,38 @@ function Status(log, ind){
 
 function signup() {
   console.log('signup in progress ... ');
-
+  
   let number = userNumber.value;
   let name = userName.value;
   let email = userEmail.value;
 
-  if (checkUserExists(name, number, email)) {
-    console.log('you already have an account');
+  if (checkName(name) && checkNumber(number) &&checkEmail(email) ) {
+    console.log('valid');
+    if (checkUserExists(name, number, email)) {
+      console.log('you already have an account');
+      updateStatus(false, 1000);
+      updateLogOut();
+    } else {
+      if (!userData.length){
+     
+        userData.push(new User(name, number, email));
+        localStorage.setItem('userData',JSON.stringify(userData));
+        updateStatus(true, 0);
+        updatelogIn(JSON.parse(localStorage.status).index);
+      } else {
+        console.log('there is another user');
+        userData.push(new User(name, number, email));
+        localStorage.setItem('userData',JSON.stringify(userData));
+        updateStatus(true, JSON.parse(localStorage.userData).length - 1);
+        updatelogIn(JSON.parse(localStorage.status).index);
+      }
+    }
+  }else {
+    console.log('invalid');
     updateStatus(false, 1000);
     updateLogOut();
-  } else {
-    if (!userData.length){
-   
-      userData.push(new User(name, number, email));
-      localStorage.setItem('userData',JSON.stringify(userData));
-      updateStatus(true, 0);
-      updatelogIn(JSON.parse(localStorage.status).index);
-    } else {
-      console.log('there is another user');
-      userData.push(new User(name, number, email));
-      localStorage.setItem('userData',JSON.stringify(userData));
-      updateStatus(true, JSON.parse(localStorage.userData).length - 1);
-      updatelogIn(JSON.parse(localStorage.status).index);
-    }
   }
+  
 }
 
 function login() {
@@ -146,13 +154,19 @@ function login() {
     let name = userName.value;
     let email = userEmail.value;
 
- if (userData.length == 0 ) {
-   console.log('you do not have an account');
-   updateStatus(false, 1000);
-   updateLogOut();
- } else if (checkUserExists(name, number, email)) {
-    updatelogIn(JSON.parse(localStorage.status).index)
- }
+  if (checkName(name) && checkNumber(number) &&checkEmail(email) )  {
+    if (userData.length == 0 ) {
+      console.log('you do not have an account');
+      updateStatus(false, 1000);
+      updateLogOut();
+    } else if (checkUserExists(name, number, email)) {
+       updatelogIn(JSON.parse(localStorage.status).index)
+    }
+  } else {
+    updateStatus(false, 1000);
+    updateLogOut();
+  }
+ 
 }
 
 function updateLogOut() {
@@ -190,7 +204,6 @@ function checkUserExists(Nname, Nnumber, Nemail) {
     for (let i = 0; i < JSON.parse(localStorage.userData).length; i++) {
     
       let {name, number, email} = JSON.parse(localStorage.userData)[i];
-      console.log(name.toLowerCase() , Nname.toLowerCase(),number , Nnumber,  email.toLowerCase() , Nemail.toLowerCase());
       if (name.toLowerCase() == Nname.toLowerCase() && number == Nnumber && email.toLowerCase() == Nemail.toLowerCase()) {
         console.log('logged in successfully');
         updateStatus(true, i);
@@ -215,6 +228,37 @@ function updateStatus(log, ind) {
 function somethingNeeded() {
 
   c == 0 ? location.reload() : c++;
+}
+
+function reloadPage() {
+  location.reload();
+}
+
+function checkNumber(num) {
+  let testStr = num;
+  let testRegex = /\+?\d+/g;
+  if (String(testStr.match(testRegex)) == num) {
+    return true;
+  }
+  return false;
+  
+}
+function checkName(nam) {
+  let testStr = nam;
+  let testRegex = /[a-zA-Z]+\W?[a-zA-Z]+/g;
+  if (String(testStr.match(testRegex)) == nam) {
+    return true;
+  }
+  return false;
+}
+
+function checkEmail(eml) {
+  let testStr = eml;
+  let testRegex = /\w+@[a-zA-Z]+.[a-zA-Z]+/g;
+  if (String(testStr.match(testRegex)) == eml) {
+    return true;
+  }
+  return false;
 }
 /////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////// Animation ////////////////////////////////////

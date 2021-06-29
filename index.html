@@ -35,10 +35,11 @@
         <section id="loggedIn">
           <i class="far fa-user" id="userPic"></i>
           <p id="userName"></p>
+          <div id="logOut" onclick="reloadPage()">Log Out</div>
         </section>
       </div>
     </div>
-    <p id="logOut">Log Out</p>
+    
   </header>
   <main class="homeMain" id="main">
     <section class="hero" id="hero">
@@ -48,14 +49,14 @@
             <fieldset>
               <legend>Start Consultation</legend>
               <div class="inputCont" id="signIn">
-                <input name="phone" type="text" placeholder="Phone" id="numr" pattern="\+[0-9-]+" />
-                <input name="name" type="text" placeholder="Name" id="name" pattern="\w[a-zA-Z ]+" />
+                <input name="phone" type="text" placeholder="Phone" id="numr" pattern="\+?[0-9-]+" required/>
+                <input name="name" type="text" placeholder="Name" id="name" pattern="\w[a-zA-Z ]+" required/>
               </div>
-              <input name="email" type="text" placeholder="Email" id="emal" />
+              <input name="email" type="text" placeholder="Email" id="emal" required/>
               
             </fieldset>
           </form>
-          <button class="signUp login" style="margin: 1rem;" id="signUp" onclick="signup()">Sign Up</button>
+          <button class="signUp " style="margin: 1rem;" id="signUp" onclick="signup()">Sign Up</button>
             <button class="signUp login" style="margin: 1rem;" id="logIn" onclick="login()">Log In</button>
         </div>
       </div>
@@ -117,7 +118,7 @@
           <p class="tip-content" id="tip-content"></p>
         </article>
         <div id="divbtnAnsewr">
-          <a href="#ourGame"><button id="ask" class="ask" onclick="gameStart()">Test Your Eyes</button></a>
+          <a href="#ourGame"><button id="ask" class="ask" onclick="gameStart()">ColorBlindness Mini Test</button></a>
         </div>
       </div>
     </section>
@@ -153,7 +154,7 @@
   <footer>
     <div class="container mainFooter">
       <div class="contact-information">
-        <h3>Contact :</h3>
+        <h3>Contact Us:</h3>
         <div class="address">
           <i class="fas fa-map-marker-alt"></i>
           <span>Address : </span>
