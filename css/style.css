@@ -44,6 +44,7 @@ header {
 .nav-bar {
     width: 100%;
 }
+
 .fa-user:before {
     content: "\f007";
     font-size: 30px;
@@ -112,7 +113,7 @@ legend {
     justify-content: space-between;
     gap: 1rem;
 }
-.signUp {
+.signUp, .login  {
     height: 40px;
     border-radius: 20px;
     border: none;
@@ -120,12 +121,14 @@ legend {
     font-size: 20px;
     transition: all 200ms ease-in-out;
     width: 100%;
+    width: 90.7%;
+    align-self: center;
 }
-.login {
+/* .login {
     width: 90.7%;
     margin: 0 23px;
     align-self: center;
-}
+} */
 .signUp:hover{
     cursor: pointer;
     background-color: #10b8849e;
@@ -136,12 +139,19 @@ legend {
     background-color: #e47f7f9e;
     color: black;
 }
+#logIn:hover {
+    cursor: pointer;
+    background-color: #e47f7f9e;
+    color: black;
+}
+
 .second-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 60px auto;
     transition: ease-in-out all 200ms;
+    margin-bottom: 0;
 }
 .second-section .first-card, .second-card, .last-card {
     margin: 1.5rem;
@@ -174,6 +184,7 @@ legend {
 }
 .map-tip-headT{
     text-align: center;
+    margin-top: 6rem;
 }
 .tip {
     width: 100%;
@@ -193,6 +204,7 @@ legend {
     align-items: center;
     justify-content: center;
     padding: 0 51px;
+    padding-bottom: 60px;
     line-height: 1.6;
     background-color: #CDF0EA;
     color: #222;
@@ -514,6 +526,8 @@ textarea {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    align-items: center;
+    justify-content: center;
 }
 .about-us h3 {
     font-size: 32px;
@@ -554,6 +568,7 @@ textarea {
     overflow: hidden;
     position: relative;
     border-bottom: 5px solid #00325a;
+    margin: auto;
     
 }
 .our-team:hover{
@@ -695,6 +710,8 @@ footer
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 1rem;
+    margin-top: 2rem;
 }
 .icons{
     display: flex;
@@ -752,6 +769,10 @@ footer
     display: flex;
     justify-content:center;
     align-items: flex-end;    
+    width: 100.5%;
+    padding: auto 0;
+    background: #DEEDF0;
+    padding-bottom: 1rem;
 }
 .privacy a, .privacy p{
     margin-left: 10px;
@@ -760,7 +781,10 @@ footer
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+
+    justify-content: center;
 }
+
 .contact-information h3 {
     padding: 10px 9px;
 }
@@ -848,6 +872,9 @@ main {
       justify-content: center;
       border-radius: 50%;
   }
+  #loggedIn {
+      position: relative;
+  }
   #divbtnAnsewr {
       width: 50%;
       height: 100%;
@@ -872,9 +899,10 @@ main {
   }
  #logOut {
      position: absolute;
-     top: 55%;
-     left: 82.25%;
+     top: 30%;
+     left: 75px;
      font-size: 1rem;
+     width: 4rem;
  }
  #logOut:hover {
      color: #1DA1F2;
@@ -995,4 +1023,7 @@ main {
     height: 60px;
     text-align: center;
     font-size: 22px;
+}
+nav a:hover {
+    color: #00EAD3;
 }
