@@ -224,7 +224,6 @@ let footerImage=document.getElementById('footerImage');
 
 footerImage.style.width='600px';
 footerImage.style.height='250px';
-footerImage.style.margin='0 100px 0 0';
 
 
 let num1=2;
