@@ -196,6 +196,7 @@ function updatelogIn(index) {
   updateStatus(true, index);
 
   // need to reload the page for once or check again for the flow
+  formAll.innerHTML = '';
 }
 
 function checkUserExists(Nname, Nnumber, Nemail) {
