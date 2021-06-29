@@ -84,6 +84,7 @@ header {
     align-items: flex-start;
     justify-content: space-between;
     width: fit-content;
+
 }
 .hero form fieldset, .formCenter form{
     font-size: 20px;
@@ -697,9 +698,9 @@ footer
     align-items: center;
     flex-direction: row;
     background-color: #DEEDF0;
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 10px;
-    height: 350px;
+    height: 255px;
     position:relative;
     bottom:0;
     left:0;
@@ -709,7 +710,7 @@ footer
 .mainFooter {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin: 1rem;
     margin-top: 2rem;
 }
@@ -749,7 +750,7 @@ footer
     font-size: 24px;
 }
 .privacy {
-    height: 70px;
+    height: 35px;
     display: flex;
     justify-content:center;
     align-items: flex-end;    
@@ -765,13 +766,15 @@ footer
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-
     justify-content: center;
+
 }
 
 .contact-information h3 {
-    padding: 10px 5px;
+    padding: 0px 10px 0px 10px;
     margin: 10px 0;
+    margin-top: 0;
+    
 }
 .address, .email, .phone {
     display: flex;
@@ -1045,4 +1048,38 @@ nav a:hover {
 }
 hr {
     max-width: 1170px;
+}
+.afterEffect:after {
+    content: '';
+    position: absolute;
+    top: 94px;
+    left: 0;
+    width: 596px;
+    height: 10px;
+    background-color: rgb(255,0,0);
+}
+#logMessage {
+    /* outline: solid red ; */
+    width: 500.36px;
+    height: 100px;
+    margin-left: 2rem;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    color: red;
+    font-weight: bold;
+}
+#up, #down {
+    position: fixed;
+    cursor: pointer;
+}
+#down {
+    top: 140px;
+    right: 20px;
+    z-index: 1;
+}
+#up {
+    bottom: 140px;
+    right: 20px;
+    z-index: 1;
 }

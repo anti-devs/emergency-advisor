@@ -1,4 +1,5 @@
 "use strict";
+
 /////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////// tap color //////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
@@ -8,6 +9,8 @@ if (path3 == "/index.html") {
   let covid = document.getElementById("Home");
 
   covid.setAttribute("style", "color:#00EAD3");
+
+
 }
 /////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// Tips //////////////////////////////////////
@@ -71,28 +74,33 @@ function updateTips() {
 /////////////////////////////////////////////////////////////////////////////////////
 let c = 0;
 let userData = [];
-let status = {logged: false, index: 0};
-let logOutMessage = document.getElementById('logOut');
-let userPic = document.getElementById('userPic');
-let nameHolder = document.getElementById('userName');
-let loginButton = document.getElementById('logIn');
-let signupButton = document.getElementById('signUp');
-let formAll = document.getElementById('formAll');
-let userNumber = document.getElementById('numr');
-let userName = document.getElementById('name');
-let userEmail = document.getElementById('emal');
+let status = { logged: false, index: 0 };
+let logOutMessage = document.getElementById("logOut");
+let userPic = document.getElementById("userPic");
+let nameHolder = document.getElementById("userName");
+let loginButton = document.getElementById("logIn");
+let signupButton = document.getElementById("signUp");
+let formAll = document.getElementById("formAll");
+let userNumber = document.getElementById("numr");
+let userName = document.getElementById("name");
+let userEmail = document.getElementById("emal");
+let formCenter = document.querySelector(".formCenter");
+let logMessage = document.getElementById("logMessage");
+logOutMessage.addEventListener("click", updateLogOut);
+logMessage.style.opacity ='0';
 
-logOutMessage.addEventListener('click', updateLogOut);
+addHeading();
 
-try { 
+try {
   userData = JSON.parse(localStorage.userData);
 } catch {
-  console.log('no user exists');
+  console.log("no user exists");
 }
 
-try { 
+try {
   status = JSON.parse(localStorage.status);
   updatelogIn(JSON.parse(localStorage.status).index);
+  addHeading();
 } catch {
   status.logged = false;
   status.index = 1000; // index is out of range since no user is currently logged in
@@ -105,112 +113,129 @@ function User(name, number, email) {
   this.email = email;
 }
 
-function Status(log, ind){
-  this.logged= log;
+function Status(log, ind) {
+  this.logged = log;
   this.index = ind;
 }
 
 function signup() {
-  console.log('signup in progress ... ');
-  
+  console.log("signup in progress ... ");
+
   let number = userNumber.value;
   let name = userName.value;
   let email = userEmail.value;
 
-  if (checkName(name) && checkNumber(number) &&checkEmail(email) ) {
-    console.log('valid');
+  if (checkName(name) && checkNumber(number) && checkEmail(email)) {
+    console.log("valid");
     if (checkUserExists(name, number, email)) {
-      console.log('you already have an account');
+      console.log("you already have an account");
+      // logMessage.style.opacity = "1";
+      // logMessage.textContent = "You already have an account, try to log in.";
+      updateLogMessage("You already have an account, try to log in.", true)
       updateStatus(false, 1000);
       updateLogOut();
     } else {
-      if (!userData.length){
-     
+      if (!userData.length) {
         userData.push(new User(name, number, email));
-        localStorage.setItem('userData',JSON.stringify(userData));
+        localStorage.setItem("userData", JSON.stringify(userData));
         updateStatus(true, 0);
         updatelogIn(JSON.parse(localStorage.status).index);
       } else {
-        console.log('there is another user');
+        console.log("there is another user");
         userData.push(new User(name, number, email));
-        localStorage.setItem('userData',JSON.stringify(userData));
+        localStorage.setItem("userData", JSON.stringify(userData));
         updateStatus(true, JSON.parse(localStorage.userData).length - 1);
         updatelogIn(JSON.parse(localStorage.status).index);
       }
     }
-  }else {
-    console.log('invalid');
+  } else {
+    console.log("invalid");
+    // logMessage.style.opacity = "1";
+    // logMessage.textContent = "Invalid entries. Please check again.";
+    updateLogMessage("Invalid entries. Please check again.", true)
     updateStatus(false, 1000);
     updateLogOut();
   }
-  
 }
 
 function login() {
+  console.log("sign in in progress ...");
 
- console.log('sign in in progress ...');
+  let number = userNumber.value;
+  let name = userName.value;
+  let email = userEmail.value;
 
-    let number = userNumber.value;
-    let name = userName.value;
-    let email = userEmail.value;
-
-  if (checkName(name) && checkNumber(number) &&checkEmail(email) )  {
-    if (userData.length == 0 ) {
-      console.log('you do not have an account');
+  if (checkName(name) && checkNumber(number) && checkEmail(email)) {
+    if (userData.length == 0) {
+      console.log("you do not have an account");
+      // logMessage.style.opacity = "1";
+      // logMessage.textContent =
+      //   "You do not have an account, try to sign up first.";
+      updateLogMessage("You do not have an account, try to sign up first.", true);
       updateStatus(false, 1000);
       updateLogOut();
     } else if (checkUserExists(name, number, email)) {
-       updatelogIn(JSON.parse(localStorage.status).index)
+      updatelogIn(JSON.parse(localStorage.status).index);
     }
   } else {
+    // logMessage.style.opacity = "1";
+    // logMessage.textContent =
+    //   "You do not have an account, try to sign up first.";
+    updateLogMessage("You do not have an account, try to sign up first.", true);
     updateStatus(false, 1000);
     updateLogOut();
   }
- 
 }
 
 function updateLogOut() {
-
-  logOutMessage.style.display = 'none';
-  userPic.style.display = 'initial';
-  nameHolder.style.display = 'none';
-  formAll.style.display = 'intital';
+  logOutMessage.style.display = "none";
+  userPic.style.display = "initial";
+  nameHolder.style.display = "none";
+  formAll.style.display = "intital";
   updateStatus(false, 1000);
 }
 
 function updatelogIn(index) {
-
-  logOutMessage.style.display = 'initial';
-  userPic.style.display = 'none';
-  nameHolder.style.display = 'initial';
+  logOutMessage.style.display = "initial";
+  userPic.style.display = "none";
+  nameHolder.style.display = "initial";
   if (!status.logged) {
-    formAll.style.display = 'initial';
+    formAll.style.display = "initial";
   } else {
-    formAll.style.display = 'none';
+    formAll.style.display = "none";
   }
   let name = JSON.parse(localStorage.userData)[index].name;
-  name = name.split(" ").map((item) => item.toUpperCase()).map((item) => {
-       return item[0];
-      }).join("");
+  name = name
+    .split(" ")
+    .map((item) => item.toUpperCase())
+    .map((item) => {
+      return item[0];
+    })
+    .join("");
   nameHolder.textContent = name;
   updateStatus(true, index);
-
-  // need to reload the page for once or check again for the flow
-  formAll.innerHTML = '';
+  formCenter.innerHTML = "";
+  addHeading();
 }
 
 function checkUserExists(Nname, Nnumber, Nemail) {
-  
   try {
     for (let i = 0; i < JSON.parse(localStorage.userData).length; i++) {
-    
-      let {name, number, email} = JSON.parse(localStorage.userData)[i];
-      if (name.toLowerCase() == Nname.toLowerCase() && number == Nnumber && email.toLowerCase() == Nemail.toLowerCase()) {
-        console.log('logged in successfully');
+      let { name, number, email } = JSON.parse(localStorage.userData)[i];
+      if (
+        name.toLowerCase() == Nname.toLowerCase() &&
+        number == Nnumber &&
+        email.toLowerCase() == Nemail.toLowerCase()
+      ) {
+        console.log("logged in successfully");
         updateStatus(true, i);
         return true;
       } else {
-        console.log('no user account');
+        console.log("no user account");
+        // logMessage.style.opacity = "1";
+        // logMessage.textContent =
+        //   "This account does not exist, check again or sign up.";
+        updateLogMessage("This account does not exist, check again or sign up.", true);
         updateStatus(false, 1000);
         continue;
       }
@@ -222,12 +247,10 @@ function checkUserExists(Nname, Nnumber, Nemail) {
 }
 
 function updateStatus(log, ind) {
-
-  localStorage.setItem('status',JSON.stringify(new Status(log, ind)));
+  localStorage.setItem("status", JSON.stringify(new Status(log, ind)));
 }
 
 function somethingNeeded() {
-
   c == 0 ? location.reload() : c++;
 }
 
@@ -242,7 +265,6 @@ function checkNumber(num) {
     return true;
   }
   return false;
-  
 }
 function checkName(nam) {
   let testStr = nam;
@@ -260,6 +282,87 @@ function checkEmail(eml) {
     return true;
   }
   return false;
+}
+
+function addHeading() {
+  if (JSON.parse(localStorage.status).logged) {
+    console.log('already logged, executing animations');
+    let heading = document.createElement("h1");
+    formCenter.appendChild(heading);
+    heading.textContent = "Emergency Advisor";
+    heading.style.fontSize = "4rem";
+    heading.style.marginLeft = "-8rem";
+    heading.style.marginTop = "-4.5rem";
+    heading.style.fontFamily = "'Righteous', cursive";
+    heading.style.color = "black";
+    heading.style.padding = "15px 0 15px  0";
+    heading.style.opacity = "0";
+    let cntr = 0;
+    let cntrm = 15;
+    let opacityAnim = setInterval(() => {
+      heading.style.marginLeft = `${-cntrm}rem`;
+      heading.style.opacity = cntr;
+      cntr += 0.01;
+      cntrm -= 0.08;
+      console.log(cntrm);
+      if (cntr == 1 || cntrm <= 8) {
+        clearInterval(opacityAnim);
+      }
+    }, 5);
+
+    heading.style.borderBottom = "red solid 0px";
+    // heading.className = 'afterEffect';
+    heading.style.position = "relative";
+
+    let text = document.createElement("p");
+    text.textContent = "A Union of Compassion & Healthcare.";
+    formCenter.appendChild(text);
+    text.style.fontSize = "2rem";
+    text.style.marginTop = "2rem";
+    text.style.opacity = "0";
+    setTimeout(function () {
+      cntr = 0;
+      cntrm = 15;
+      let panim = setInterval(() => {
+        text.style.marginLeft = `${-cntrm}rem`;
+        text.style.opacity = cntr;
+        cntr += 0.01;
+        cntrm -= 0.08;
+        console.log(cntrm);
+        if (cntr == 1 || cntrm <= 7.5) {
+          clearInterval(panim);
+        }
+      }, 5);
+    }, 500);
+
+    setTimeout(function () {
+      cntr = 0;
+      let banim = setInterval(() => {
+        heading.style.borderBottomWidth = `${cntr}px`;
+        cntr += 0.07;
+        console.log(cntrm);
+        if (cntr >= 10) {
+          clearInterval(banim);
+        }
+      }, 1);
+    }, 1000);
+  }
+}
+
+function updateLogMessage(message, status) {
+
+  logMessage.style.opacity = "0";
+  logMessage.textContent = message;
+
+  let cntr = 0;
+  let opacityAnim = setInterval(() => {
+    logMessage.style.opacity = cntr;
+    cntr += 0.01;
+    if (cntr == 1) {
+      clearInterval(opacityAnim);
+    }
+  }, 5);
+  logMessage.style.opacity = '0';
 }
 /////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////// Animation ////////////////////////////////////
@@ -282,15 +385,16 @@ function checkScroll() {
 let num;
 let game = document.getElementById("ask"); // accesssing the icon to start the game once clicked
 let images = [
-  ["img1.jpg",1],
-  ["co2.png",2],
-  ["co3.png",3],
-  ["co4.png",4],
-  ["co5.png",5],
-  ["co6.png",6],
-  ["img3.jpg",7],
-  ["co8.png",8],
-  ["co9.png",9]]; // an array holding the images names
+  ["img1.jpg", 1],
+  ["co2.png", 2],
+  ["co3.png", 3],
+  ["co4.png", 4],
+  ["co5.png", 5],
+  ["co6.png", 6],
+  ["img3.jpg", 7],
+  ["co8.png", 8],
+  ["co9.png", 9],
+]; // an array holding the images names
 let newImages = randomize(images); // getting a randomized array of images
 
 let imagesGame = document.getElementById("imagesGame"); // div containing the whole game
@@ -306,12 +410,12 @@ numbers.addEventListener("click", getNumber);
 let insidegame = document.getElementById("insidegame");
 let imgAndForm = document.getElementById("imgAndForm");
 let newDiv = document.getElementById("newDiv");
-let divbtnAnsewr = document.getElementById('divbtnAnsewr');
+let divbtnAnsewr = document.getElementById("divbtnAnsewr");
 imagesGame.style.display = "none";
 
 function gameStart() {
-  game.style.display = 'none';
-  imagesGame.style.display = 'block';
+  game.style.display = "none";
+  imagesGame.style.display = "block";
   myImage.src = `./img/${newImages[counter][0]}`;
 }
 
@@ -328,14 +432,13 @@ function getNumber(e) {
     counter++;
   }
   if (counter == 9) {
-    
     insidegame.appendChild(newDiv);
     newDiv.textContent = `Game is over, and your score is ${score} out of 9.`;
-    newDiv.style.color = 'white';
-    newDiv.style.fontSize = '2rem';
-    newDiv.style.textAlign = 'center';
-    newDiv.style.display = 'initial';
-    game.style.display = 'initial';
+    newDiv.style.color = "white";
+    newDiv.style.fontSize = "2rem";
+    newDiv.style.textAlign = "center";
+    newDiv.style.display = "initial";
+    game.style.display = "initial";
     counter = 0;
     numbers.removeEventListener("click", getNumber);
     return;
@@ -349,11 +452,11 @@ function randomize(arr) {
   let randArr = [];
   while (randArr.length != 9) {
     let rand = getRandomIntInclusive(0, 8);
-     if (!randArr.includes(rand)) {
-       randArr.push(rand);
-     } else {
-       continue;
-     }
+    if (!randArr.includes(rand)) {
+      randArr.push(rand);
+    } else {
+      continue;
+    }
   }
   let imgCopy = arr.slice(0);
   for (let i = 0; i < imgCopy.length; i++) {
@@ -370,23 +473,44 @@ function removeGame() {
 /////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////// footer image ///////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
-let tweets=['tweet1.jpg','tweet2.jpg','tweet3.jpg','tweet4.png','tweet5.png','tweet6.png','tweet7.png','tweet8.png','tweet9.png',
-'tweet10.png','tweet11.png','tweet12.png','tweet13.png','tweet14.png','tweet15.png','tweet16.png','tweet17.png','tweet18.png']
+let tweets = [
+  "tweet1.jpg",
+  "tweet2.jpg",
+  "tweet3.jpg",
+  "tweet4.png",
+  "tweet5.png",
+  "tweet6.png",
+  "tweet7.png",
+  "tweet8.png",
+  "tweet9.png",
+  "tweet10.png",
+  "tweet11.png",
+  "tweet12.png",
+  "tweet13.png",
+  "tweet14.png",
+  "tweet15.png",
+  "tweet16.png",
+  "tweet17.png",
+  "tweet18.png",
+];
 
-let footerImage=document.getElementById('footerImage');
+let footerImage = document.getElementById("footerImage");
 
-footerImage.style.width='600px';
-footerImage.style.height='250px';
+footerImage.style.width = "350px";
+footerImage.style.height = "150px";
+footerImage.style.marginRight = "8rem";
 
-let num1= 0;
-function printImage(){
-  footerImage.src=`../tweet/${tweets[num1]}`;
+let num1 = 0;
+function printImage() {
+  footerImage.src = `../tweet/${tweets[num1]}`;
   num1++;
-  if(num1 == tweets.length) {
+  if (num1 == tweets.length) {
     num1 = 0;
-   }
+  }
 }
-window.setInterval(printImage,3000);
+window.setInterval(printImage, 3000);
+
+
 /////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////// Comments ///////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
@@ -581,4 +705,3 @@ window.setInterval(printImage,3000);
 // }
 
 // getData(); /////////////
-

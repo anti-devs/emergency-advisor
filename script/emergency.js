@@ -1,4 +1,5 @@
 "use strict";
+
 /////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////// tap color //////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
@@ -150,8 +151,9 @@ let tweets=['tweet1.jpg','tweet2.jpg','tweet3.jpg','tweet4.png','tweet5.png','tw
 
 let footerImage=document.getElementById('footerImage');
 
-footerImage.style.width='600px';
-footerImage.style.height='250px';
+footerImage.style.width='350px';
+footerImage.style.height='150px';
+footerImage.style.marginRight = "8rem"
 
 let num1=3;
 function printImage(){
