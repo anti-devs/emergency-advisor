@@ -1,5 +1,32 @@
 "use strict";
+/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////// scrolling //////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+let up = document.getElementById("up");
+window.addEventListener("scroll", scrolling);
+let scrollVal;
+function scrolling() {
+  scrollVal = window.scrollY;
+  //  console.log(scrollVal);
+  if (window.scrollY > 100) {
+    up.style.opacity = "1";
+  } else {
+    up.style.opacity = "0";
+  }
+}
 
+function goUp() {
+  let val = scrollVal;
+  console.log(val);
+  let animation = setInterval(() => {
+    window.scrollTo(0, val);
+    val -= 30;
+    console.log(val);
+    if (val <= 0) {
+      clearInterval(animation);
+    }
+  }, 1);
+}
 /////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////// tap color //////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
@@ -9,8 +36,6 @@ if (path3 == "/index.html") {
   let covid = document.getElementById("Home");
 
   covid.setAttribute("style", "color:#00EAD3");
-
-
 }
 /////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// Tips //////////////////////////////////////
@@ -72,6 +97,7 @@ function updateTips() {
 /////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////// User profile ///////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
+let i = false;
 let c = 0;
 let userData = [];
 let status = { logged: false, index: 0 };
@@ -87,9 +113,7 @@ let userEmail = document.getElementById("emal");
 let formCenter = document.querySelector(".formCenter");
 let logMessage = document.getElementById("logMessage");
 logOutMessage.addEventListener("click", updateLogOut);
-logMessage.style.opacity ='0';
-
-addHeading();
+logMessage.style.opacity = "0";
 
 try {
   userData = JSON.parse(localStorage.userData);
@@ -99,9 +123,12 @@ try {
 
 try {
   status = JSON.parse(localStorage.status);
-  updatelogIn(JSON.parse(localStorage.status).index);
-  addHeading();
+  updatelogIn(JSON.parse(localStorage.status).index, true);
+  console.log("session is active for user");
+  i = true;
 } catch {
+  console.log("session is now inactive");
+  console.log(formCenter);
   status.logged = false;
   status.index = 1000; // index is out of range since no user is currently logged in
   updateLogOut();
@@ -129,9 +156,7 @@ function signup() {
     console.log("valid");
     if (checkUserExists(name, number, email)) {
       console.log("you already have an account");
-      // logMessage.style.opacity = "1";
-      // logMessage.textContent = "You already have an account, try to log in.";
-      updateLogMessage("You already have an account, try to log in.", true)
+      updateLogMessage("You already have an account, try to log in.", true);
       updateStatus(false, 1000);
       updateLogOut();
     } else {
@@ -150,9 +175,7 @@ function signup() {
     }
   } else {
     console.log("invalid");
-    // logMessage.style.opacity = "1";
-    // logMessage.textContent = "Invalid entries. Please check again.";
-    updateLogMessage("Invalid entries. Please check again.", true)
+    updateLogMessage("Invalid entries. Please check again.", true);
     updateStatus(false, 1000);
     updateLogOut();
   }
@@ -168,19 +191,16 @@ function login() {
   if (checkName(name) && checkNumber(number) && checkEmail(email)) {
     if (userData.length == 0) {
       console.log("you do not have an account");
-      // logMessage.style.opacity = "1";
-      // logMessage.textContent =
-      //   "You do not have an account, try to sign up first.";
-      updateLogMessage("You do not have an account, try to sign up first.", true);
+      updateLogMessage(
+        "You do not have an account, try to sign up first.",
+        true
+      );
       updateStatus(false, 1000);
       updateLogOut();
     } else if (checkUserExists(name, number, email)) {
       updatelogIn(JSON.parse(localStorage.status).index);
     }
   } else {
-    // logMessage.style.opacity = "1";
-    // logMessage.textContent =
-    //   "You do not have an account, try to sign up first.";
     updateLogMessage("You do not have an account, try to sign up first.", true);
     updateStatus(false, 1000);
     updateLogOut();
@@ -195,15 +215,11 @@ function updateLogOut() {
   updateStatus(false, 1000);
 }
 
-function updatelogIn(index) {
+function updatelogIn(index, key) {
   logOutMessage.style.display = "initial";
   userPic.style.display = "none";
   nameHolder.style.display = "initial";
-  if (!status.logged) {
-    formAll.style.display = "initial";
-  } else {
-    formAll.style.display = "none";
-  }
+
   let name = JSON.parse(localStorage.userData)[index].name;
   name = name
     .split(" ")
@@ -215,7 +231,7 @@ function updatelogIn(index) {
   nameHolder.textContent = name;
   updateStatus(true, index);
   formCenter.innerHTML = "";
-  addHeading();
+  addHeading(key);
 }
 
 function checkUserExists(Nname, Nnumber, Nemail) {
@@ -232,10 +248,10 @@ function checkUserExists(Nname, Nnumber, Nemail) {
         return true;
       } else {
         console.log("no user account");
-        // logMessage.style.opacity = "1";
-        // logMessage.textContent =
-        //   "This account does not exist, check again or sign up.";
-        updateLogMessage("This account does not exist, check again or sign up.", true);
+        updateLogMessage(
+          "This account does not exist, check again or sign up.",
+          true
+        );
         updateStatus(false, 1000);
         continue;
       }
@@ -262,16 +278,28 @@ function checkNumber(num) {
   let testStr = num;
   let testRegex = /\+?\d+/g;
   if (String(testStr.match(testRegex)) == num) {
+    userNumber.style.background = "initial";
+    userNumber.style.background = "revert";
+    userName.classList.remove("placeholder");
     return true;
   }
+  userName.classList.add("placeholder");
+  userNumber.style.background = "white";
+  userNumber.style.background = "#DD4132FF";
   return false;
 }
 function checkName(nam) {
   let testStr = nam;
   let testRegex = /[a-zA-Z]+\W?[a-zA-Z]+/g;
   if (String(testStr.match(testRegex)) == nam) {
+    userName.style.color = "initial";
+    userName.style.background = "revert";
+    userName.classList.remove("placeholder");
     return true;
   }
+  userName.classList.add("placeholder");
+  userName.style.color = "white";
+  userName.style.background = "#DD4132FF";
   return false;
 }
 
@@ -279,78 +307,109 @@ function checkEmail(eml) {
   let testStr = eml;
   let testRegex = /\w+@[a-zA-Z]+.[a-zA-Z]+/g;
   if (String(testStr.match(testRegex)) == eml) {
+    userEmail.style.color = "initial";
+    userEmail.style.background = "revert";
+    userName.classList.remove("placeholder");
     return true;
   }
+  userName.classList.add("placeholder");
+  userEmail.style.color = "white";
+  userEmail.style.background = "#DD4132FF";
   return false;
 }
 
-function addHeading() {
-  if (JSON.parse(localStorage.status).logged) {
-    console.log('already logged, executing animations');
-    let heading = document.createElement("h1");
-    formCenter.appendChild(heading);
-    heading.textContent = "Emergency Advisor";
-    heading.style.fontSize = "4rem";
-    heading.style.marginLeft = "-8rem";
-    heading.style.marginTop = "-4.5rem";
-    heading.style.fontFamily = "'Righteous', cursive";
-    heading.style.color = "black";
-    heading.style.padding = "15px 0 15px  0";
-    heading.style.opacity = "0";
-    let cntr = 0;
-    let cntrm = 15;
-    let opacityAnim = setInterval(() => {
-      heading.style.marginLeft = `${-cntrm}rem`;
-      heading.style.opacity = cntr;
-      cntr += 0.01;
-      cntrm -= 0.08;
-      console.log(cntrm);
-      if (cntr == 1 || cntrm <= 8) {
-        clearInterval(opacityAnim);
-      }
-    }, 5);
+function addHeading(key) {
+  console.log(key);
+  if (key) {
+    console.log("key is true and working");
+    if (JSON.parse(localStorage.status).logged) {
+      console.log("already logged, executing animations");
+      let heading = document.createElement("h1");
+      formCenter.appendChild(heading);
+      heading.textContent = "Emergency Advisor";
+      heading.style.fontSize = "4rem";
+      heading.style.marginLeft = "-8rem";
+      heading.style.marginTop = "-4.5rem";
+      heading.style.fontFamily = "'Righteous', cursive";
+      heading.style.color = "black";
+      heading.style.padding = "15px 0 15px  0";
+      heading.style.opacity = "1";
+      heading.style.borderBottom = "red solid 10px";
+      heading.style.position = "relative";
 
-    heading.style.borderBottom = "red solid 0px";
-    // heading.className = 'afterEffect';
-    heading.style.position = "relative";
-
-    let text = document.createElement("p");
-    text.textContent = "A Union of Compassion & Healthcare.";
-    formCenter.appendChild(text);
-    text.style.fontSize = "2rem";
-    text.style.marginTop = "2rem";
-    text.style.opacity = "0";
-    setTimeout(function () {
-      cntr = 0;
-      cntrm = 15;
-      let panim = setInterval(() => {
-        text.style.marginLeft = `${-cntrm}rem`;
-        text.style.opacity = cntr;
+      let text = document.createElement("p");
+      text.textContent = "A Union of Compassion & Healthcare.";
+      formCenter.appendChild(text);
+      text.style.fontSize = "2rem";
+      text.style.marginTop = "2rem";
+      text.style.opacity = "1";
+      text.style.marginLeft = '-7.48rem';
+      
+    }
+  } else {
+    console.log("key is undefined");
+    if (JSON.parse(localStorage.status).logged) {
+      console.log("already logged, executing animations");
+      let heading = document.createElement("h1");
+      formCenter.appendChild(heading);
+      heading.textContent = "Emergency Advisor";
+      heading.style.fontSize = "4rem";
+      heading.style.marginLeft = "-8rem";
+      heading.style.marginTop = "-4.5rem";
+      heading.style.fontFamily = "'Righteous', cursive";
+      heading.style.color = "black";
+      heading.style.padding = "15px 0 15px  0";
+      heading.style.opacity = "0";
+      let cntr = 0;
+      let cntrm = 15;
+      let opacityAnim = setInterval(() => {
+        heading.style.marginLeft = `${-cntrm}rem`;
+        heading.style.opacity = cntr;
         cntr += 0.01;
         cntrm -= 0.08;
-        console.log(cntrm);
-        if (cntr == 1 || cntrm <= 7.5) {
-          clearInterval(panim);
+        if (cntr == 1 || cntrm <= 8) {
+          clearInterval(opacityAnim);
         }
       }, 5);
-    }, 500);
 
-    setTimeout(function () {
-      cntr = 0;
-      let banim = setInterval(() => {
-        heading.style.borderBottomWidth = `${cntr}px`;
-        cntr += 0.07;
-        console.log(cntrm);
-        if (cntr >= 10) {
-          clearInterval(banim);
-        }
-      }, 1);
-    }, 1000);
+      heading.style.borderBottom = "red solid 0px";
+      heading.style.position = "relative";
+
+      let text = document.createElement("p");
+      text.textContent = "A Union of Compassion & Healthcare.";
+      formCenter.appendChild(text);
+      text.style.fontSize = "2rem";
+      text.style.marginTop = "2rem";
+      text.style.opacity = "0";
+      setTimeout(function () {
+        cntr = 0;
+        cntrm = 15;
+        let panim = setInterval(() => {
+          text.style.marginLeft = `${-cntrm}rem`;
+          text.style.opacity = cntr;
+          cntr += 0.01;
+          cntrm -= 0.08;
+          if (cntr == 1 || cntrm <= 7.5) {
+            clearInterval(panim);
+          }
+        }, 5);
+      }, 500);
+
+      setTimeout(function () {
+        cntr = 0;
+        let banim = setInterval(() => {
+          heading.style.borderBottomWidth = `${cntr}px`;
+          cntr += 0.07;
+          if (cntr >= 10) {
+            clearInterval(banim);
+          }
+        }, 1);
+      }, 1000);
+    }
   }
 }
 
 function updateLogMessage(message, status) {
-
   logMessage.style.opacity = "0";
   logMessage.textContent = message;
 
@@ -362,8 +421,9 @@ function updateLogMessage(message, status) {
       clearInterval(opacityAnim);
     }
   }, 5);
-  logMessage.style.opacity = '0';
+  logMessage.style.opacity = "0";
 }
+
 /////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////// Animation ////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
@@ -408,14 +468,63 @@ let numbers = document.getElementById("numbers");
 let next = document.getElementById("next");
 numbers.addEventListener("click", getNumber);
 let insidegame = document.getElementById("insidegame");
-let imgAndForm = document.getElementById("imgAndForm");
 let newDiv = document.getElementById("newDiv");
 let divbtnAnsewr = document.getElementById("divbtnAnsewr");
 imagesGame.style.display = "none";
 
+let ppp = document.getElementById("ourGame");
+let imgAndForm = document.getElementById("imgAndForm");
+let rrr = document.getElementById("removeTest");
+
 function gameStart() {
-  game.style.display = "none";
-  imagesGame.style.display = "block";
+  if (counter == 0) {
+    game.style.display = "none";
+    imagesGame.style.width = "0";
+    imagesGame.style.height = "0";
+    // imagesGame.style.overflow = "hidden";
+    imagesGame.style.display = "block";
+
+    ppp.style.opacity = "0";
+    imgAndForm.style.opacity = "0";
+    rrr.style.opacity = "0";
+
+    let h = 0;
+    let w = 0;
+    let gameAnimation = setInterval(() => {
+      imagesGame.style.width = `${w}px`;
+      imagesGame.style.height = `${h}px`;
+      w += 7.8;
+      h += 4.8533;
+      if (w >= 1170 || h >= 728) {
+        clearInterval(gameAnimation);
+      }
+    }, 1);
+    // imagesGame.style.overflow = 'initial';
+
+    setTimeout(() => {
+      let v = 0;
+      let gameAnim = setInterval(() => {
+        ppp.style.opacity = `${v}`;
+        imgAndForm.style.opacity = `${v}`;
+        rrr.style.opacity = `${v}`;
+        v += 0.01;
+        if (v >= 1) {
+          clearInterval(gameAnim);
+        }
+      }, 1);
+    }, 650);
+
+    let val = 1855;
+    console.log(val);
+    let animation = setInterval(() => {
+      window.scrollTo(0, val);
+      val += 30;
+      // console.log(x);
+      if (val >= 5000) {
+        clearInterval(animation);
+      }
+    }, 1);
+  }
   myImage.src = `./img/${newImages[counter][0]}`;
 }
 
@@ -510,9 +619,8 @@ function printImage() {
 }
 window.setInterval(printImage, 3000);
 
-
 /////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////// Comments ///////////////////////////////////
+//////////////////////////////////junk but we might need it//////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
 
 // // try {

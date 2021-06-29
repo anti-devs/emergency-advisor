@@ -1079,7 +1079,13 @@ hr {
     z-index: 1;
 }
 #up {
-    bottom: 140px;
+    bottom: 20px;
     right: 20px;
     z-index: 1;
+}
+.placeholder::placeholder {
+    color: white;
+}
+#input {
+    padding-bottom: 0;
 }
