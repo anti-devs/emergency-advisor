@@ -1,5 +1,32 @@
 'use strict';
+/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////// scrolling //////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+let up = document.getElementById("up");
+window.addEventListener("scroll", scrolling);
+let scrollVal;
+function scrolling() {
+  scrollVal = window.scrollY;
+  //  console.log(scrollVal);
+  if (window.scrollY > 100) {
+    up.style.opacity = "1";
+  } else {
+    up.style.opacity = "0";
+  }
+}
 
+function goUp() {
+  let val = scrollVal;
+  console.log(val);
+  let animation = setInterval(() => {
+    window.scrollTo(0, val);
+    val -= 30;
+    console.log(val);
+    if (val <= 0) {
+      clearInterval(animation);
+    }
+  }, 1);
+}
 ///////////////////////////////////////////////////////////////////////////////////
 let receivedObj = JSON.parse(localStorage.obj);
 // console.log(receivedObj);
