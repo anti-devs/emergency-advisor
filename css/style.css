@@ -81,7 +81,7 @@ header {
 .hero .formCenter {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+   
     justify-content: space-between;
     width: fit-content;
 
@@ -113,6 +113,7 @@ legend {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
+    align-items: center;
 }
 .signUp, .login  {
     height: 40px;
@@ -122,8 +123,9 @@ legend {
     font-size: 20px;
     transition: all 200ms ease-in-out;
     width: 100%;
-    width: 90.7%;
-    align-self: center;
+    width: 463.2px;
+    margin: 10px auto;
+    
 }
 /* .login {
     width: 90.7%;
