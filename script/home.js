@@ -611,7 +611,7 @@ footerImage.style.marginRight = "8rem";
 
 let num1 = 0;
 function printImage() {
-  footerImage.src = `../tweet/${tweets[num1]}`;
+  footerImage.src = `./tweet/${tweets[num1]}`;
   num1++;
   if (num1 == tweets.length) {
     num1 = 0;
